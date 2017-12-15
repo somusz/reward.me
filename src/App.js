@@ -19,7 +19,7 @@ class Test extends Component{
   componentDidMount() {
     fetch("api/")
       .then(res => res.json())
-      .then(data => this.setState({ data: data.data }))
+      .then(result => this.setState({ data: result.first_name }))
   }
   render(){
     return (
