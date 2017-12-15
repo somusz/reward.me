@@ -1,4 +1,5 @@
 import React from 'react'
+import {Component} from 'react'
 import {
   BrowserRouter as Router,
   Route,
@@ -8,8 +9,24 @@ import {
 const Home = () => (
   <div>
     <h2>Home</h2>
+
   </div>
 )
+
+class Test extends Component{
+  state = { data: '' }
+
+  componentDidMount() {
+    fetch("api/")
+      .then(res => res.json())
+      .then(data => this.setState({ data: data.data }))
+  }
+  render(){
+    return (
+      <p>{this.state.data}</p>
+    )
+  }
+}
 
 const About = () => (
   <div>
@@ -43,6 +60,8 @@ const Topics = ({ match }) => (
         </Link>
       </li>
     </ul>
+
+    <Test />
 
     <Route path={`${match.url}/:topicId`} component={Topic}/>
     <Route exact path={match.url} render={() => (

@@ -26,6 +26,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
+  "proxy": "http://localhost:3001",
   "author": "\"Vivek Patel, Soma Jankovics-Eros, Timothy Pressey\"",
   "license": "MIT"
 }
