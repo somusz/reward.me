@@ -1,0 +1,5 @@
+[
+{"first_name": "Brown", "last_name": "Mamba", "email": "brown_mamba@jungle.ca", "password_digest": "123", "image":"http://fillmurray.com/200/300"},
+{"first_name": "Shivering", "last_name": "Fox", "email": "sh_fox@jungle.ca", "password_digest": "123", "image":"http://fillmurray.com/200/300"},
+{"first_name": "Hungarian", "last_name": "Pirate", "email": "banditMagyar@jungle.ca", "password_digest": "123", "image":"http://fillmurray.com/200/300"}
+]

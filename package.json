@@ -1,0 +1,31 @@
+{
+  "name": "reward.me",
+  "version": "0.1.0",
+  "description": "User friendly interface to manage rewards points from many different providers",
+  "private": true,
+  "dependencies": {
+    "bcrypt": "^1.0.3",
+    "body-parser": "^1.18.2",
+    "cookie-session": "^2.0.0-beta.3",
+    "dotenv": "^2.0.0",
+    "express": "^4.16.2",
+    "knex": "^0.11.7",
+    "knex-logger": "^0.1.0",
+    "morgan": "^1.7.0",
+    "node-sass": "^4.7.2",
+    "node-sass-middleware": "^0.9.8",
+    "pg": "^6.0.2",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.0.17"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "author": "\"Vivek Patel, Soma Jankovics-Eros, Timothy Pressey\"",
+  "license": "MIT"
+}

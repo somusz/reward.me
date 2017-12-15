@@ -1,0 +1,8 @@
+[
+{"user_id":1, "provider_id":2, "username": "bm", "password_digest": "123"},
+{"user_id":1, "provider_id":1, "username": "bm_01", "password_digest": "123"},
+{"user_id":2, "provider_id":2, "username": "sf_01", "password_digest": "123"},
+{"user_id":2, "provider_id":1, "username": "sf", "password_digest": "123"},
+{"user_id":3, "provider_id":2, "username": "hp", "password_digest": "123"},
+{"user_id":3, "provider_id":1, "username": "hp1", "password_digest": "123"}
+]
