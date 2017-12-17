@@ -1,0 +1,41 @@
+body{
+  background:white;
+}
+
+.deals{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.deal{
+  max-width: 150px;
+  position: relative;
+  display: block;
+
+  border: 1px solid grey;
+  padding: 15px;
+  margin: 10px;
+  margin-top: 20px;
+}
+
+.deal img{
+  max-height: 100px;
+  max-width: 100%;
+  display: block;
+  margin: auto;
+}
+
+.deal aside{
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: white;
+  border: 1px solid grey;
+  border-bottom-right-radius: 10px;
+}
+
+.deal h3{
+  margin:  0;
+}
