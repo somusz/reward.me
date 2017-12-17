@@ -8,12 +8,13 @@ import Register from './Register.js'
 import ShowDeal from './ShowDeal.js'
 import ShowProvider from './ShowProvider.js'
 import ShowUser from './ShowUser.js'
-
 import {
   BrowserRouter as Router,
   Route,
   Link
 } from 'react-router-dom'
+import $ from 'jquery'
+
 
 const Home = () => (
   <div>
