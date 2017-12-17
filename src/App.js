@@ -12,9 +12,10 @@ import ShowUser from './ShowUser.js'
 
 import {
   BrowserRouter as Router,
-  Route,
-  Link
+  Route
 } from 'react-router-dom'
+
+import './styles/border-box.css'
 
 const Home = () => (
   <div>
