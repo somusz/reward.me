@@ -1,4 +1,7 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
+
+import './styles/Providers.css';
 
 class Providers extends Component{
   state = { data: [] }
@@ -17,12 +20,21 @@ class Providers extends Component{
   }
   render(){
     return (
-      <div>
-
-        {this.state.data.map(item => (
-          <p key={item.id}>Provider Name: {item.name}</p>
-        ))}
-
+      <div className="providers">
+        <ul>
+          {this.state.data.map(item => (
+            <div>
+              <Link to={`/provider/${item.id}`}>
+                <li key={item.id}>
+                  <div className="provider-image-container">
+                    <img src={item.image} alt="N/A" />
+                  </div>
+                  <h3>{item.name}</h3>
+                </li>
+              </Link>
+            </div>
+          ))}
+        </ul>
       </div>
     )
   }

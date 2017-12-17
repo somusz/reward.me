@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
+import './styles/Deals.css';
 
 class Deals extends Component{
   state = { data: [] }
@@ -17,10 +19,18 @@ class Deals extends Component{
   }
   render(){
     return (
-      <div>
+      <div className="deals">
 
         {this.state.data.map(item => (
-          <p key={item.id}>Deal Name: {item.name}</p>
+          <article key={item.id} className="deal">
+            <Link to={`/deal/${item.id}`}>
+                {console.log(item)}
+                <aside> {item.price} </aside>
+                <img src={item.image} alt="image"/>
+                <h3> {item.name} </h3>
+                <div> {item.description} </div>
+            </Link>
+          </article>
         ))}
 
       </div>

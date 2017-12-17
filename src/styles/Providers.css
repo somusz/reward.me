@@ -1,0 +1,29 @@
+.providers li{
+  display: inline-flex;
+  list-style-type: none;
+}
+
+.providers a{
+  color: black;
+  text-decoration: none;
+}
+
+.provider-image-container{
+  width: 200px;
+  height: 50px;
+  display: inline-block;
+}
+.providers img{
+  max-height: 50px;
+  max-width: 150px;
+  margin: auto
+}
+
+.providers h3{
+  margin: 0px;
+  line-height: 50px;
+  display: inline-block;
+}
+.providers h3:hover{
+  text-decoration: underline;
+}
