@@ -4,7 +4,7 @@ import $ from 'jquery';
 class Login extends Component{
   state = { data: '' }
 
-  handleSubmit = (event) => {
+  handleLoginSubmit = (event) => {
     event.preventDefault()
 
     if (event) {
@@ -32,7 +32,7 @@ class Login extends Component{
       <div className='login'>
         <h2>Login Page</h2>
 
-        <form className='login-form' onSubmit={this.handleSubmit}>
+        <form className='login-form' onSubmit={this.handleLoginSubmit}>
 
           <span>Email: </span><input id="email" type="email" name="email" placeholder="Your email address" />
           <span>Password: </span><input id="password" type="password" name="password" placeholder="Your password" />
@@ -40,7 +40,6 @@ class Login extends Component{
           <input type="submit" value="Login" />
         </form>
 
-        <p>this is the login page, no data</p>
       </div>
     );
   }
