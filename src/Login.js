@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import $ from 'jquery';
-// import bcrypt from 'bcrypt';
 
 class Login extends Component{
   state = { data: '' }
@@ -8,17 +7,18 @@ class Login extends Component{
   handleSubmit = (event) => {
     event.preventDefault()
 
-
     if (event) {
-      // var hashedPassword = bcrypt.hashSync(event.target.password.value, 10)
       $.ajax({
         url: '/login',
         method: 'POST',
-        dataType: 'json',
         data: {
           email: event.target.email.value,
-          password: '123'//hashedPassword
+          password: event.target.password.value
         }
+      }).done((res) => {
+        console.log(res)
+      }).fail((err) => {
+        console.log(err)
       })
     }
   }
@@ -42,9 +42,6 @@ class Login extends Component{
 
         <p>this is the login page, no data</p>
       </div>
-
-
-
     );
   }
 }

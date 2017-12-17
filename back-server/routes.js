@@ -9,24 +9,24 @@ module.exports = (knex) => {
 
   router.post('/login', (req, res) => {
     console.log('attempting to log in', req.body)
-    res.redirect('/')
-    // knex
-    //   .select('password_digest')
-    //   .from('users')
-    //   .where('email', req.body.email)
-    //   .then( (result) => {
-    //     if (bcrypt.compareSync(req.body.password, result)) {
-    //       console.log('Login Successful')
-    //       res.redirect('/');
-    //     }
-    //     else {
-    //       console.log('Login Failed')
-    //       res.redirect('/register')
-    //     }
-    //   })
-    //   .catch( (err) => {
-    //     res.status(403).send('Incorrect credentials')
-    //   })
+    knex
+      .select('password_digest')
+      .from('users')
+      .where('email', req.body.email)
+      .then( (result) => {
+        // if (bcrypt.compareSync(req.body.password, result[0])) {
+        if (req.body.password === result[0].password_digest) {
+          console.log('Login Successful')
+          res.status(200).send('ok');
+        }
+        else {
+          console.log('Login Failed')
+          res.status(400).send('not ok');
+        }
+      })
+      .catch( (err) => {
+        res.status(403).send('Incorrect credentials')
+      })
   })
 
   router.get('/user/:id', (req, res) => {
