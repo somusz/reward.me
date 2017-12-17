@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
 
-class ShowUser extends Component{
+class NewProvider extends Component{
   state = { data: [] }
 
   componentDidMount() {
-    let url = `/user/${this.props.match.params.id}`
-    fetch(url)
+    fetch("/providers")
       .then((res) => {
         res.json()
           .then((jsonData) => {
@@ -21,7 +20,7 @@ class ShowUser extends Component{
       <div>
 
         {this.state.data.map(item => (
-          <p key={item.id}>User First Name: {item.first_name}</p>
+          <p key={item.id}>Provider Name: {item.name}</p>
         ))}
 
       </div>
@@ -29,4 +28,4 @@ class ShowUser extends Component{
   }
 }
 
-export default ShowUser;
+export default NewProvider;
