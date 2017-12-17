@@ -2,6 +2,7 @@ import React from 'react'
 import {Component} from 'react'
 import Deals from './Deals.js'
 import Login from './Login.js'
+import Nav from './Nav.js'
 import NewProvider from './NewProvider.js'
 import Providers from './Providers.js'
 import Register from './Register.js'
@@ -21,30 +22,10 @@ const Home = () => (
   </div>
 )
 
-
-
-const exampleIDs = {
-  user: 2,
-  deal: 2,
-  provider: 2
-}
-
 const RouteHandler = () => (
   <Router>
     <div>
-      <ul>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/providers">Providers List</Link></li>
-        <li><Link to="/providers/new">Add new connection</Link></li>
-        <li><Link to={`/provider/${exampleIDs.provider}`}>Provider View (the link is hardcoded to provider #2)</Link></li>
-        <li><Link to="/deals">All Deals</Link></li>
-        <li><Link to={`/deal/${exampleIDs.deal}`}>Deal View (the link is hardcoded to deal #2)</Link></li>
-        <li><Link to="/register">Registration</Link></li>
-        <li><Link to={`/user/${exampleIDs.user}`}>User account (the link is hardcoded to user #2)</Link></li>
-        <li><Link to="/login">Login</Link></li>
-      </ul>
-
-      <hr/>
+      <Nav />
 
       <Route exact path="/" component={Home}/>
       <Route exact path="/providers" component={Providers}/>
