@@ -9,11 +9,12 @@ import Register from './Register.js'
 import ShowDeal from './ShowDeal.js'
 import ShowProvider from './ShowProvider.js'
 import ShowUser from './ShowUser.js'
-
 import {
   BrowserRouter as Router,
   Route
 } from 'react-router-dom'
+import $ from 'jquery'
+
 
 import './styles/border-box.css'
 
