@@ -22,7 +22,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieSession( {
   name: 'session',
-  keys: process.env.SESSION_KEY
+  keys: [process.env.SESSION_KEY],
+  httpOnly: false
   }));
 app.use('/', routes(knex));
 
