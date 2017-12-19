@@ -4,13 +4,15 @@
   flex-wrap: wrap;
   justify-content: space-around;
 }
-
 .deal{
   max-width: 150px;
+  opacity: 0.8;
+}
+
+.deal, .deal-show{
   position: relative;
   display: block;
 
-  opacity: 0.8;
   border: 1px solid grey;
   padding: 15px;
   margin: 10px;
@@ -21,7 +23,7 @@
   border: 1px solid black;
 }
 
-.deal a{
+.deal a, .deal-show a{
   color: black;
   text-decoration: none;
 }
@@ -31,6 +33,11 @@
   max-width: 100%;
   display: block;
   margin: auto;
+}
+.deal-show img{
+  display: block;
+  margin: auto;
+  max-width: 100%;
 }
 
 .deal aside{
@@ -42,6 +49,6 @@
   border-bottom-right-radius: 10px;
 }
 
-.deal h3{
+.deal h3, .deal-show h3{
   margin:  0;
 }

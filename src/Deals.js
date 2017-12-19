@@ -27,7 +27,6 @@ class Deals extends Component{
                 <aside> {item.price} </aside>
                 <img src={item.image} alt={item.name}/>
                 <h3> {item.name} </h3>
-                <div> {item.description} </div>
             </Link>
           </article>
         ))}

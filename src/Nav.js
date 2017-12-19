@@ -45,7 +45,6 @@ class Nav extends Component{
   render(){
     const session = (document.cookie).match(/session=/)
     return (
-      <div>
       <nav className="Top-Navbar">
         <ul>
           <li className="Navbar-Left"><Link to="/">Home</Link></li>
@@ -62,19 +61,6 @@ class Nav extends Component{
           }
         </ul>
       </nav>
-
-      <ul>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/providers">Providers List</Link></li>
-        <li><Link to="/providers/new">Add new connection</Link></li>
-        <li><Link to={`/provider/${exampleIDs.provider}`}>Provider View (the link is hardcoded to provider #2)</Link></li>
-        <li><Link to="/deals">All Deals</Link></li>
-        <li><Link to={`/deal/${exampleIDs.deal}`}>Deal View (the link is hardcoded to deal #2)</Link></li>
-        <li><Link to="/register">Registration</Link></li>
-        <li><Link to={`/user/${exampleIDs.user}`}>User account (the link is hardcoded to user #2)</Link></li>
-        <li><Link to="/login">Login</Link></li>
-      </ul>
-      </div>
     )
   }
 }
