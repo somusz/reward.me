@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import $ from 'jquery';
 
+import './styles/Login.css';
+
 class Login extends Component{
   constructor(props) {
     super(props);
@@ -31,6 +33,25 @@ class Login extends Component{
         this.props.history.goBack()
       })
       .catch((err) => {
+        console.log(err)
+      })
+    }
+  }
+
+  handleLoginSubmit = (event) => {
+    event.preventDefault()
+
+    if (event) {
+      $.ajax({
+        url: '/login',
+        method: 'POST',
+        data: {
+          email: event.target.email.value,
+          password: event.target.password.value
+        }
+      }).done((res) => {
+        console.log(res)
+      }).fail((err) => {
         console.log(err)
       })
     }

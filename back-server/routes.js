@@ -5,6 +5,7 @@ const router = express.Router({mergeParams: true});
 // const bcrypt = require('bcrypt');
 
 
+
 module.exports = (knex) => {
 
   router.post('/login', (req, res) => {
@@ -16,7 +17,9 @@ module.exports = (knex) => {
       .then( (result) => {
         // if (bcrypt.compareSync(req.body.password, result[0])) {
         if (req.body.password === result[0].password_digest) {
+
           console.log('Login Successful')
+
           req.session.user_id = result[0].id
           res.status(200).send('ok');
         }
@@ -27,6 +30,7 @@ module.exports = (knex) => {
       })
       .catch( (err) => {
         res.status(403).send('Incorrect credentials')
+
         console.log(err)
       })
   })
