@@ -3,54 +3,48 @@
     "name": "Awesome Reward 1",
     "description": "it's awesome!",
     "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzlnXZp9FrwDXKB2QBBg2fYANZVbdvY0TfHxNQxICWCpXDTWTy",
-    "expires_at": "2018-01-01",
-    "type": "entertainment",
     "price": 1000,
-    "provider_id": 1
+    "provider_id": 1,
+    "url": "http://www.example.com"
   },
   {
     "name": "Super Cool Thing",
     "description": "Cool, and useful!",
     "image": "https://www.fillmurray.com/600/400",
-    "expires_at": "2018-02-12",
-    "type": "product",
     "price": 100000,
-    "provider_id": 2
+    "provider_id": 2,
+    "url": "http://www.example.com"
   },
   {
     "name": "Trip of your life",
     "description": "Pack your bag",
     "image": "https://www.fillmurray.com/600/400",
-    "expires_at": "2018-01-01",
-    "type": "travel",
     "price": 1000,
-    "provider_id": 1
+    "provider_id": 1,
+    "url": "http://www.example.com"
   },
   {
     "name": "Conquer the world",
     "description": "Ready to start?",
     "image": "https://www.fillmurray.com/600/400",
-    "expires_at": "2018-02-12",
-    "type": "travel",
     "price": 100000,
-    "provider_id": 2
+    "provider_id": 2,
+    "url": "http://www.example.com"
   },
   {
     "name": "Poker chips",
     "description": "It's a deal. Deal?",
     "image": "https://www.fillmurray.com/600/400",
-    "expires_at": "2018-01-01",
-    "type": "product",
     "price": 1000,
-    "provider_id": 1
+    "provider_id": 1,
+    "url": "http://www.example.com"
   },
   {
     "name": "Simon says you're done",
     "description": "Bill says what?",
     "image": "https://www.fillmurray.com/600/400",
-    "expires_at": "2018-02-12",
-    "type": "product",
     "price": 100000,
-    "provider_id": 2
+    "provider_id": 2,
+    "url": "http://www.example.com"
   }
 ]
