@@ -1,8 +1,5 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import $ from 'jquery';
-import cookieParser from 'cookie-parser';
-
 
 import './styles/nav.css';
 
