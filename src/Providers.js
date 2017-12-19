@@ -6,7 +6,7 @@ import './styles/Providers.css';
 class Providers extends Component{
   state = { data: [] }
 
-  componentDidMount() {
+  componentWillMount() {
     fetch("/providers")
       .then((res) => {
         res.json()
@@ -19,13 +19,14 @@ class Providers extends Component{
       })
   }
   render(){
+    console.log('rendering...');
     return (
       <div className="providers">
         <ul>
           {this.state.data.map(item => (
-            <div>
+            <div key={item.id}>
               <Link to={`/provider/${item.id}`}>
-                <li key={item.id}>
+                <li>
                   <div className="provider-image-container">
                     <img src={item.image} alt="N/A" />
                   </div>

@@ -1,5 +1,4 @@
 import React from 'react'
-import {Component} from 'react'
 import Deals from './Deals.js'
 import Login from './Login.js'
 import Nav from './Nav.js'
@@ -13,7 +12,6 @@ import {
   BrowserRouter as Router,
   Route
 } from 'react-router-dom'
-import $ from 'jquery'
 
 import './styles/border-box.css'
 
