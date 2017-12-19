@@ -30,6 +30,7 @@ class Login extends Component{
       })
       .then((res) => {
         this.props.setPoints()
+        this.props.setSession()
         this.props.history.goBack()
       })
       .catch((err) => {

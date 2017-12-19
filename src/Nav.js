@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 
 import './styles/nav.css';
 
@@ -34,7 +34,8 @@ class Nav extends Component{
         redirect: 'follow',
       })
       .then((res) => {
-        window.location.href='/'
+        this.props.setSession()
+        window.location.href='/deals'
       })
       .catch((err) => {
         console.log(err)
@@ -43,7 +44,7 @@ class Nav extends Component{
   }
 
   render(){
-    const session = (document.cookie).match(/session=/)
+
     return (
       <nav className="Top-Navbar">
         <ul>
@@ -51,13 +52,13 @@ class Nav extends Component{
           <li className="Navbar-Left"><Link to="/providers">Providers </Link></li>
           <li className="Navbar-Left"><Link to="/deals">Deals</Link></li>
           <li className="Navbar-Left">{this.props.points}</li>
-          {session &&
+          {(this.props.session) &&
             <li className="Navbar-Right"><Link to="/" onClick={this._logoutProcess}>Logout</Link></li>
           }
-          {!session &&
+          {(!this.props.session) &&
             <li className="Navbar-Right"><Link to="/login">Login</Link></li>
           }
-          {!session &&
+          {(!this.props.session) &&
             <li className="Navbar-Right"><Link to="/register">Register</Link></li>
           }
         </ul>
