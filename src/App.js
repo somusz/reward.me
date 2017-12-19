@@ -21,21 +21,40 @@ const Home = () => (
   </div>
 )
 
-const RouteHandler = () => (
-  <Router>
-    <div>
-      <Nav  />
+class App extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {points: 0}
+  }
 
-      <Route exact path="/" component={Home}/>
-      <Route exact path="/providers" component={Providers}/>
-      <Route path="/providers/new" component={NewProvider}/>
-      <Route path="/provider/:id" component={ShowProvider}/>
-      <Route path="/deals" component={Deals}/>
-      <Route path="/deal/:id" component={ShowDeal}/>
-      <Route path="/register" component={Register}/>
-      <Route path="/user/:id" component={ShowUser}/>
-      <Route path="/login" component={Login}/>
-    </div>
-  </Router>
-)
-export default RouteHandler
+  setPoints = () => {
+    this.setState({points: 7})
+  }
+
+  render() {
+    return (
+      <Router>
+        <div>
+          <Nav points={this.state.points} />
+
+          <Route exact path="/" component={Home}/>
+          <Route exact path="/providers" component={Providers}/>
+          <Route path="/providers/new" component={NewProvider}/>
+          <Route path="/provider/:id" component={ShowProvider}/>
+          <Route path="/deals" component={Deals}/>
+          <Route path="/deal/:id" component={ShowDeal}/>
+          <Route path="/register" component={Register}/>
+          <Route path="/user/:id" component={ShowUser}/>
+          <Route path="/login" render={(props) => <Login {...props} setPoints={this.setPoints} points={this.state.points} /> }/>
+        </div>
+      </Router>
+
+    )
+  }
+}
+
+export default App
+
+// const RouteHandler = () => (
+// )
+// export default RouteHandler
