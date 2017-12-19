@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 
 class ShowDeal extends Component{
   state = { data: [] }
@@ -19,9 +20,15 @@ class ShowDeal extends Component{
   render(){
     return (
       <div>
+        <Link to="/deals">All Deals</Link>
 
         {this.state.data.map(item => (
-          <p key={item.id}>Deal Name: {item.name}</p>
+          <article key={item.id} className="deal-show">
+            <aside> {item.price} </aside>
+            <h3> {item.name} </h3>
+            <img src={item.image} alt={item.name}/>
+            <div> {item.description} </div>
+          </article>
         ))}
 
       </div>
