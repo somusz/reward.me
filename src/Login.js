@@ -3,9 +3,40 @@ import $ from 'jquery';
 
 import './styles/Login.css';
 
-
 class Login extends Component{
-  state = { data: '' }
+  constructor(props) {
+    super(props);
+
+    this.state = {
+
+    }
+  }
+
+  handleLoginSubmit = (event) => {
+    event.preventDefault()
+
+    if (event) {
+      fetch('/login', {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        },
+        redirect: 'follow',
+        body: JSON.stringify({
+          email: event.target.email.value,
+          password: event.target.password.value
+        })
+      })
+      .then((res) => {
+        this.props.history.goBack()
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+    }
+  }
 
   handleLoginSubmit = (event) => {
     event.preventDefault()
