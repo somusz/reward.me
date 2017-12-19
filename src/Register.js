@@ -47,14 +47,6 @@ class Registration extends Component{
 
       </div>
 
-
-
-
-
-
-
-
-
     )
   }
 }

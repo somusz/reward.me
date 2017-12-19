@@ -38,29 +38,6 @@ class Login extends Component{
     }
   }
 
-  handleLoginSubmit = (event) => {
-    event.preventDefault()
-
-    if (event) {
-      $.ajax({
-        url: '/login',
-        method: 'POST',
-        data: {
-          email: event.target.email.value,
-          password: event.target.password.value
-        }
-      }).done((res) => {
-        console.log(res)
-      }).fail((err) => {
-        console.log(err)
-      })
-    }
-  }
-
-  componentDidMount() {
-
-  }
-
   render(){
     return (
       <div className='login'>

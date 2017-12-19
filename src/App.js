@@ -23,21 +23,6 @@ const Home = () => (
   </div>
 )
 
-
-  // this.loginHandler = this.loginHandler.bind(this)
-
-
-// loginHandler() {
-//   console.log(document.cookie)
-//   // if (???) {
-//   //   this.setState({session: ???})
-//   // }
-//   // else {
-//   //   this.setState({session: null})
-//   // }
-//   // session={this.state.session}
-// }
-
 const RouteHandler = () => (
   <Router>
     <div>
