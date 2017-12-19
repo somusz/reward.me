@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import $ from 'jquery';
 
+import './styles/Login.css';
+
+
 class Login extends Component{
   state = { data: '' }
 

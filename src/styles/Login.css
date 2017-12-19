@@ -1,0 +1,21 @@
+form{
+  margin-left: 10%;
+}
+
+form label{
+  font-size: small;
+}
+
+form input{
+  display: block;
+  line-height: 2em;
+  font-size: medium;
+  width: 50%;
+  border: solid grey thin;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+form input[type='submit']:hover{
+  background-color: #fde0b4;
+}
