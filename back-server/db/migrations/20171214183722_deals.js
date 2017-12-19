@@ -5,7 +5,7 @@ exports.up = function(knex, Promise) {
       table.increments().primary();
       table.integer('provider_id').references('id').inTable('providers');
       table.string('name');
-      table.string('description');
+      table.text('description');
       table.string('image');
       table.timestamp('expires_at');
       table.string('type');

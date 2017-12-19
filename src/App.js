@@ -15,7 +15,6 @@ import {
 } from 'react-router-dom'
 import $ from 'jquery'
 
-
 import './styles/border-box.css'
 
 const Home = () => (
@@ -24,10 +23,25 @@ const Home = () => (
   </div>
 )
 
+
+  // this.loginHandler = this.loginHandler.bind(this)
+
+
+// loginHandler() {
+//   console.log(document.cookie)
+//   // if (???) {
+//   //   this.setState({session: ???})
+//   // }
+//   // else {
+//   //   this.setState({session: null})
+//   // }
+//   // session={this.state.session}
+// }
+
 const RouteHandler = () => (
   <Router>
     <div>
-      <Nav />
+      <Nav  />
 
       <Route exact path="/" component={Home}/>
       <Route exact path="/providers" component={Providers}/>
