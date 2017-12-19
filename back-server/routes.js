@@ -3,7 +3,7 @@
 const express = require('express');
 const router = express.Router({mergeParams: true});
 // const bcrypt = require('bcrypt');
-
+const getMoreRewardsPoints = require('./more_rewards_points.js');
 
 
 module.exports = (knex) => {
@@ -92,6 +92,33 @@ module.exports = (knex) => {
       console.log('provider on the server:', JSON.stringify(result))
       res.send(JSON.stringify(result));
     })
+  })
+
+  router.get('/user/:user_id/points/:provider_id', (req, res) => {
+    console.log(typeof req.params.user_id, typeof req.session.user_id)
+    if (req.session.user_id == req.params.user_id){
+      if (req.params.provider_id == '1'){ //moreRewards
+        knex('users_providers')
+          .where({user_id: Number(req.params.user_id), provider_id: 1})
+          .select('membership_id')
+          .then( result => {
+            let {membership_id} = result[0];
+            if (membership_id){
+              getMoreRewardsPoints(membership_id, points => {
+                res.send(JSON.stringify({points}));
+              })
+            } else {
+              res.status(404).send('{"error": "no membership id for user"}')
+            }
+          })
+      }
+      else{
+        res.status(404).send('{"error": "no functionality for that provider_id"}')
+      }
+    }
+    else{
+      res.status(400).send('{"error": "bad credentials"}')
+    }
   })
 
   return router;
