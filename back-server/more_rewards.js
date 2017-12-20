@@ -55,22 +55,10 @@ const getIndividualDealItems = (path) => {
       let regex = /^\d+,\d\d\d/
       let dealPrice = Number((regex.exec(dealPriceMessage))[0].replace(',', ''))
 
-      // dealsArray.push({
-      //   name: dealName,
-      //   description: dealDescription,
-      //   image: dealImageUrl,
-      //   expires_at: null,
-      //   type: "example",
-      //   price: dealPrice,
-      //   provider_id: 1
-      // })
-
       let newDeal = {
         name: dealName,
         description: dealDescription,
         image: dealImageUrl,
-        expires_at: null,
-        type: "example",
         price: dealPrice,
         provider_id: 1
       }

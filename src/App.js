@@ -1,12 +1,9 @@
 import React from 'react'
-import Deals from './Deals.js'
+import DealsSection from './DealsSection.js'
 import Login from './Login.js'
 import Nav from './Nav.js'
-import NewProvider from './NewProvider.js'
-import Providers from './Providers.js'
+import ProviderSection from './ProviderSection.js'
 import Register from './Register.js'
-import ShowDeal from './ShowDeal.js'
-import ShowProvider from './ShowProvider.js'
 import ShowUser from './ShowUser.js'
 import {
   BrowserRouter as Router,
@@ -21,21 +18,59 @@ const Home = () => (
   </div>
 )
 
-const RouteHandler = () => (
-  <Router>
-    <div>
-      <Nav  />
+class App extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      points: []
+    }
+  }
 
-      <Route exact path="/" component={Home}/>
-      <Route exact path="/providers" component={Providers}/>
-      <Route path="/providers/new" component={NewProvider}/>
-      <Route path="/provider/:id" component={ShowProvider}/>
-      <Route path="/deals" component={Deals}/>
-      <Route path="/deal/:id" component={ShowDeal}/>
-      <Route path="/register" component={Register}/>
-      <Route path="/user/:id" component={ShowUser}/>
-      <Route path="/login" component={Login}/>
-    </div>
-  </Router>
-)
-export default RouteHandler
+  setPoints = () => {
+    fetch('/points', {
+      method: 'GET',
+      credentials: 'include',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+      .then((res) => {
+        res.json()
+          .then((jsonData) => {
+            this.setState({ points: jsonData })
+          })
+      })
+      .catch((err) => {
+        console.log('error:', err)
+      })
+  }
+
+  setSession = () => {
+    if ((document.cookie).match(/session=/)) {
+      this.setState({session: true})
+    } else {
+      this.setState({session: false})
+    }
+  }
+
+  render() {
+    return (
+      <Router>
+        <div>
+          <Nav points={this.state.points} setSession={this.setSession} session={this.state.session} />
+
+          <Route exact path="/" component={Home}/>
+          <Route path="/providers" render={(props) => <ProviderSection {...props} points={this.state.points} /> } />
+          <Route path="/deals" render={(props) => <DealsSection {...props} points={this.state.points} /> } />
+          <Route path="/register" component={Register}/>
+          <Route path="/users/:id" component={ShowUser}/>
+          <Route path="/login" render={(props) => <Login {...props} setPoints={this.setPoints} setSession={this.setSession} /> }/>
+        </div>
+      </Router>
+
+    )
+  }
+}
+
+export default App

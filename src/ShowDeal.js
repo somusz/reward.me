@@ -5,7 +5,7 @@ class ShowDeal extends Component{
   state = { data: [] }
 
   componentDidMount() {
-    let url = `/deal/${this.props.match.params.id}`
+    let url = `/deals/${this.props.match.params.id}`
     fetch(url)
       .then((res) => {
         res.json()

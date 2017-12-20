@@ -29,6 +29,8 @@ class Login extends Component{
         })
       })
       .then((res) => {
+        this.props.setPoints()
+        this.props.setSession()
         this.props.history.goBack()
       })
       .catch((err) => {
@@ -41,6 +43,7 @@ class Login extends Component{
     return (
       <div className='login'>
         <h2>Login Page</h2>
+        <h3>{this.props.points}</h3>
 
         <form className='login-form' onSubmit={this.handleLoginSubmit}>
 
