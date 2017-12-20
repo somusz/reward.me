@@ -58,65 +58,67 @@ module.exports = (knex) => {
       });
   })
 
-  router.get('/user/:id', (req, res) => {
+  router.get('/users/:id', (req, res) => {
     knex.select('*').from('users').where('id',req.params.id).then( result => {
-      console.log('user on the server:', JSON.stringify(result))
+      // console.log('user on the server:', JSON.stringify(result))
       res.send(JSON.stringify(result));
     })
   })
 
   router.get('/deals', (req, res) => {
     knex.select('*').from('deals').then( result => {
-      console.log('deals on the server:', JSON.stringify(result))
+      // console.log('deals on the server:', JSON.stringify(result))
       res.send(JSON.stringify(result));
     })
   })
 
-  router.get('/deal/:id', (req, res) => {
+  router.get('/deals/:id', (req, res) => {
     console.log(req.params.id)
     knex.select('*').from('deals').where('id',req.params.id).then( result => {
-      console.log('deal on the server:', JSON.stringify(result))
+      // console.log('deal on the server:', JSON.stringify(result))
       res.send(JSON.stringify(result));
     })
   })
 
   router.get('/providers', (req, res) => {
     knex.select('*').from('providers').then( result => {
-      console.log('providers on the server:', JSON.stringify(result))
+      // console.log('providers on the server:', JSON.stringify(result))
       res.send(JSON.stringify(result));
     })
   })
 
-  router.get('/provider/:id', (req, res) => {
+  router.get('/providers/:id', (req, res) => {
     knex.select('*').from('providers').where('id',req.params.id).then( result => {
-      console.log('provider on the server:', JSON.stringify(result))
+      // console.log('provider on the server:', JSON.stringify(result))
       res.send(JSON.stringify(result));
     })
   })
 
-  router.get('/user/:user_id/points/:provider_id', (req, res) => {
-    console.log(typeof req.params.user_id, typeof req.session.user_id)
-    if (req.session.user_id == req.params.user_id){
-      if (req.params.provider_id == '1'){ //moreRewards
+  router.get('/points', (req, res) => {
+    console.log(req.session)
+    if (req.session.user_id) {
+
         knex('users_providers')
-          .where({user_id: Number(req.params.user_id), provider_id: 1})
-          .select('membership_id')
+          .where({user_id: Number(req.session.user_id)})
+          .select()
           .then( result => {
-            let {membership_id} = result[0];
-            if (membership_id){
-              getMoreRewardsPoints(membership_id, points => {
-                res.send(JSON.stringify({points}));
-              })
-            } else {
-              res.status(404).send('{"error": "no membership id for user"}')
-            }
+            result.forEach(program => {
+              switch(program.provider_id) {
+                case 1:
+                  let {membership_id} = program;
+                  if (membership_id){
+                    getMoreRewardsPoints(membership_id, (points) => {
+                      res.send(JSON.stringify([{provider_id: 1, points}]));
+                    })
+                  } else {
+                    res.status(404).send('{"error": "no membership id for user"}')
+                  }
+                  break;
+              }
+            })
           })
-      }
-      else{
-        res.status(404).send('{"error": "no functionality for that provider_id"}')
-      }
-    }
-    else{
+
+    } else {
       res.status(400).send('{"error": "bad credentials"}')
     }
   })

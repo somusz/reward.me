@@ -44,6 +44,9 @@ class Nav extends Component{
   }
 
   render(){
+    let pointsArray = this.props.points.map(({provider_id, points}) =>
+      <li className="Navbar-Left">{points}</li>
+    )
 
     return (
       <nav className="Top-Navbar">
@@ -51,7 +54,9 @@ class Nav extends Component{
           <li className="Navbar-Left"><Link to="/">Home</Link></li>
           <li className="Navbar-Left"><Link to="/providers">Providers </Link></li>
           <li className="Navbar-Left"><Link to="/deals">Deals</Link></li>
-          <li className="Navbar-Left">{this.props.points}</li>
+
+          {pointsArray}
+
           {(this.props.session) &&
             <li className="Navbar-Right"><Link to="/" onClick={this._logoutProcess}>Logout</Link></li>
           }

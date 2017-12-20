@@ -22,11 +22,30 @@ const Home = () => (
 class App extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {points: 0}
+    this.state = {
+      points: []
+    }
   }
 
   setPoints = () => {
-    this.setState({points: 7})
+    fetch('/points', {
+      method: 'GET',
+      credentials: 'include',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+      .then((res) => {
+        res.json()
+          .then((jsonData) => {
+            console.log(jsonData)
+            this.setState({ points: jsonData })
+          })
+      })
+      .catch((err) => {
+        console.log('error:', err)
+      })
   }
 
   setSession = () => {
@@ -46,10 +65,10 @@ class App extends React.Component {
           <Route exact path="/" component={Home}/>
           <Route path="/providers" component={ProviderSection}/>
           <Route path="/deals" component={Deals}/>
-          <Route path="/deal/:id" component={ShowDeal}/>
+          <Route path="/deals/:id" component={ShowDeal}/>
           <Route path="/register" component={Register}/>
-          <Route path="/user/:id" component={ShowUser}/>
-          <Route path="/login" render={(props) => <Login {...props} setPoints={this.setPoints} setSession={this.setSession} points={this.state.points} /> }/>
+          <Route path="/users/:id" component={ShowUser}/>
+          <Route path="/login" render={(props) => <Login {...props} setPoints={this.setPoints} setSession={this.setSession} /> }/>
         </div>
       </Router>
 
