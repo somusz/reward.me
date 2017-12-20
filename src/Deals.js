@@ -6,7 +6,14 @@ class Deals extends Component{
   state = { data: [] }
 
   componentDidMount() {
-    fetch("/deals")
+    fetch("/deals", {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
       .then((res) => {
         res.json()
           .then((jsonData) => {
