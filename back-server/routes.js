@@ -2,7 +2,7 @@
 
 const express = require('express');
 const router = express.Router({mergeParams: true});
-// const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt');
 const getMoreRewardsPoints = require('./more_rewards_points.js');
 
 
@@ -45,12 +45,16 @@ module.exports = (knex) => {
 
   router.post('/register', (req, res) => {
     console.log('attempting to register', req.body)
-    knex.insert(req.body)
+
+    let newUser = req.body
+    newUser.password_digest = bcrypt.hashSync(newUser.password_digest, 10)
+
+    knex.insert(newUser)
       .returning('id')
       .into('users')
       .then((result) => {
-        console.log('result of knex insert', result)
-        res.status(200).send(result)
+        req.session.user_id = result[0]
+        res.status(200).send('ok')
       })
       .catch((err) => {
         console.log(err.detail)

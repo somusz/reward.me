@@ -2,33 +2,37 @@ import React, {Component} from 'react';
 import $ from 'jquery';
 
 class Registration extends Component{
-  state = { data: '' }
 
   handleRegisterSubmit = (event) => {
     event.preventDefault()
 
     if (event) {
-      $.ajax({
-        url: '/register',
+      fetch('/register', {
         method: 'POST',
-        data: {
+        credentials: 'include',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        },
+        redirect: 'follow',
+        body: JSON.stringify({
           first_name: event.target.first_name.value,
           last_name: event.target.last_name.value,
           email: event.target.email.value,
           image: event.target.image_url.value,
           password_digest: event.target.password.value
-        }
-      }).done((res) => {
-        console.log(res)
-      }).fail((err) => {
+        })
+      })
+      .then((res) => {
+        this.props.setSession()
+        this.props.history.goBack()
+      })
+      .catch((err) => {
         console.log(err)
       })
     }
   }
 
-  componentDidMount() {
-
-  }
   render(){
     return (
       <div className='register'>
