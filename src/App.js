@@ -1,10 +1,9 @@
 import React from 'react'
-import Deals from './Deals.js'
+import DealsSection from './DealsSection.js'
 import Login from './Login.js'
 import Nav from './Nav.js'
 import ProviderSection from './ProviderSection.js'
 import Register from './Register.js'
-import ShowDeal from './ShowDeal.js'
 import ShowUser from './ShowUser.js'
 import {
   BrowserRouter as Router,
@@ -62,9 +61,8 @@ class App extends React.Component {
           <Nav points={this.state.points} setSession={this.setSession} session={this.state.session} />
 
           <Route exact path="/" component={Home}/>
-          <Route path="/providers" component={ProviderSection}/>
-          <Route exact path="/deals" component={Deals}/>
-          <Route path="/deals/:id" component={ShowDeal}/>
+          <Route path="/providers" render={(props) => <ProviderSection {...props} points={this.state.points} /> } />
+          <Route path="/deals" render={(props) => <DealsSection {...props} points={this.state.points} /> } />
           <Route path="/register" component={Register}/>
           <Route path="/users/:id" component={ShowUser}/>
           <Route path="/login" render={(props) => <Login {...props} setPoints={this.setPoints} setSession={this.setSession} /> }/>
