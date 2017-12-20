@@ -12,13 +12,22 @@ class Deals extends Component{
     };
   }
 
+  getPercentage = item => {
+
+    let p = this.props.points[item.provider_id] / item.price || 0;
+    return p > 1 ? 1 : p;
+  }
+
   componentWillMount() {
     fetch("/deals")
       .then((res) => {
         res.json()
           .then((jsonData) => {
-            jsonData.forEach(item => Object.assign(item, {provider: this.state.providers[item.provider_id]}))
-            console.log(jsonData)
+            jsonData = jsonData.map(item => Object.assign(item, {
+              provider: this.state.providers[item.provider_id],
+              percentage: this.getPercentage(item)
+            }))
+
             this.setState({ items: jsonData })
           })
       })
@@ -31,7 +40,8 @@ class Deals extends Component{
       <div>
         <header>
           <h1> Deals </h1>
-          {this.props.points.map(p => `You have ${p.points} for provider ${this.state.providers[p.provider_id]}`)}
+          <p> {this.props.points[1] ? `More Rewards Points: ${this.props.points[1]}` : ""} </p>
+          <p> {this.props.points[2] ? `Scene Points: ${this.props.points[2]}` : ""} </p>
         </header>
         <div className="deals-container">
 

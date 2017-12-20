@@ -108,7 +108,8 @@ module.exports = (knex) => {
                   let {membership_id} = program;
                   if (membership_id){
                     getMoreRewardsPoints(membership_id, (points) => {
-                      res.send(JSON.stringify([{provider_id: 1, points}]));
+                      res.send(JSON.stringify({'1': 12000, '2': 54210}))
+                      // res.send(JSON.stringify([{provider_id: 1, points}]));
                     })
                   } else {
                     res.status(404).send('{"error": "no membership id for user"}')

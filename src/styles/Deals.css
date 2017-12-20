@@ -4,10 +4,6 @@
   flex-wrap: wrap;
   justify-content: space-around;
 }
-.deal{
-  max-width: 150px;
-  opacity: 0.8;
-}
 
 .deal, .deal-show{
   position: relative;
@@ -18,9 +14,22 @@
   margin: 10px;
   margin-top: 20px;
 }
+.deal{
+  width: 350px;
+  opacity: 0.8;
+}
 .deal:hover{
   opacity:1;
   border: 1px solid black;
+}
+
+.deal-left{
+  width: 50%;
+  float:left;
+}
+.deal-right{
+  width: 50%;
+  float:right;
 }
 
 .deal a, .deal-show a{
@@ -28,8 +37,12 @@
   text-decoration: none;
 }
 
+.deal p{
+  text-align: right;
+}
+
 .deal img{
-  max-height: 100px;
+  max-height: 200px;
   max-width: 100%;
   display: block;
   margin: auto;
@@ -41,11 +54,14 @@
 }
 
 .deal aside{
+  text-align: right;
+  font-size: xx-small;
   position: absolute;
   top: 0;
   left: 0;
-  background: white;
-  border: 1px solid grey;
+  background: rgba(0,200,0,0.5);
+  border-right: 1px solid grey;
+  border-bottom: 1px solid grey;
   border-bottom-right-radius: 10px;
 }
 
