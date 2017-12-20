@@ -39,7 +39,6 @@ class App extends React.Component {
       .then((res) => {
         res.json()
           .then((jsonData) => {
-            console.log(jsonData)
             this.setState({ points: jsonData })
           })
       })
@@ -64,7 +63,7 @@ class App extends React.Component {
 
           <Route exact path="/" component={Home}/>
           <Route path="/providers" component={ProviderSection}/>
-          <Route path="/deals" component={Deals}/>
+          <Route exact path="/deals" component={Deals}/>
           <Route path="/deals/:id" component={ShowDeal}/>
           <Route path="/register" component={Register}/>
           <Route path="/users/:id" component={ShowUser}/>

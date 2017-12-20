@@ -4,7 +4,7 @@ class ShowProvider extends Component{
   state = { data: [] }
 
   componentDidMount() {
-    let url = `/provider/${this.props.match.params.id}`
+    let url = `/providers/${this.props.match.params.id}`
     fetch(url)
       .then((res) => {
         res.json()

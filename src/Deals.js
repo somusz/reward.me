@@ -23,7 +23,7 @@ class Deals extends Component{
 
         {this.state.data.map(item => (
           <article key={item.id} className="deal">
-            <Link to={`/deal/${item.id}`}>
+            <Link to={`/deals/${item.id}`}>
                 <aside> {item.price} </aside>
                 <img src={item.image} alt={item.name}/>
                 <h3> {item.name} </h3>

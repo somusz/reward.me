@@ -14,14 +14,6 @@ class ProviderSection extends React.Component {
     super(props)
   }
 
-  componentDidMount() {
-    console.log("PROVIDER MOUNTED")
-  }
-
-  componentWillUnmount() {
-    console.log("PROVIDER UNMOUNTED")
-  }
-
   render() {
     return (
       <div>
