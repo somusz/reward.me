@@ -63,7 +63,7 @@ class App extends React.Component {
           <Route exact path="/" component={Home}/>
           <Route path="/providers" render={(props) => <ProviderSection {...props} points={this.state.points} /> } />
           <Route path="/deals" render={(props) => <DealsSection {...props} points={this.state.points} /> } />
-          <Route path="/register" component={Register}/>
+          <Route path="/register" render={(props) => <Register {...props} setSession={this.setSession} /> }/>
           <Route path="/users/:id" component={ShowUser}/>
           <Route path="/login" render={(props) => <Login {...props} setPoints={this.setPoints} setSession={this.setSession} /> }/>
         </div>
