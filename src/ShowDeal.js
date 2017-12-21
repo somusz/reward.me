@@ -2,7 +2,10 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 
 class ShowDeal extends Component{
-  state = { data: [] }
+  constructor(props){
+    super(props);
+    this.state = { data: [] }
+  }
 
   componentDidMount() {
     let url = `/deals/${this.props.match.params.id}`
