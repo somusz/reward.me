@@ -113,20 +113,26 @@ module.exports = (knex) => {
   })
 
   router.get('/points', (req, res) => {
+    // console.log("Received a get request to /points", req.session)
     if (req.session.user_id) {
+
+        //FOR DEBUGGING ONLY:
+        res.send(JSON.stringify({'1': 18000, '2': 4210}))
+        return;
 
         knex('users_providers')
           .where({user_id: Number(req.session.user_id)})
           .select()
           .then( result => {
+            points = {}
             result.forEach(program => {
               switch(program.provider_id) {
                 case 1:
                   let {membership_id} = program;
                   if (membership_id){
                     getMoreRewardsPoints(membership_id, (points) => {
-                      res.send(JSON.stringify({'1': 18000, '2': 4210}))
-                      // res.send(JSON.stringify([{provider_id: 1, points}]));
+                      // res.send(JSON.stringify({'1': 18000, '2': 4210}))
+                      res.send(JSON.stringify([{provider_id: 1, points}]));
                     })
                   } else {
                     res.status(404).send('{"error": "no membership id for user"}')
@@ -137,7 +143,7 @@ module.exports = (knex) => {
           })
 
     } else {
-      res.status(400).send('{"error": "bad credentials"}')
+      res.status(201).send('{}')
     }
   })
 
