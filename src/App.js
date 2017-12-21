@@ -26,6 +26,10 @@ class App extends React.Component {
     }
   }
 
+  componentDidMount() {
+    this.setSession()
+  }
+
   setPoints = () => {
     fetch('/points', {
       method: 'GET',

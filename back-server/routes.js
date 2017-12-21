@@ -86,21 +86,33 @@ module.exports = (knex) => {
   })
 
   router.get('/providers', (req, res) => {
-    knex.select('*').from('providers').then( result => {
-      // console.log('providers on the server:', JSON.stringify(result))
-      res.send(JSON.stringify(result));
-    })
+    console.log('logging session at providers', req.session.user_id)
+    knex
+      .select('providers.*', 'user_related_providers.user_id')
+      .from('providers')
+      .leftOuterJoin(function() {
+        this
+          .select('provider_id', 'user_id')
+          .from('users_providers')
+          .where('user_id', req.session.user_id)
+          .as('user_related_providers')
+      },'user_related_providers.provider_id','providers.id')
+      .then( result => {
+        console.log('providers on the server:', JSON.stringify(result))
+        res.send(JSON.stringify(result));
+      })
   })
 
+
   router.get('/providers/:id', (req, res) => {
-    knex.select('*').from('providers').where('id',req.params.id).then( result => {
+    knex
+      .select('*').from('providers').where('id',req.params.id).then( result => {
       // console.log('provider on the server:', JSON.stringify(result))
       res.send(JSON.stringify(result));
     })
   })
 
   router.get('/points', (req, res) => {
-    console.log(req.session)
     if (req.session.user_id) {
 
         knex('users_providers')
