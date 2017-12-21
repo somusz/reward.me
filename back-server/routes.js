@@ -86,7 +86,6 @@ module.exports = (knex) => {
   })
 
   router.get('/providers', (req, res) => {
-    console.log('logging session at providers', req.session.user_id)
     knex
       .select('providers.*', 'user_related_providers.user_id')
       .from('providers')
@@ -104,12 +103,21 @@ module.exports = (knex) => {
   })
 
 
-  router.get('/providers/:id', (req, res) => {
-    knex
-      .select('*').from('providers').where('id',req.params.id).then( result => {
-      // console.log('provider on the server:', JSON.stringify(result))
-      res.send(JSON.stringify(result));
-    })
+  router.post('/providers/:id', (req, res) => {
+    console.log('logging request at providers update', req.body)
+
+    knex('users_providers')
+      .where('user_id', req.session.user_id)
+      .andWhere('provider_id', req.params.id)
+      .update(req.body)
+      .then(result => {
+        console.log('result after insert', result)
+        res.send('You have successfully updated your credentials');
+      })
+      .catch((err) => {
+        console.log(err.detail)
+        res.status(500).send(err);
+      });
   })
 
   router.get('/points', (req, res) => {
