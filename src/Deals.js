@@ -1,6 +1,6 @@
 import Deal from './Deal.js'
 import React, {Component} from 'react';
-// import {Redirect} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 import './styles/Deals.css';
 
 class Deals extends Component{
@@ -21,10 +21,10 @@ class Deals extends Component{
     return p > 1 ? 1 : p;
   }
 
-  componentWillReceiveProps(nextProps){
-    //check whether props have changed before doing this calculation.
-    this.state.items.forEach(item => item.percentage = this.getPercentage(item, nextProps));
-  }
+  // componentWillReceiveProps(nextProps){
+  //   //check whether props have changed before doing this calculation.
+  //   this.state.items.forEach(item => item.percentage = this.getPercentage(item, nextProps));
+  // }
 
   shouldComponentUpdate(nextProps, nextState) {
     // console.log('shouldComponentUpdate', nextProps.history)
@@ -39,7 +39,7 @@ class Deals extends Component{
 
   componentDidMount() {
 
-    // console.log("Component Did Mount", this.props.location.search)
+    console.log("Component Did Mount fetching deals data", this.props.location.search)
 
     fetch("/deals?q=99")
 
@@ -74,7 +74,6 @@ class Deals extends Component{
           <p> {this.props.points[1] ? `More Rewards Points: ${this.props.points[1]}` : ""} </p>
           <p> {this.props.points[2] ? `Scene Points: ${this.props.points[2]}` : ""} </p>
           <form action='/deals' method='GET' onSubmit={this.handleSubmit} onChange={this.handleChange}>
-            <div>
               <input type="checkbox" name="redeemable" id="redeemableCheck" checked={this.state.formRedeemable}/>
               <label htmlFor="redeemableCheck"> "Only show redeemable items" </label>
 
@@ -84,7 +83,8 @@ class Deals extends Component{
                 <option value="1"> More Rewards </option>
                 <option value="2"> Scene </option>
               </select>
-            </div>
+
+            <input name="q" placeholder="search..."/>
             <button type="submit"> Search </button>
           </form>
         </header>
@@ -112,17 +112,19 @@ class Deals extends Component{
     // console.log("Should Display", item, this.state.formRedeemable, this.state.formProvider);
     let bool =  (item.percentage === 1 || !this.state.formRedeemable)
       && (this.state.formProvider === "all" || Number(this.state.formProvider) === item.provider_id)
-    console.log(bool)
+    // console.log(bool)
     return bool;
   }
 
   handleChange = e => {
-    // console.log(e.target)
+    console.log(e.target)
     if (e.target.name === "redeemable"){
-      this.setState({formRedeemable: !this.state.formRedeemable});
+      this.state.formRedeemable= !this.state.formRedeemable;
+      // this.setState({formRedeemable: !this.state.formRedeemable});
       console.log('checkbox state updated to', !this.state.formRedeemable)
     } else if (e.target.name === "providers"){
-      this.setState({formProvider: e.target.value})
+      this.state.formProvider= e.target.value;
+      // this.setState({formProvider: e.target.value})
       console.log('provider state updated to', e.target.value)
     } else {
       return;
@@ -143,6 +145,7 @@ class Deals extends Component{
 
   handleSubmit = e => {
     e.preventDefault();
+    console.log('submitting', e.target)
     this.changeURL();
   }
 }

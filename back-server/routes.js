@@ -121,7 +121,7 @@ module.exports = (knex) => {
     if (req.session.user_id) {
 
         //FOR DEBUGGING ONLY:
-        res.send(JSON.stringify({'1': 18000, '2': 4210}))
+        res.send(JSON.stringify({'1': 18000, '2': 42100}))
         return;
 
 
