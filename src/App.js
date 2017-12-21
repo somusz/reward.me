@@ -27,11 +27,13 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    console.log("APP DID MOUNT")
     this.setPoints()
     this.setSession()
   }
 
   setPoints = () => {
+    console.log('about to fetch points')
     fetch('/points', {
       method: 'GET',
       credentials: 'include',
@@ -41,8 +43,10 @@ class App extends React.Component {
       }
     })
       .then((res) => {
+        console.log('got points: res', res)
         res.json()
           .then((jsonData) => {
+            console.log("GOT POINTS FROM SERVER", jsonData)
             this.setState({ points: jsonData })
           })
       })
@@ -60,6 +64,7 @@ class App extends React.Component {
   }
 
   render() {
+    console.log("App Render", this.state)
     return (
       <Router>
         <div>
