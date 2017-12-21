@@ -11,35 +11,54 @@ class Providers extends Component{
     }
   }
 
-  componentWillMount() {
-    fetch("/providers")
-      .then((res) => {
-        res.json()
-          .then((jsonData) => {
-            this.setState({ data: jsonData })
-          })
-      })
-      .catch((err) => {
-        console.log('error:', err)
-      })
-  }
   render(){
+
+  const ProviderCompiler = (provider) => (
+    <Link to={`${this.props.match.url}/${provider.id}`}>
+      <li>
+        <div className="provider-image-container">
+          <img src={provider.image} alt="N/A" />
+        </div>
+        <h3>{provider.name}</h3>
+      </li>
+    </Link>
+  )
+
+  const Memberships = () => (
+    <div>
+      <h2>My Reward Memberships</h2>
+      {this.props.data.filter(item => item.user_id).map(item => (
+
+        <div key={item.id}>
+          { ProviderCompiler(item) }
+          <Link to={`${this.props.match.url}/${item.id}`}>
+            <button>Edit</button>
+          </Link>
+        </div>
+      ))}
+    </div>
+  )
+
+
+  const NonMemberships = () => (
+    <div>
+      <h2>Other Reward Programs</h2>
+      {this.props.data.filter(item => !item.user_id).map(item => (
+
+        <div key={item.id}>
+          { ProviderCompiler(item) }
+          <Link to={{ pathname: `${this.props.match.url}/new`, state: { provider: item.id }}}>
+            <button>Add To My Account</button>
+          </Link>
+        </div>
+      ))}
+    </div>
+  )
+
     return (
       <div className="providers">
-        <ul>
-          {this.state.data.map(item => (
-            <div key={item.id}>
-              <Link to={`${this.props.match.url}/${item.id}`}>
-                <li>
-                  <div className="provider-image-container">
-                    <img src={item.image} alt="N/A" />
-                  </div>
-                  <h3>{item.name}</h3>
-                </li>
-              </Link>
-            </div>
-          ))}
-        </ul>
+        <Memberships />
+        <NonMemberships />
       </div>
     )
   }

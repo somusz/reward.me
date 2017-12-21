@@ -1,9 +1,15 @@
 import React, {Component} from 'react';
 
 class NewProvider extends Component{
-  state = { data: [] }
+  constructor(props) {
+    super(props)
+    this.state = {
+      data: []
+    }
+  }
 
   componentDidMount() {
+    console.log(this.props)
     fetch("/providers")
       .then((res) => {
         res.json()
