@@ -1,6 +1,6 @@
 import Deal from './Deal.js'
 import React, {Component} from 'react';
-// import {Redirect} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 import './styles/Deals.css';
 
 class Deals extends Component{
@@ -10,7 +10,8 @@ class Deals extends Component{
       items: [],
       providers: {'1': 'More Rewards', '2': 'Scene'}, //temporary, should link to db somewhere?
       formRedeemable: false,
-      formProvider: 'all'
+      formProvider: 'all',
+      formQuery: ''
     };
   }
 
@@ -21,10 +22,10 @@ class Deals extends Component{
     return p > 1 ? 1 : p;
   }
 
-  componentWillReceiveProps(nextProps){
-    //check whether props have changed before doing this calculation.
-    this.state.items.forEach(item => item.percentage = this.getPercentage(item, nextProps));
-  }
+  // componentWillReceiveProps(nextProps){
+  //   //check whether props have changed before doing this calculation.
+  //   this.state.items.forEach(item => item.percentage = this.getPercentage(item, nextProps));
+  // }
 
   shouldComponentUpdate(nextProps, nextState) {
     // console.log('shouldComponentUpdate', nextProps.history)
@@ -39,7 +40,7 @@ class Deals extends Component{
 
   componentDidMount() {
 
-    // console.log("Component Did Mount", this.props.location.search)
+    console.log("Component Did Mount fetching deals data", this.props.location.search)
 
     fetch("/deals?q=99")
 
@@ -66,25 +67,40 @@ class Deals extends Component{
       })
   }
   render(){
-    console.log('POINTS', this.props.points)
+    console.log('Rendering Deals...  points:', this.props.points)
     return (
       <div>
         <header>
           <h1> Deals </h1>
           <p> {this.props.points[1] ? `More Rewards Points: ${this.props.points[1]}` : ""} </p>
           <p> {this.props.points[2] ? `Scene Points: ${this.props.points[2]}` : ""} </p>
-          <form action='/deals' method='GET' onSubmit={this.handleSubmit} onChange={this.handleChange}>
-            <div>
-              <input type="checkbox" name="redeemable" id="redeemableCheck" checked={this.state.formRedeemable}/>
+          <form action='/deals' method='GET' onSubmit={this.handleSubmit}>
+              <input
+                type="checkbox"
+                name="redeemable"
+                id="redeemableCheck"
+                checked={this.state.formRedeemable}
+                onChange={this.handleCheckboxChange}
+              />
               <label htmlFor="redeemableCheck"> "Only show redeemable items" </label>
 
 
-              <select name="providers" value={this.state.formProvider}>
+              <select
+                name="providers"
+                value={this.state.formProvider}
+                onChange={this.handleProviderChange}
+              >
                 <option value="all"> All </option>
                 <option value="1"> More Rewards </option>
                 <option value="2"> Scene </option>
               </select>
-            </div>
+
+            <input
+              name="q"
+              placeholder="search..."
+              value={this.state.formQuery}
+              onChange={this.handleQueryChange}
+            />
             <button type="submit"> Search </button>
           </form>
         </header>
@@ -110,28 +126,40 @@ class Deals extends Component{
 
   shouldDisplay(item){
     // console.log("Should Display", item, this.state.formRedeemable, this.state.formProvider);
+    let findQueryExec = /q=([^&]+)/.exec(this.props.location.search);
+    let searchQueries = findQueryExec ? findQueryExec[1].split('%20') : [];
+
+
     let bool =  (item.percentage === 1 || !this.state.formRedeemable)
       && (this.state.formProvider === "all" || Number(this.state.formProvider) === item.provider_id)
-    console.log(bool)
+      && (searchQueries.length === 0 || searchQueries.reduce((acc,q) => acc || item.description.toUpperCase().indexOf(q.toUpperCase()) >= 0, false))
+    // console.log(bool)
     return bool;
   }
 
-  handleChange = e => {
-    // console.log(e.target)
-    if (e.target.name === "redeemable"){
-      this.setState({formRedeemable: !this.state.formRedeemable});
-      console.log('checkbox state updated to', !this.state.formRedeemable)
-    } else if (e.target.name === "providers"){
-      this.setState({formProvider: e.target.value})
-      console.log('provider state updated to', e.target.value)
-    } else {
-      return;
-    }
+  handleCheckboxChange = e => {
+    this.state.formRedeemable= !this.state.formRedeemable;
+    console.log('checkbox state updated to', !this.state.formRedeemable)
     this.changeURL();
   }
+  handleProviderChange = e => {
+    this.state.formProvider= e.target.value;
+    console.log('provider state updated to', e.target.value)
+    this.changeURL();
+  }
+  handleQueryChange = e => {
+    this.setState({formQuery: e.target.value});
+    console.log('search query updated to', e.target.value)
+  }
 
-  changeURL = () => {
+  changeURL = (query) => {
     let queries = [];
+    if (query){
+      queries.push(`q=${query}`)
+    }else if (query !== "") {
+      let prevQuery = /q=([^&]+)/.exec(this.props.location.search)
+      if (prevQuery) queries.push(prevQuery[0]);
+    }
     if (this.state.formRedeemable) queries.push("redeemable=true");
     if (this.state.formProvider != "all") queries.push(`provider=${this.state.formProvider}`)
     let url = '/deals';
@@ -143,7 +171,8 @@ class Deals extends Component{
 
   handleSubmit = e => {
     e.preventDefault();
-    this.changeURL();
+    console.log('submitting query', this.state.formQuery)
+    this.changeURL(this.state.formQuery);
   }
 }
 
