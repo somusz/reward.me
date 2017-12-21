@@ -94,7 +94,7 @@ module.exports = (knex) => {
         this
           .select('provider_id', 'user_id')
           .from('users_providers')
-          .where('user_id', req.session.user_id)
+          .where('user_id', req.session.user_id || 0)
           .as('user_related_providers')
       },'user_related_providers.provider_id','providers.id')
       .then( result => {
