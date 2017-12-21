@@ -3,7 +3,11 @@
 const express = require('express');
 const router = express.Router({mergeParams: true});
 const bcrypt = require('bcrypt');
-const getMoreRewardsPoints = require('./more_rewards_points.js');
+
+const getPoints = [];
+getPoints[1] = require('./provider_crawlers/more_rewards_points.js');
+getPoints[2] = require('./provider_crawlers/scene_points.js');
+// const getMoreRewardsPoints = require('./more_rewards_points.js');
 
 
 module.exports = (knex) => {
@@ -113,36 +117,32 @@ module.exports = (knex) => {
   })
 
   router.get('/points', (req, res) => {
-    // console.log("Received a get request to /points", req.session)
+    console.log("Received a get request to /points", req.session)
     if (req.session.user_id) {
 
         //FOR DEBUGGING ONLY:
         res.send(JSON.stringify({'1': 18000, '2': 4210}))
         return;
 
+
         knex('users_providers')
           .where({user_id: Number(req.session.user_id)})
           .select()
           .then( result => {
-            points = {}
-            result.forEach(program => {
-              switch(program.provider_id) {
-                case 1:
-                  let {membership_id} = program;
-                  if (membership_id){
-                    getMoreRewardsPoints(membership_id, (points) => {
-                      // res.send(JSON.stringify({'1': 18000, '2': 4210}))
-                      res.send(JSON.stringify([{provider_id: 1, points}]));
-                    })
-                  } else {
-                    res.status(404).send('{"error": "no membership id for user"}')
-                  }
-                  break;
-              }
-            })
+
+            Promise.all(result.map(program => getPoints[program.provider_id](program)))
+              .then(pointsArray => {
+                res.send(Object.assign({}, ...pointsArray))
+              })
+              .catch(err => {
+                //FOR DEBUGGING ONLY:
+                res.send(JSON.stringify({'1': 12345, '2': 54321}))
+              })
+
           })
 
     } else {
+      console.log('no user - sending points {}')
       res.status(201).send('{}')
     }
   })
