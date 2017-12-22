@@ -43,6 +43,10 @@ const loopingThroughDeals = (arrayOfDeals, dataFromPage) => {
   }//)
 }
 
+const validation = (deal) => {
+  return deal.name && deal.price;
+}
+
 const getIndividualDealItems = (path) => {
   https.get(`https://www.morerewards.ca/catalogue/${path}`, (resp_deal) => {
     let data_deal = ''
@@ -54,7 +58,7 @@ const getIndividualDealItems = (path) => {
     resp_deal.on('end', () => {
       let dealBox = cheerio.load(data_deal)
       let dealImagePath = dealBox('.image-holder > .img-hold > .img-wrap > picture > img').attr('src')
-      let dealImageUrl = `https://www.morerewards.ca${dealImagePath}`
+      let dealImageUrl = dealImagePath ? `https://www.morerewards.ca${dealImagePath}` : "https://www.morerewards.ca/sites/default/files/images/catalogue/6845917075.jpg";
       let dealName = dealBox('.upper-content .title').text().trim()
       let dealDescription = dealBox("p[ng-bind-html='description_primary | toTrusted']").text()
       let dealPriceMessage = dealBox("li[ng-bind-html='buy_points | toTrusted'] a span").text()
@@ -71,13 +75,17 @@ const getIndividualDealItems = (path) => {
         price: dealPrice,
         provider_id: 1
       }
-      console.log('starting knex')
-      knex
-        .insert(newDeal)
-        .into('deals')
-        .then( (res) => {
-          console.log('adding one item')
-        })
+
+      if (validation(newDeal)){
+        console.log('starting knex')
+        knex
+          .insert(newDeal)
+          .into('deals')
+          .then( (res) => {
+            console.log('adding one item')
+          })
+      }
+
     })
   }).on("error", (err) => {
     console.log("Error: " + err.message)
