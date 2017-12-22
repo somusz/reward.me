@@ -18,6 +18,8 @@ class Deals extends Component{
     if (redeemableValue) this.state.formRedeemable = true;
     let providerValue = /provider=([^&]+)/.exec(props.location.search)
     if (providerValue) this.state.formProvider = providerValue[1];
+    let queryValue = /q=([^&]+)/.exec(props.location.search)
+    if (queryValue) this.state.formQuery = queryValue[1];
   }
 
   getPercentage(item, nextProps){
@@ -79,7 +81,13 @@ class Deals extends Component{
           <h1> Deals </h1>
           <p> {this.props.points[1] ? `More Rewards Points: ${this.props.points[1]}` : ""} </p>
           <p> {this.props.points[2] ? `Scene Points: ${this.props.points[2]}` : ""} </p>
-          <form action='/deals' method='GET' onSubmit={this.handleSubmit}>
+          <form
+            action='/deals'
+            method='GET'
+            onSubmit={this.handleSubmit}
+            className="deals-filter"
+          >
+              <label htmlFor="redeemableCheck"> Redeemable </label>
               <input
                 type="checkbox"
                 name="redeemable"
@@ -87,7 +95,6 @@ class Deals extends Component{
                 checked={this.state.formRedeemable}
                 onChange={this.handleCheckboxChange}
               />
-              <label htmlFor="redeemableCheck"> "Only show redeemable items" </label>
 
 
               <select

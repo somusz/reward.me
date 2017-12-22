@@ -1,12 +1,12 @@
-form{
+.login-form, .register-form{
   margin-left: 10%;
 }
 
-form label{
+.login-form label, .register-form label{
   font-size: small;
 }
 
-form input{
+.login-form input, .register-form input{
   display: block;
   line-height: 2em;
   font-size: medium;
@@ -16,6 +16,7 @@ form input{
   margin-bottom: 10px;
 }
 
-form input[type='submit']:hover{
+.login-form input[type='submit']:hover,
+.register-form input[type='submit']:hover{
   background-color: #fde0b4;
 }

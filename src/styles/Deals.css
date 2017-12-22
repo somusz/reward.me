@@ -74,3 +74,10 @@
 .deal h3, .deal-show h3{
   margin:  0;
 }
+
+.deals-filter{
+  display: block;
+  width: initial;
+}
+
+
