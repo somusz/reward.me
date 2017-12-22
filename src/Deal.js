@@ -6,7 +6,7 @@ class Deal extends React.Component{
 
   shouldComponentUpdate(nextProps, nextState) {
     // console.log("Dead shouldUpdate?", nextProps)
-    return nextProps.item.precentage !== this.props.item.percentage;
+    return nextProps.item.percentage !== this.props.item.percentage;
   }
 
   render(){
