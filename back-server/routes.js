@@ -74,9 +74,31 @@ module.exports = (knex) => {
   })
 
   router.get('/deals', (req, res) => {
-    console.log('REQ PARAMS',req.url);
-    knex.select('*').from('deals').then( result => {
-      // console.log('deals on the server:', JSON.stringify(result))
+
+    let limit = Number(req.query.limit) || 50
+    let offset = Number(req.query.offset) || 0
+    let searchArray = req.query.q ? req.query.q.split(' ') : []
+    // let redeemable = Boolean(req.query.redeemable)
+    let provider = Number(req.query.provider) ? [Number(req.query.provider)] : [1,2]
+
+    let searchCriteriaCompiler = function () {
+      if (searchArray.length > 0) {
+        this.where('description', '~*', `${searchArray[0]}`)
+        for(let i = 1; i < searchArray.length; i++){
+          this.andWhere('description', '~*', `${searchArray[i]}`)
+        }
+      }
+    }
+
+    knex
+      .select('*')
+      .from('deals')
+      .whereIn('provider_id', provider)
+      .andWhere(searchCriteriaCompiler)
+      .limit(limit)
+      .offset(offset)
+      .then( result => {
+      console.log('deals on the server:', JSON.stringify(result))
       res.send(JSON.stringify(result));
     })
   })

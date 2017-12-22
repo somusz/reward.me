@@ -83,8 +83,8 @@ class ShowProvider extends Component{
     return p > 1 ? 1 : p;
   }
 
-  componentWillMount() {
-    fetch("/deals?limit=3")
+  componentDidMount() {
+    fetch(`/deals?provider=${this.props.match.params.id}&limit=3`)
 
       .then((res) => {
         res.json()
@@ -92,7 +92,6 @@ class ShowProvider extends Component{
             jsonData =
               jsonData
                 .filter(item => Number(item.provider_id) === Number(this.props.match.params.id))
-                .slice(0,3)
                 .map(item =>
                   Object.assign(item, {
                     provider: (this.props.data.find(item =>
@@ -113,11 +112,12 @@ class ShowProvider extends Component{
   }
 
   render(){
+    console.log('data at rendering', this.props.data)
 
     const currentProvider = this.props.data.find(item =>
       Number(item.id) === Number(this.props.match.params.id));
 
-    return (
+    return currentProvider ? (
       <div>
 
         <h2>{currentProvider.name}</h2>
@@ -125,7 +125,7 @@ class ShowProvider extends Component{
           <img src={currentProvider.image} alt={currentProvider.name} />
         </div>
 
-        <div id='provider-user-credentials'>
+        <div id='provider-user-credentials' style={{display: this.props.session ? 'block' : 'none'}} >
           <h3>Update my credentials at {currentProvider.name}</h3>
           <form className='provider-user-credentials-update-form' onSubmit={this.handleUpdateSubmit}>
 
@@ -162,7 +162,7 @@ class ShowProvider extends Component{
         </div>
 
       </div>
-    )
+    ) : <div />
   }
 }
 

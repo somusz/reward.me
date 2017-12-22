@@ -49,7 +49,7 @@ class Deals extends Component{
 
     console.log("Component Did Mount fetching deals data", this.props.location.search)
 
-    fetch("/deals?q=99")
+    fetch("/deals")
 
       .then((res) => {
         res.json()
