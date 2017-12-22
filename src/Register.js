@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import $ from 'jquery';
 
+import './styles/Login.css';
+
 class Registration extends Component{
 
   handleRegisterSubmit = (event) => {
@@ -40,11 +42,11 @@ class Registration extends Component{
 
         <form className='register-form' onSubmit={this.handleRegisterSubmit}>
 
-          <span>First Name: </span><input id="first_name" type="text" name="first_name" placeholder="Your First Name" />
-          <span>Last Name: </span><input id="last_name" type="text" name="last_name" placeholder="Your Last Name" />
-          <span>Email: </span><input id="email" type="email" name="email" placeholder="Your Email Address" />
-          <span>Image URL: </span><input id="image_url" type="text" name="image_url" placeholder="Link To Your Avatar Image" />
-          <span>Password: </span><input id="password" type="password" name="password" placeholder="Your password" />
+          <label>First Name: </label><input id="first_name" type="text" name="first_name" placeholder="Your First Name" />
+          <label>Last Name: </label><input id="last_name" type="text" name="last_name" placeholder="Your Last Name" />
+          <label>Image URL: </label><input id="image_url" type="text" name="image_url" placeholder="Link To Your Avatar Image" />
+          <label>Email: </label><input id="email" type="email" name="email" placeholder="Your Email Address" />
+          <label>Password: </label><input id="password" type="password" name="password" placeholder="Your password" />
 
           <input type="submit" value="Register" />
         </form>

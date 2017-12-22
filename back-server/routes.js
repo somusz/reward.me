@@ -155,6 +155,13 @@ module.exports = (knex) => {
     }
   })
 
+  //return only results comtaining the search term:
+  //SELECT * FROM deals WHERE description ~ 'query'
+
+  //return only results 40-59:
+  //SELECT * FROM deals LIMIT 20 OFFSET 40
+
+
   return router;
 
 }

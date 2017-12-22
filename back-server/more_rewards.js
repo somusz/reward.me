@@ -9,6 +9,8 @@ const knexLogger     = require('knex-logger');
 const https = require('https')
 const cheerio = require('cheerio')
 
+knex('deals').where('provider_id', 1).del()
+
 const getMoreRewardDeals = () => {
   https.get("https://www.morerewards.ca/catalogue/all?items_per_page=All", (resp_all) => {
     let data_all = ''
@@ -31,9 +33,13 @@ const getMoreRewardDeals = () => {
 
 const loopingThroughDeals = (arrayOfDeals, dataFromPage) => {
   // dealsList.forEach((deal) => {
-  for (let i = 0; i < 10; i++) {
+    console.log('need to loop through', arrayOfDeals.length, 'items')
+  for (let i = 0; i < arrayOfDeals.length; i++) {
     let pathToDeal = dataFromPage(arrayOfDeals[i]).attr('href')
-    getIndividualDealItems(pathToDeal)
+    setTimeout( () => {
+      console.log('processing item ', i, '/', arrayOfDeals.length)
+      getIndividualDealItems(pathToDeal)
+    }, 1000 * (1 + i + Math.random()))
   }//)
 }
 
@@ -52,8 +58,11 @@ const getIndividualDealItems = (path) => {
       let dealName = dealBox('.upper-content .title').text().trim()
       let dealDescription = dealBox("p[ng-bind-html='description_primary | toTrusted']").text()
       let dealPriceMessage = dealBox("li[ng-bind-html='buy_points | toTrusted'] a span").text()
-      let regex = /^\d+,\d\d\d/
-      let dealPrice = Number((regex.exec(dealPriceMessage))[0].replace(',', ''))
+      let regex = /[\d,]+/
+      let regexResult= regex.exec(dealPriceMessage)
+      let dealPrice;
+      if (regexResult)
+        dealPrice = Number(regexResult[0].replace(',', ''))
 
       let newDeal = {
         name: dealName,
