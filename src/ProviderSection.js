@@ -14,6 +14,7 @@ class ProviderSection extends React.Component {
   }
 
   componentDidMount() {
+    console.log('fetch starting...')
     fetch("/providers", {
       credentials: 'include',
       headers: {
@@ -39,7 +40,8 @@ class ProviderSection extends React.Component {
           <Providers {...props} data={this.state.data} session={this.props.session} points={this.props.points} /> } />
         <Route path={`${this.props.match.url}/:id`} render={(props) =>
           <ShowProvider {...props} data={this.state.data} session={this.props.session} points={this.props.points} /> } />
-        <Route path={`${this.props.match.url}/new`} component={NewProvider}/>
+        <Route path={`${this.props.match.url}/new`} render={(props) =>
+          <NewProvider {...props} data={this.state.data} session={this.props.session} points={this.props.points} /> } />
 
       </div>
     )

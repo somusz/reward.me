@@ -74,11 +74,34 @@ module.exports = (knex) => {
   })
 
   router.get('/deals', (req, res) => {
-    console.log('REQ PARAMS',req.url);
-    knex.select('*').from('deals').then( result => {
-      // console.log('deals on the server:', JSON.stringify(result))
-      res.send(JSON.stringify(result));
-    })
+
+    let limit = Number(req.query.limit) || 50
+    let offset = Number(req.query.offset) || 0
+    let searchArray = req.query.q ? req.query.q.split(' ') : []
+    // let redeemable = Boolean(req.query.redeemable)
+    let provider = Number(req.query.provider) ? [Number(req.query.provider)] : [1,2]
+
+    let searchCriteriaCompiler = function () {
+      if (searchArray.length > 0) {
+        this.where('description', '~*', `${searchArray[0]}`)
+        for(let i = 1; i < searchArray.length; i++){
+          this.andWhere('description', '~*', `${searchArray[i]}`)
+        }
+      }
+    }
+
+    knex
+      .select('deals.*','providers.name as provider_name', 'providers.image as provider_image')
+      .from('deals')
+      .join('providers', 'deals.provider_id', 'providers.id')
+      .whereIn('provider_id', provider)
+      .andWhere(searchCriteriaCompiler)
+      .limit(limit)
+      .offset(offset)
+      .then( result => {
+        console.log('deals on the server:', JSON.stringify(result))
+        res.send(JSON.stringify(result));
+      })
   })
 
   router.get('/deals/:id', (req, res) => {
@@ -106,8 +129,22 @@ module.exports = (knex) => {
       })
   })
 
+  router.post('/providers/new', (req, res) => {
+    req.body.user_id = req.session.user_id
 
-  router.post('/providers/:id', (req, res) => {
+    knex('users_providers')
+      .insert(req.body)
+      .then(result => {
+        console.log('result after insert at new user-provider', result)
+        res.send('You have successfully linked the reward program to your account');
+      })
+      .catch((err) => {
+        console.log(err.detail)
+        res.status(500).send(err);
+      });
+  })
+
+  router.put('/providers/:id', (req, res) => {
     console.log('logging request at providers update', req.body)
 
     knex('users_providers')
@@ -115,7 +152,6 @@ module.exports = (knex) => {
       .andWhere('provider_id', req.params.id)
       .update(req.body)
       .then(result => {
-        console.log('result after insert', result)
         res.send('You have successfully updated your credentials');
       })
       .catch((err) => {
