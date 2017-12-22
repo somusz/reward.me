@@ -84,7 +84,7 @@ class ShowProvider extends Component{
   }
 
   componentWillMount() {
-    fetch("/deals?q=99")
+    fetch("/deals?limit=3")
 
       .then((res) => {
         res.json()

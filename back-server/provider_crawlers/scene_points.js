@@ -1,4 +1,4 @@
-async function getScenePoints(program){
+function getScenePoints(program){
   return {'2': 20000};
 }
 
