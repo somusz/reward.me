@@ -30,8 +30,7 @@ class Deals extends Component{
   }
 
   componentDidMount() {
-    fetch("/deals?q=99")
-
+    fetch("/deals")
       .then((res) => {
         res.json()
           .then((jsonData) => {

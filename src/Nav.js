@@ -38,10 +38,6 @@ class Nav extends Component{
   }
 
   render(){
-    // let pointsArray = this.props.points.map(({provider_id, points}) =>
-    //   <li className="Navbar-Left">{points}</li>
-    // )
-    // {pointsArray}
 
     return (
       <nav className="Top-Navbar">
