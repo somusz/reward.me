@@ -129,8 +129,22 @@ module.exports = (knex) => {
       })
   })
 
+  router.post('/providers/new', (req, res) => {
+    req.body.user_id = req.session.user_id
 
-  router.post('/providers/:id', (req, res) => {
+    knex('users_providers')
+      .insert(req.body)
+      .then(result => {
+        console.log('result after insert at new user-provider', result)
+        res.send('You have successfully linked the reward program to your account');
+      })
+      .catch((err) => {
+        console.log(err.detail)
+        res.status(500).send(err);
+      });
+  })
+
+  router.put('/providers/:id', (req, res) => {
     console.log('logging request at providers update', req.body)
 
     knex('users_providers')
@@ -138,7 +152,6 @@ module.exports = (knex) => {
       .andWhere('provider_id', req.params.id)
       .update(req.body)
       .then(result => {
-        console.log('result after insert', result)
         res.send('You have successfully updated your credentials');
       })
       .catch((err) => {
