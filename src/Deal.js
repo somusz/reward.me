@@ -11,6 +11,7 @@ class Deal extends React.Component{
 // <img src={this.props.item.image} alt={this.props.item.name}/>
 
   render(){
+    console.log(this.props)
     return (
       <article className="deal">
         <Link to={`/deals/${this.props.item.id}`}>
@@ -18,8 +19,8 @@ class Deal extends React.Component{
             <div className="deal-image-div" style={{backgroundImage: `url(${this.props.item.image})`}} />
           </div>
           <div className="deal-right">
-            <p> {this.props.item.provider_name} </p>
             <h3> {this.cleanName(this.props.item.name)} </h3>
+            <img src={this.props.item.provider_image} className="provider-image"/>
             <span className="points"> {this.props.item.price} </span>
           </div>
         </Link>

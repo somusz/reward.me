@@ -5,7 +5,6 @@ import './styles/Deals.css';
 
 class Deals extends Component{
   constructor(props){
-    console.log("constructing deals.js with props", props)
     super(props);
     this.state = {
       items: [],

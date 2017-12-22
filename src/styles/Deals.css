@@ -13,7 +13,6 @@
 
   border: 1px solid grey;
   border-radius: 5px;
-  padding: 15px;
   margin: 10px;
   margin-top: 20px;
 }
@@ -49,11 +48,11 @@
   text-align: right;
 }
 
-.deal img{
-  max-height: 200px;
-  max-width: 100%;
+.deal .provider-image{
   display: block;
-  margin: auto;
+  float: left;
+  max-width: 25%;
+
 }
 .deal-image-div{
   height: 200px;
@@ -68,9 +67,14 @@
   max-width: 100%;
 }
 
+.deal .points{
+  font-size: 3em;
+}
+
 .deal .progressbar-container{
   display: flex;
   position: absolute;
+  background-color: #d3d3d3;
   border: 1px solid grey;
   bottom: 0;
   left: 0;
@@ -83,17 +87,11 @@
 
   text-align: right;
   font-size: xx-small;
-  height: 10px;
+  height: 15px;
 
-  background: rgba(0,200,0,0.5);
+  background: rgb(0,200,0);
   border: none;
   border-radius: 5px;
-}
-
-.deal .progressbar-hidden{
-  flex: 1;
-  height: 10;
-  position: absolute;
 }
 
 .deal .progress-percent{
@@ -101,7 +99,7 @@
   top: 0;
   right: 0;
   font-size: small;
-  line-height: 10px;
+  line-height: 15px;
 }
 
 .deal h3, .deal-show h3{
