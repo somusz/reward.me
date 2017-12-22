@@ -91,16 +91,17 @@ module.exports = (knex) => {
     }
 
     knex
-      .select('*')
+      .select('deals.*','providers.name as provider_name', 'providers.image as provider_image')
       .from('deals')
+      .join('providers', 'deals.provider_id', 'providers.id')
       .whereIn('provider_id', provider)
       .andWhere(searchCriteriaCompiler)
       .limit(limit)
       .offset(offset)
       .then( result => {
-      console.log('deals on the server:', JSON.stringify(result))
-      res.send(JSON.stringify(result));
-    })
+        console.log('deals on the server:', JSON.stringify(result))
+        res.send(JSON.stringify(result));
+      })
   })
 
   router.get('/deals/:id', (req, res) => {
