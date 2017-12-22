@@ -5,6 +5,7 @@ import './styles/Deals.css';
 
 class Deals extends Component{
   constructor(props){
+    console.log("constructing deals.js with props", props)
     super(props);
     this.state = {
       items: [],
@@ -13,6 +14,10 @@ class Deals extends Component{
       formProvider: 'all',
       formQuery: ''
     };
+    let redeemableValue = /redeemable=([^&]+)/.exec(props.location.search)
+    if (redeemableValue) this.state.formRedeemable = true;
+    let providerValue = /provider=([^&]+)/.exec(props.location.search)
+    if (providerValue) this.state.formProvider = providerValue[1];
   }
 
   getPercentage(item, nextProps){
