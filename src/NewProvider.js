@@ -82,6 +82,8 @@ class NewProvider extends Component{
     const currentProvider = this.props.data.find(item =>
       Number(item.id) === Number(this.props.location.state.provider))
 
+    const submitButtonValue = currentProvider? `Link ${currentProvider.name} to my account` : "Link it to your account"
+
     return currentProvider ? (
       <div>
 
@@ -94,13 +96,48 @@ class NewProvider extends Component{
           <h3>Update my credentials at {currentProvider.name}</h3>
           <form className='provider-user-credentials-update-form' onSubmit={this.handleLinkAccountSubmit}>
 
-            <label>Enter your credentials to {currentProvider.name}</label><br/>
-            <label>Username: </label><input id="provider-user-credentials-link-username" type="text" ref="username" name="username" placeholder="Your new username" onFocus={this.clearMessage} />
-            <label>Membership ID: </label><input id="provider-user-credentials-link-membershipid" type="text" ref="membershipid" name="membershipid" placeholder="Your new membership ID" onFocus={this.clearMessage} />
-            <label>Email: </label><input id="provider-user-credentials-link-email" type="email" ref="email" name="email" placeholder="Your new email" onFocus={this.clearMessage} />
-            <label>Password: </label><input id="provider-user-credentials-link-password" type="password" ref="password" name="password" placeholder="Your new password" onFocus={this.clearMessage} />
+            <label>Enter your credentials at {currentProvider.name}</label><br/>
 
-            <input type="submit" value="Link to my account" />
+            <div id="provider-user-credentials-link-username" style={{display: currentProvider.membership_username_required ? 'block' : 'none'}} >
+              <label>Your Username at {currentProvider.name}: </label>
+              <input
+                 type="text"
+                 ref="username"
+                 name="username"
+                 placeholder={currentProvider.membership_username_label}
+                 onFocus={this.clearMessage} />
+            </div>
+
+            <div id="provider-user-credentials-link-membershipid" style={{display: currentProvider.membership_id_required ? 'block' : 'none'}} >
+              <label>Your {currentProvider.membership_id_label}: </label>
+              <input
+                 type="text"
+                 ref="membershipid"
+                 name="membershipid"
+                 placeholder={currentProvider.membership_id_label}
+                 onFocus={this.clearMessage} />
+            </div>
+
+            <div id="provider-user-credentials-link-email" style={{display: currentProvider.membership_email_required ? 'block' : 'none'}} >
+              <label>Your Email Address at {currentProvider.name}: </label>
+              <input
+                 type="email"
+                 ref="email"
+                 name="email"
+                 placeholder="Email"
+                 onFocus={this.clearMessage} />
+            </div>
+
+            <div id="provider-user-credentials-link-password">
+              <label>Your Password at {currentProvider.name}: </label>
+              <input
+                 type="password"
+                 ref="password"
+                 name="password"
+                 placeholder="Your password"
+                 onFocus={this.clearMessage} />
+            </div>
+            <input type="submit" value={submitButtonValue} />
           </form>
 
           {this.state.updateMessage &&
