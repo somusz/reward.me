@@ -173,7 +173,7 @@ class Deals extends Component{
       if (prevQuery) queries.push(prevQuery[0]);
     }
     if (this.state.formRedeemable) queries.push("redeemable=true");
-    if (this.state.formProvider != "all") queries.push(`provider=${this.state.formProvider}`)
+    if (this.state.formProvider !== "all") queries.push(`provider=${this.state.formProvider}`)
     let url = '/deals';
     if (queries.length > 0) url += '?' + queries.join('&');
     // console.log('url',url);

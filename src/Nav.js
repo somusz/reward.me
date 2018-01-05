@@ -45,7 +45,7 @@ class Nav extends Component{
           <li className="Navbar-Left"><Link to="/">Home</Link></li>
           <li className="Navbar-Left"><Link to="/providers">Providers </Link></li>
           <li className="Navbar-Left"><Link to="/deals">Deals</Link></li>
-
+          <li className="Navbar-Left"><Link to="users/settings">Settings</Link></li>
 
           {(this.props.session) &&
             <li className="Navbar-Right"><Link to="/" onClick={this._logoutProcess}>Logout</Link></li>
