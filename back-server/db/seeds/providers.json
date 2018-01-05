@@ -1,5 +1,22 @@
 [
-{"name":"More Rewards", "image": "https://www.morerewards.ca/sites/all/themes/prettymr/images/logo.png"},
-{"name":"Scene", "image": "https://az184419.vo.msecnd.net/scene/brands/scene/logos/scene-header.png"}
+  {
+    "name":"More Rewards",
+    "image": "https://www.morerewards.ca/sites/all/themes/prettymr/images/logo.png",
+    "membership_username_required":false,
+    "membership_username_label":"",
+    "membership_id_required":true,
+    "membership_id_label":"More Rewards Number",
+    "membership_email_required":true,
+    "membership_email_label":""
+  },
+  {
+    "name":"Scene",
+    "image": "https://az184419.vo.msecnd.net/scene/brands/scene/logos/scene-header.png",
+    "membership_username_required":false,
+    "membership_username_label":"",
+    "membership_id_required":true,
+    "membership_id_label":"Scene Card Number",
+    "membership_email_required":false,
+    "membership_email_label":""
+  }
 ]
-
