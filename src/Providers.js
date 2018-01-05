@@ -16,30 +16,37 @@ class Providers extends Component{
 
     const Memberships = () => (
       <div>
-        <h2>My Reward Memberships</h2>
 
         {(this.props.data.filter(item => item.user_id).length > 0) &&
-          <div className='provider-table'>
-            <table className="table table-bordered">
-              <thead>
-                <tr>
-                  <th colSpan="2">Reward Program</th>
-                  <th>Balance</th>
-                  <th>Edit</th>
-                </tr>
-              </thead>
-              <tbody>
-                {this.props.data.filter(item => item.user_id).map(item => (
-                  ProviderRowInTableMember(item)
-                ))}
-              </tbody>
-            </table>
+          <div className='reward-container'>
+            <h2>My Reward Memberships</h2>
+            <div className='provider-table'>
+              <table className="table table-bordered">
+                <thead>
+                  <div className='table-head'>
+                    <tr>
+                      <th>Reward Program</th>
+                      <th>Balance</th>
+                      <th>Edit</th>
+                    </tr>
+                  </div>
+                </thead>
+                <tbody>
+                  <div className='table-body'>
+                    {this.props.data.filter(item => item.user_id).map(item => (
+                      ProviderRowInTableMember(item)
+                    ))}
+                  </div>
+                </tbody>
+              </table>
+            </div>
           </div>
         }
 
         {(this.props.data.filter(item => item.user_id).length === 0) &&
           <h4>You have not linked any Reward Programs to your account</h4>
         }
+
       </div>
     )
 
@@ -53,12 +60,10 @@ class Providers extends Component{
           </Link>
         </td>
         <td>
-          <Link to={`${this.props.match.url}/${item.id}`}>
-            <div className='provider-table-text'>{item.name}</div>
-          </Link>
-        </td>
-        <td>
-          <div className='provider-table-text'>My Points: {this.props.points[item.id]}</div>
+          <div className='provider-table-text'>
+            <span >My {item.name} Points: </span> <br/>
+            <span className='provider-table-points'>{this.props.points[item.id]}</span>
+          </div>
         </td>
         <td>
           <Link to={`${this.props.match.url}/${item.id}`}>
@@ -71,22 +76,26 @@ class Providers extends Component{
 
     const NonMemberships = () => (
       <div>
-        <h2>Other Reward Programs</h2>
-        <div className='provider-table'>
-          <table className="table table-bordered">
-            <thead>
-              <tr>
-                <th colSpan="2">Reward Program</th>
-                <th>Edit</th>
-              </tr>
-            </thead>
-            <tbody>
-              {this.props.data.filter(item => !item.user_id).map(item => (
-                ProviderRowInTableNonMember(item)
-              ))}
-            </tbody>
-          </table>
-        </div>
+        {this.props.data.filter(item => !item.user_id).length > 0 &&
+          <div>
+            <h2>Other Reward Programs</h2>
+            <div className='provider-table'>
+              <table className="table table-bordered">
+                <thead>
+                  <tr>
+                    <th colSpan="2">Reward Program</th>
+                    <th>Edit</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {this.props.data.filter(item => !item.user_id).map(item => (
+                    ProviderRowInTableNonMember(item)
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        }
       </div>
     )
 
@@ -119,7 +128,7 @@ class Providers extends Component{
           <table className="table table-bordered">
             <thead>
               <tr>
-                <th colSpan="2">Reward Program</th>
+                <th colSpan="2">Reward.me Partners</th>
               </tr>
             </thead>
             <tbody>
