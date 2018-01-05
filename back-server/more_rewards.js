@@ -39,7 +39,7 @@ const loopingThroughDeals = (arrayOfDeals, dataFromPage) => {
     setTimeout( () => {
       console.log('processing item ', i, '/', arrayOfDeals.length)
       getIndividualDealItems(pathToDeal)
-    }, 1000 * (1 + i + Math.random()))
+    }, 600 * (1 + i + Math.random()))
   }//)
 }
 
@@ -48,7 +48,8 @@ const validation = (deal) => {
 }
 
 const getIndividualDealItems = (path) => {
-  https.get(`https://www.morerewards.ca/catalogue/${path}`, (resp_deal) => {
+  let dealURL = `https://www.morerewards.ca/catalogue/${path}`
+  https.get(dealURL, (resp_deal) => {
     let data_deal = ''
 
     resp_deal.on('data', (chunk) => {
@@ -73,7 +74,8 @@ const getIndividualDealItems = (path) => {
         description: dealDescription,
         image: dealImageUrl,
         price: dealPrice,
-        provider_id: 1
+        provider_id: 1,
+        url: dealURL
       }
 
       if (validation(newDeal)){
