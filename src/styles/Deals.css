@@ -3,6 +3,8 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
+  max-width: 1700px;
+  margin: auto;
 }
 
 .deal, .deal-show{
@@ -15,10 +17,15 @@
   margin: 10px;
   margin-top: 20px;
 }
-.deal{
-  width: 350px;
+
+.deal {
+  max-width: 450px;
   opacity: 0.8;
 }
+@media only screen and (max-width: 800px) { .deal{ width: 95%; } }
+@media only screen and (max-width: 1200px) and (min-width: 801px) {.deal{width: 45%; } }
+@media only screen and (min-width: 1201px) {.deal{width: 30%; } }
+
 .deal:hover{
   opacity:1;
   border: 1px solid black;
@@ -48,27 +55,53 @@
   display: block;
   margin: auto;
 }
+.deal-image-div{
+  height: 200px;
+  background-position-x: center;
+  background-position-y: center;
+  background-size: cover;
+  }
+
 .deal-show img{
   display: block;
   margin: auto;
   max-width: 100%;
 }
 
-.deal aside{
+.deal .progressbar-container{
+  display: flex;
+  position: absolute;
+  border: 1px solid grey;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 5px;
+}
+
+.deal .progressbar{
   transition: width .5s;
 
   text-align: right;
   font-size: xx-small;
   height: 10px;
-  position: absolute;
-  top: 0;
-  left: 0;
+
   background: rgba(0,200,0,0.5);
   border: none;
-  /*border-bottom: 1px solid grey;*/
-  border-top-left-radius: 5px;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-radius: 5px;
+}
+
+.deal .progressbar-hidden{
+  flex: 1;
+  height: 10;
+  position: absolute;
+}
+
+.deal .progress-percent{
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: small;
+  line-height: 10px;
 }
 
 .deal h3, .deal-show h3{

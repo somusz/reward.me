@@ -2,11 +2,11 @@
 exports.up = function(knex, Promise) {
   return Promise.all([
     knex.schema.table('providers', function(table){
-      table.string('membership_username_required');
+      table.boolean('membership_username_required');
       table.string('membership_username_label');
-      table.string('membership_id_required');
+      table.boolean('membership_id_required');
       table.string('membership_id_label');
-      table.string('membership_email_required');
+      table.boolean('membership_email_required');
       table.string('membership_email_label');
     })
   ])
