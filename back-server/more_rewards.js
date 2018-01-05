@@ -9,7 +9,10 @@ const knexLogger     = require('knex-logger');
 const https = require('https')
 const cheerio = require('cheerio')
 
+console.log('deleting previous deals from morerewards')
 knex('deals').where('provider_id', 1).del()
+.then( (res) => {console.log(res)} )
+.error( (err) => {console.log(err)} )
 
 const getMoreRewardDeals = () => {
   https.get("https://www.morerewards.ca/catalogue/all?items_per_page=All", (resp_all) => {
@@ -84,8 +87,9 @@ const getIndividualDealItems = (path) => {
           .insert(newDeal)
           .into('deals')
           .then( (res) => {
-            console.log('adding one item')
+            console.log('added item')
           })
+          .error( (err) => {console.log('error adding item', err)})
       }
 
     })
