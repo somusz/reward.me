@@ -5,25 +5,45 @@ import React from 'react';
 class Deal extends React.Component{
 
   shouldComponentUpdate(nextProps, nextState) {
-    // console.log("Dead shouldUpdate?", nextProps)
-    return nextProps.item.percentage !== this.props.item.percentage;
+    return nextProps.points[this.props.item.product_id] !== this.props.points[this.props.item.product_id]
   }
 
+// <img src={this.props.item.image} alt={this.props.item.name}/>
+
   render(){
-  return (
-    <article className="deal">
-      <Link to={`/deals/${this.props.item.id}`}>
-        <aside style ={{width: this.props.item.percentage * 349}}> {this.props.item.price} &nbsp; </aside>
-        <div className="deal-left">
-          <img src={this.props.item.image} alt={this.props.item.name}/>
+    return (
+      <article className="deal">
+        <Link to={`/deals/${this.props.item.id}`}>
+          <div className="deal-left">
+            <div className="deal-image-div" style={{backgroundImage: `url(${this.props.item.image})`}} />
+          </div>
+          <div className="deal-right">
+            <p> {this.props.item.provider_name} </p>
+            <h3> {this.cleanName(this.props.item.name)} </h3>
+            <span className="points"> {this.props.item.price} </span>
+          </div>
+        </Link>
+        <div className="progressbar-container">
+          <div className="progressbar" style ={{flex: this.getPercentage()}}> </div>
+          <div className="progress-percent"> {this.cleanPercent(this.getPercentage())}% </div>
         </div>
-        <div className="deal-right">
-          <p> {this.props.item.provider} </p>
-          <h3> {this.props.item.name} </h3>
-        </div>
-      </Link>
-    </article>
+      </article>
     )
+  }
+
+  getPercentage(){
+    let points = this.props.points[this.props.item.provider_id];
+    let price = this.props.item.price;
+    let p = points / price || 0;
+    return p > 1 ? 1 : p;
+  }
+
+  cleanPercent(percentage){
+    return Math.floor(percentage * 100);
+  }
+
+  cleanName(name){
+    return (name.length < 60) ? name : name.substr(0,50) + '...';
   }
 }
 
