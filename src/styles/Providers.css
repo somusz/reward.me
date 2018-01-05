@@ -1,29 +1,81 @@
-.providers li{
-  display: inline-flex;
-  list-style-type: none;
+.reward-container {
+  display: flex;
+  margin: 2em;
 }
 
-.providers a{
-  color: black;
-  text-decoration: none;
+.reward-container h2{
+  position: absolute;
+  top: 5%;
+  left: 3%;
+  margin: 2em;
+}
+
+.table-bordered {
+  position: absolute;
+  top: 15%;
+  left: 3%;
+  width: 100%;
+  margin: 1em;
+}
+
+.table-bordered thead tr {
+  position: relative;
+  height: 40px;
+}
+
+.table-bordered tbody tr {
+  position: relative;
+  height: 80px;
+  width: 100%;
+}
+
+.table-bordered thead th {
+  position: relative;
+  padding: 0px 20px;
+  line-height: 1em;
+  min-width: 300px;
+
+}
+
+.table-bordered tbody td {
+  display: table-cell;
+  position: relative;
+  padding: 0px 20px;
+  line-height: 1em;
+  min-width: 300px;
+}
+
+.provider-table-text {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  text-align: center;
+}
+
+.provider-table-points {
+  position: absolute;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: orange;
+  top: 30px;
+  left: 100px;
 }
 
 .provider-image-container{
-  width: 200px;
-  height: 50px;
-  display: inline-block;
+  width: 100%;
+  height: 100%;
+  display: block;
 }
-.providers img{
-  max-height: 50px;
-  max-width: 150px;
-  margin: auto
+.provider-image-container img{
+  height: 80px;
+  max-width: 100%;
+  display: block;
+  margin: auto;
 }
 
-.providers h3{
-  margin: 0px;
-  line-height: 50px;
-  display: inline-block;
-}
-.providers h3:hover{
-  text-decoration: underline;
+button {
+  font-size: 1.5em;
+  position: absolute;
+  top: 25%;
+  left: 41%;
 }

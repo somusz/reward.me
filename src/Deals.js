@@ -29,7 +29,11 @@ class Deals extends Component{
   }
 
   componentDidMount() {
+
+    console.log("Component Did Mount fetching deals data", this.props.location.search)
+
     fetch("/deals")
+
       .then((res) => {
         res.json()
           .then((jsonData) => {

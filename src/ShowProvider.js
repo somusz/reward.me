@@ -17,7 +17,7 @@ class ShowProvider extends Component{
 
     if (event) {
       fetch(this.props.match.url, {
-        method: 'POST',
+        method: 'PUT',
         credentials: 'include',
         headers: {
           Accept: 'application/json',
@@ -89,20 +89,6 @@ class ShowProvider extends Component{
       .then((res) => {
         res.json()
           .then((jsonData) => {
-            jsonData =
-              jsonData
-                .filter(item => Number(item.provider_id) === Number(this.props.match.params.id))
-                .map(item =>
-                  Object.assign(item, {
-                    provider: (this.props.data.find(item =>
-                      Number(item.id) === Number(this.props.match.params.id))).name,
-                    percentage: this.getPercentage(item)
-                  }))
-                  // .filter(item=>item.provider_id == 1)
-                  // .sort((a,b) => a.percentage > b.percentage ? -1 : a.percentage < b.percentage ? 1 : a.price > b.price ? -1 : 1)
-
-            // jsonData.shouldUpdate = true;
-            // console.log('jsonData', jsonData);
             this.setState({ deals: jsonData })
           })
       })
@@ -112,7 +98,6 @@ class ShowProvider extends Component{
   }
 
   render(){
-    console.log('data at rendering', this.props.data)
 
     const currentProvider = this.props.data.find(item =>
       Number(item.id) === Number(this.props.match.params.id));
@@ -129,11 +114,35 @@ class ShowProvider extends Component{
           <h3>Update my credentials at {currentProvider.name}</h3>
           <form className='provider-user-credentials-update-form' onSubmit={this.handleUpdateSubmit}>
 
-            <label>Fill in the fields that you would like to change and click submit</label><br/>
-            <span>Username: </span><input id="provider-user-credentials-update-username" type="text" ref="username" name="username" placeholder="Your new username" onFocus={this.clearMessage} />
-            <span>Membership ID: </span><input id="provider-user-credentials-update-membershipid" type="text" ref="membershipid" name="membershipid" placeholder="Your new membership ID" onFocus={this.clearMessage} />
-            <span>Email: </span><input id="provider-user-credentials-update-email" type="email" ref="email" name="email" placeholder="Your new email" onFocus={this.clearMessage} />
-            <span>Password: </span><input id="provider-user-credentials-update-password" type="password" ref="password" name="password" placeholder="Your new password" onFocus={this.clearMessage} />
+            <label>Fill in the fields that you would like to change</label><br/>
+            <label>Username: </label>
+              <input id="provider-user-credentials-update-username"
+                     type="text"
+                     ref="username"
+                     name="username"
+                     placeholder="Your new username"
+                     onFocus={this.clearMessage} />
+            <label>Membership ID: </label>
+              <input id="provider-user-credentials-update-membershipid"
+                     type="text"
+                     ref="membershipid"
+                     name="membershipid"
+                     placeholder="Your new membership ID"
+                     onFocus={this.clearMessage} />
+            <label>Email: </label>
+              <input id="provider-user-credentials-update-email"
+                     type="email"
+                     ref="email"
+                     name="email"
+                     placeholder="Your new email"
+                     onFocus={this.clearMessage} />
+            <label>Password: </label>
+              <input id="provider-user-credentials-update-password"
+                     type="password"
+                     ref="password"
+                     name="password"
+                     placeholder="Your new password"
+                     onFocus={this.clearMessage} />
 
             <input type="submit" value="Update" />
           </form>
@@ -150,7 +159,7 @@ class ShowProvider extends Component{
           <br/>
 
           {this.state.deals.map(item => {
-            return (<Deal key={item.id} item={item} />)
+            return (<Deal key={item.id} item={item} points={this.props.points} />)
           })}
 
           <br/>
