@@ -1,4 +1,9 @@
+footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
 
 .bg-black {
-  background-color: #000 !important;
+	background-color: #000 !important;
 }
