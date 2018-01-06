@@ -12,14 +12,19 @@ getPoints[2] = require('./provider_crawlers/scene_points.js');
 
 module.exports = (knex) => {
 
+  router.get('/', (req, res) => {
+
+    res.send('The index route works')
+  })
+
   router.post('/login', (req, res) => {
     console.log('attempting to log in', req.body)
     knex
-      .select('password_digest', 'id')
-      .from('users')
-      .where('email', req.body.email)
-      .then( (result) => {
-        if (bcrypt.compareSync(req.body.password, result[0].password_digest)) {
+    .select('password_digest', 'id')
+    .from('users')
+    .where('email', req.body.email)
+    .then( (result) => {
+      if (bcrypt.compareSync(req.body.password, result[0].password_digest)) {
         // if (req.body.password === result[0].password_digest) {
 
           console.log('Login Successful')
@@ -32,11 +37,11 @@ module.exports = (knex) => {
           res.status(400).send('not ok');
         }
       })
-      .catch( (err) => {
-        res.status(403).send('Incorrect credentials')
+    .catch( (err) => {
+      res.status(403).send('Incorrect credentials')
 
-        console.log(err)
-      })
+      console.log(err)
+    })
   })
 
   router.post('/logout', (req, res) => {
@@ -54,16 +59,16 @@ module.exports = (knex) => {
     newUser.password_digest = bcrypt.hashSync(newUser.password_digest, 10)
 
     knex.insert(newUser)
-      .returning('id')
-      .into('users')
-      .then((result) => {
-        req.session.user_id = result[0]
-        res.status(200).send('ok')
-      })
-      .catch((err) => {
-        console.log(err.detail)
-        res.status(500).send(err);
-      });
+    .returning('id')
+    .into('users')
+    .then((result) => {
+      req.session.user_id = result[0]
+      res.status(200).send('ok')
+    })
+    .catch((err) => {
+      console.log(err.detail)
+      res.status(500).send(err);
+    });
   })
 
   router.get('/users/:id', (req, res) => {
@@ -91,17 +96,17 @@ module.exports = (knex) => {
     }
 
     knex
-      .select('deals.*','providers.name as provider_name', 'providers.image as provider_image')
-      .from('deals')
-      .join('providers', 'deals.provider_id', 'providers.id')
-      .whereIn('provider_id', provider)
-      .andWhere(searchCriteriaCompiler)
-      .limit(limit)
-      .offset(offset)
-      .then( result => {
-        console.log('deals on the server:', JSON.stringify(result))
-        res.send(JSON.stringify(result));
-      })
+    .select('deals.*','providers.name as provider_name', 'providers.image as provider_image')
+    .from('deals')
+    .join('providers', 'deals.provider_id', 'providers.id')
+    .whereIn('provider_id', provider)
+    .andWhere(searchCriteriaCompiler)
+    .limit(limit)
+    .offset(offset)
+    .then( result => {
+      console.log('deals on the server:', JSON.stringify(result))
+      res.send(JSON.stringify(result));
+    })
   })
 
   router.get('/deals/:id', (req, res) => {
@@ -114,50 +119,50 @@ module.exports = (knex) => {
 
   router.get('/providers', (req, res) => {
     knex
-      .select('providers.*', 'user_related_providers.user_id')
-      .from('providers')
-      .leftOuterJoin(function() {
-        this
-          .select('provider_id', 'user_id')
-          .from('users_providers')
-          .where('user_id', req.session.user_id || 0)
-          .as('user_related_providers')
-      },'user_related_providers.provider_id','providers.id')
-      .then( result => {
-        console.log('providers on the server:', JSON.stringify(result))
-        res.send(JSON.stringify(result));
-      })
+    .select('providers.*', 'user_related_providers.user_id')
+    .from('providers')
+    .leftOuterJoin(function() {
+      this
+      .select('provider_id', 'user_id')
+      .from('users_providers')
+      .where('user_id', req.session.user_id || 0)
+      .as('user_related_providers')
+    },'user_related_providers.provider_id','providers.id')
+    .then( result => {
+      console.log('providers on the server:', JSON.stringify(result))
+      res.send(JSON.stringify(result));
+    })
   })
 
   router.post('/providers/new', (req, res) => {
     req.body.user_id = req.session.user_id
 
     knex('users_providers')
-      .insert(req.body)
-      .then(result => {
-        console.log('result after insert at new user-provider', result)
-        res.send('You have successfully linked the reward program to your account');
-      })
-      .catch((err) => {
-        console.log(err.detail)
-        res.status(500).send(err);
-      });
+    .insert(req.body)
+    .then(result => {
+      console.log('result after insert at new user-provider', result)
+      res.send('You have successfully linked the reward program to your account');
+    })
+    .catch((err) => {
+      console.log(err.detail)
+      res.status(500).send(err);
+    });
   })
 
   router.put('/providers/:id', (req, res) => {
     console.log('logging request at providers update', req.body)
 
     knex('users_providers')
-      .where('user_id', req.session.user_id)
-      .andWhere('provider_id', req.params.id)
-      .update(req.body)
-      .then(result => {
-        res.send('You have successfully updated your credentials');
-      })
-      .catch((err) => {
-        console.log(err.detail)
-        res.status(500).send(err);
-      });
+    .where('user_id', req.session.user_id)
+    .andWhere('provider_id', req.params.id)
+    .update(req.body)
+    .then(result => {
+      res.send('You have successfully updated your credentials');
+    })
+    .catch((err) => {
+      console.log(err.detail)
+      res.status(500).send(err);
+    });
   })
 
   router.get('/points', (req, res) => {
@@ -170,26 +175,26 @@ module.exports = (knex) => {
 
 
         knex('users_providers')
-          .where({user_id: Number(req.session.user_id)})
-          .select()
-          .then( result => {
+        .where({user_id: Number(req.session.user_id)})
+        .select()
+        .then( result => {
 
-            Promise.all(result.map(program => getPoints[program.provider_id](program)))
-              .then(pointsArray => {
-                res.send(Object.assign({}, ...pointsArray))
-              })
-              .catch(err => {
+          Promise.all(result.map(program => getPoints[program.provider_id](program)))
+          .then(pointsArray => {
+            res.send(Object.assign({}, ...pointsArray))
+          })
+          .catch(err => {
                 //FOR DEBUGGING ONLY:
                 res.send(JSON.stringify({'1': 12345, '2': 54321}))
               })
 
-          })
+        })
 
-    } else {
-      console.log('no user - sending points {}')
-      res.status(201).send('{}')
-    }
-  })
+      } else {
+        console.log('no user - sending points {}')
+        res.status(201).send('{}')
+      }
+    })
 
   //return only results comtaining the search term:
   //SELECT * FROM deals WHERE description ~ 'query'

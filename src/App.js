@@ -1,22 +1,21 @@
-import React from 'react'
-import DealsSection from './DealsSection.js'
-import Login from './Login.js'
-import Nav from './Nav.js'
-import ProviderSection from './ProviderSection.js'
-import Register from './Register.js'
-import ShowUser from './ShowUser.js'
+import React from 'react';
+import DealsSection from './DealsSection.js';
+import Login from './Login.js';
+import Nav from './Nav.js';
+import ProviderSection from './ProviderSection.js';
+import Register from './Register.js';
+import ShowUser from './ShowUser.js';
+import Home from './Home.js';
+import Footer from './Footer.js'
+
+
+
 import {
   BrowserRouter as Router,
   Route
 } from 'react-router-dom'
 
 import './styles/border-box.css'
-
-const Home = () => (
-  <div>
-    <h2>Home</h2>
-  </div>
-)
 
 class App extends React.Component {
   constructor(props) {
@@ -42,17 +41,17 @@ class App extends React.Component {
         'Content-Type': 'application/json'
       }
     })
-      .then((res) => {
-        console.log('got points: res', res)
-        res.json()
-          .then((jsonData) => {
-            console.log("GOT POINTS FROM SERVER", jsonData)
-            this.setState({ points: jsonData })
-          })
+    .then((res) => {
+      console.log('got points: res', res)
+      return res.json()
+      .then((jsonData) => {
+        console.log("GOT POINTS FROM SERVER", jsonData)
+        this.setState({ points: jsonData })
       })
-      .catch((err) => {
-        console.log('error:', err)
-      })
+    })
+    .catch((err) => {
+      console.log('error:', err)
+    })
   }
 
   setSession = () => {
@@ -65,21 +64,21 @@ class App extends React.Component {
 
   render() {
     console.log("App Render", this.state)
-    return (
+    return ([
+      <Nav points={this.state.points} setSession={this.setSession} session={this.state.session} />,
       <Router>
-        <div>
-          <Nav points={this.state.points} setSession={this.setSession} session={this.state.session} />
+      <div>
+      <Route exact path="/" component={ Home } />
+      <Route path="/providers" render={(props) => <ProviderSection {...props} points={this.state.points} session={this.state.session}/> } />
+      <Route path="/deals" render={(props) => <DealsSection {...props} points={this.state.points} /> } />
+      <Route path="/register" render={(props) => <Register {...props} setSession={this.setSession} /> }/>
+      <Route path="/users/settings" component={ShowUser}/>
+      <Route path="/login" render={(props) => <Login {...props} setPoints={this.setPoints} setSession={this.setSession} /> }/>
+      </div>
+      </Router>,
+      <Footer />
 
-          <Route exact path="/" component={Home}/>
-          <Route path="/providers" render={(props) => <ProviderSection {...props} points={this.state.points} session={this.state.session}/> } />
-          <Route path="/deals" render={(props) => <DealsSection {...props} points={this.state.points} /> } />
-          <Route path="/register" render={(props) => <Register {...props} setSession={this.setSession} /> }/>
-          <Route path="/users/settings" component={ShowUser}/>
-          <Route path="/login" render={(props) => <Login {...props} setPoints={this.setPoints} setSession={this.setSession} /> }/>
-        </div>
-      </Router>
-
-    )
+      ])
   }
 }
 

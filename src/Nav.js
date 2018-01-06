@@ -40,24 +40,30 @@ class Nav extends Component{
   render(){
 
     return (
-      <nav className="Top-Navbar">
-        <ul>
-          <li className="Navbar-Left"><Link to="/">Home</Link></li>
-          <li className="Navbar-Left"><Link to="/providers">Providers </Link></li>
-          <li className="Navbar-Left"><Link to="/deals">Deals</Link></li>
-          <li className="Navbar-Left"><Link to="users/settings">Settings</Link></li>
 
-          {(this.props.session) &&
-            <li className="Navbar-Right"><Link to="/" onClick={this._logoutProcess}>Logout</Link></li>
-          }
-          {(!this.props.session) &&
-            <li className="Navbar-Right"><Link to="/login">Login</Link></li>
-          }
-          {(!this.props.session) &&
-            <li className="Navbar-Right"><Link to="/register">Register</Link></li>
-          }
-        </ul>
-      </nav>
+    <nav className="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+      <div className="container">
+        <a className="navbar-brand" href="/">Reward.Me</a>
+        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarResponsive">
+          <ul className="navbar-nav ml-auto">
+          <li className="nav-item">
+            <a href="/providers" className="nav-link">Providers</a>
+          </li>
+          <li className="nav-item">
+            <a href="/deals" className="nav-link">Deals</a>
+          </li>
+          <li className="nav-item">
+            <a href="users/settings" className="nav-link">Settings</a>
+          </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+      
     )
   }
 }

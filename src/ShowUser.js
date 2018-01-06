@@ -20,16 +20,16 @@ class ShowUser extends Component{
   }
   render(){
 
-    return (
+    return ([
+      <div className='col-md-8' >Hello</div>,
       <form onSubmit={this.handleSubmit} >
-
       <label for='email'>
       Email:
       <input type='email' id='email' placeholder='email'/>
       <input type='submit' name='change-email'  placeholder='Change Email' />
       </label>
 
-      <h3> Change Password: </h3>
+      <h3 className="text-right" > Change Password: </h3>
 
       <label for='old-password' > Old Password: 
       <input type='text' name='change-email' id='old-password' placeholder='Old Password' />
@@ -45,7 +45,7 @@ class ShowUser extends Component{
 
       <input type='submit'  placeholder='Change Password'/>
       </form>
-      )
+      ])
     }
   }
 
