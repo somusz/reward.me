@@ -159,14 +159,14 @@ class ShowProvider extends Component{
 
 
         <div className="deals-container col-md-7 settings_form">
-          <h4 className='text-center' style={{margin: '20px auto'}}>Check out these deals from {currentProvider.name}!</h4>
+          <h4 className='text-center' style={{margin: '20px auto'}}>START REDEEMING! Check out these available rewards: </h4>
           {this.state.deals.map(item => {
             return (<Deal key={item.id} item={item} points={this.props.points} />)
           })}
           <div className="deals-container-linkto-deals">
             <Link to={`/deals?provider=${this.props.match.params.id}`}>
               <button className="btn btn-default submit form" style={{cursor: 'pointer', position: 'static', width: '100%', margin: '20px auto 30px auto;'}} >
-                Click here for more deals from {currentProvider.name}
+                See All Rewards {currentProvider.name}
               </button>
             </Link>
           </div>

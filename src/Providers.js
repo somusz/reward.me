@@ -16,61 +16,35 @@ class Providers extends Component{
 
     const Memberships = () => (
       <div>
-
+        <h2 className='text-center' >My Memberships</h2>
         {(this.props.data.filter(item => item.user_id).length > 0) &&
-          <div className='reward-container'>
-            <h2>My Reward Memberships</h2>
-            <div className='provider-table'>
-              <table className="table table-bordered">
-                <thead>
-                  <div className='table-head'>
-                    <tr>
-                      <th>Reward Program</th>
-                      <th>Balance</th>
-                      <th>Edit</th>
-                    </tr>
-                  </div>
-                </thead>
-                <tbody>
-                  <div className='table-body'>
+                  <div>
                     {this.props.data.filter(item => item.user_id).map(item => (
                       ProviderRowInTableMember(item)
                     ))}
                   </div>
-                </tbody>
-              </table>
-            </div>
-          </div>
         }
-
         {(this.props.data.filter(item => item.user_id).length === 0) &&
           <h4>You have not linked any Reward Programs to your account</h4>
         }
-
       </div>
     )
 
     const ProviderRowInTableMember = (item) => (
-      <tr key={item.id}>
-        <td>
+      <div class="row" key={item.id}>
+        <div class="col-md-4" style={{margin: '30px auto'}}>
           <Link to={`${this.props.match.url}/${item.id}`}>
-            <div className="provider-image-container">
-              <img src={item.image} alt="N/A" />
-            </div>
+            <img class="img-fluid rounded mb-3 mb-md-0 provider-image-container" src={item.image} alt={item.name} />
           </Link>
-        </td>
-        <td>
-          <div className='provider-table-text'>
-            <span >My {item.name} Points: </span> <br/>
-            <span className='provider-table-points'>{this.props.points[item.id]}</span>
-          </div>
-        </td>
-        <td>
+        </div>
+        <div class="col-md-4" style={{margin: '30px auto'}} >
+          <h3></h3>
+          <p className='pointsBalance' >My Points: {this.props.points[item.id]}</p>
           <Link to={`${this.props.match.url}/${item.id}`}>
-            <button>Edit</button>
+            <button className="btn btn-primary" style={{display: 'block', position: 'static', width: '50%', margin: '20px auto 30px auto;'}} >Edit</button>
           </Link>
-        </td>
-      </tr>
+        </div>
+      </div>
     )
 
 

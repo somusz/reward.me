@@ -10,6 +10,9 @@ body {
   max-width: 80%;
 }
 
+.pointsBalance {
+  font-size: 25px;
+}
 
 .reward-container {
   display: flex;
