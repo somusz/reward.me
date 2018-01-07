@@ -7,7 +7,7 @@ import Register from './Register.js';
 import ShowUser from './ShowUser.js';
 import Home from './Home.js';
 import Footer from './Footer.js'
-import ErrorPopUp from './ErrorPopUp.js'
+import PopUp from './PopUp.js'
 
 
 import {
@@ -23,9 +23,9 @@ class App extends React.Component {
     this.state = {
       points: {},
       cookie: '',
-      errorMessage: '',
-      errorPopUpVisibility: 'hidden',
-      errorPopUpOpacity: '0',
+      message: '',
+      popUpVisibility: 'hidden',
+      popUpOpacity: '0',
       userEmail: ''
     }
   }
@@ -66,18 +66,18 @@ class App extends React.Component {
     })
   }
 
-  showErrorPopUp = (message) => {
+  showPopUp = (message) => {
     this.setState({
-      errorMessage: message,
-      errorPopUpVisibility: 'visible',
-      errorPopUpOpacity: '1',
+      message: message,
+      popUpVisibility: 'visible',
+      popUpOpacity: '1',
     })
 
     setTimeout(() => {
       this.setState({
-      errorMessage: message,
-      errorPopUpVisibility: 'hidden',
-      errorPopUpOpacity: '0',
+      message: message,
+      popUpVisibility: 'hidden',
+      popUpOpacity: '0',
       })}, 1500)
   }
 
@@ -91,16 +91,16 @@ class App extends React.Component {
   
   render() {
     return ([
-      <Nav points={this.state.points} setSession={this.setSession} session={this.state.session} cookie={this.state.cookie}/>,
-      <ErrorPopUp errorMessage={this.state.errorMessage} visibility={this.state.errorPopUpVisibility} opacity={this.state.errorPopUpOpacity} />,
+      <Nav points={this.state.points} setSession={this.setSession} session={this.state.session} />,
+      <PopUp message={this.state.message} visibility={this.state.popUpVisibility} opacity={this.state.popUpOpacity} />,
       <Router>
       <div>
       <Route exact path="/" component={ Home } />
-      <Route path="/providers" render={(props) => <ProviderSection {...props} points={this.state.points} session={this.state.session} showErrorPopUp={this.showErrorPopUp} /> } />
-      <Route path="/deals" render={(props) => <DealsSection {...props} points={this.state.points} showErrorPopUp={this.showErrorPopUp} /> } />
-      <Route path="/users/settings" render={(props) => <ShowUser {...props} userID={this.state.points} showErrorPopUp={this.showErrorPopUp}/> }/>
-      <Route path="/register" render={(props) => <Register {...props} setSession={this.setSession} showErrorPopUp={this.showErrorPopUp}/> }/>
-      <Route path="/login" render={(props) => <Login {...props} setPoints={this.setPoints} setSession={this.setSession} showErrorPopUp={this.showErrorPopUp} saveUserEmail={this.saveUserEmail} /> }/>
+      <Route path="/providers" render={(props) => <ProviderSection {...props} points={this.state.points} session={this.state.session} showPopUp={this.showPopUp} /> } />
+      <Route path="/deals" render={(props) => <DealsSection {...props} points={this.state.points} showPopUp={this.showPopUp} /> } />
+      <Route path="/users/settings" render={(props) => <ShowUser {...props} userID={this.state.points} showPopUp={this.showPopUp}/> }/>
+      <Route path="/register" render={(props) => <Register {...props} setSession={this.setSession} showPopUp={this.showPopUp}/> }/>
+      <Route path="/login" render={(props) => <Login {...props} setPoints={this.setPoints} setSession={this.setSession} showPopUp={this.showPopUp} saveUserEmail={this.saveUserEmail} /> }/>
       </div>
       </Router>,
       <Footer />

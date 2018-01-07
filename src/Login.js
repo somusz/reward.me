@@ -14,7 +14,7 @@ class Login extends Component{
   handleLoginSubmit = (event) => {
     event.preventDefault()
 
-    if (event) {      
+    if (event) {
       fetch('/login', {
         method: 'POST',
         credentials: 'include',
@@ -28,18 +28,11 @@ class Login extends Component{
           password: event.target.password.value
         })
       })
-      // .then((res) => {
-      //   return res
-      // })
       .then((res) => {
+        console.log('logged in, about to call setPoints')
         this.props.setPoints()
         this.props.setSession()
         this.props.history.goBack()
-        // if(res.successfull[0]) {
-        //   this.props.showErrorPopUp('Password changed successfully!')
-        // } else {
-        //   this.props.showErrorPopUp('Error: Password was not changed!')
-        // }
       })
       .catch((err) => {
         console.log(err)

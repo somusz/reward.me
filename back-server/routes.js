@@ -38,7 +38,6 @@ module.exports = (knex) => {
       })
     .catch( (err) => {
       res.status(403).send('Incorrect credentials')
-
       console.log(err)
     })
   })

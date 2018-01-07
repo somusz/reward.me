@@ -21,10 +21,10 @@ class ShowUser extends Component{
   changeEmail = (event) => {
     event.preventDefault()
     if(this.state.email === '') {
-      this.props.showErrorPopUp('Please enter an email.')
+      this.props.showPopUp('Please enter an email.')
       return
     }
-    this.props.showErrorPopUp('Email changed successfully!')
+    this.props.showPopUp('Email changed successfully!')
     fetch('/users/settings', {
       method: 'POST',
       credentials: 'include',
@@ -39,7 +39,7 @@ class ShowUser extends Component{
       redirect: 'follow'
     })
     .then((res) => {
-      this.props.showErrorPopUp('Email changed successfully!')
+      this.props.showPopUp('Email changed successfully!')
       window.location.href='/deals'
     })
     .catch((err) => {
@@ -52,11 +52,11 @@ class ShowUser extends Component{
     if( state.retypedNewPassword === state.newPassword) {
       return true
     } else if (!state.newPassword) {
-      this.props.showErrorPopUp('Please enter a new password.')
+      this.props.showPopUp('Please enter a new password.')
     } else if (!state.retypedNewPassword) {
-      this.props.showErrorPopUp('Please retype the new password.')
+      this.props.showPopUp('Please retype the new password.')
     } else {
-      this.props.showErrorPopUp('The retyped password does not match the new password. Please try again.')
+      this.props.showPopUp('The retyped password does not match the new password. Please try again.')
     }
     return false
   }
@@ -74,7 +74,7 @@ class ShowUser extends Component{
   changePassword = (event) => {
     event.preventDefault()
     if(this.state.oldPassword === '') {
-      this.props.showErrorPopUp('Please enter the old password')
+      this.props.showPopUp('Please enter the old password')
       return
     }
     if(this.passwordsMatch()) {
@@ -101,9 +101,9 @@ class ShowUser extends Component{
           newPassword: '',
           retypedNewPassword: ''})
         if(res.successfull[0]) {
-          this.props.showErrorPopUp('Password changed successfully!')
+          this.props.showPopUp('Password changed successfully!')
         } else {
-          this.props.showErrorPopUp('Error: Password was not changed!')
+          this.props.showPopUp('Incorrect Password!')
         }
         // window.location.href='/users/settings'
       })
