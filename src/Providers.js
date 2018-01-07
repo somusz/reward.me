@@ -41,7 +41,9 @@ class Providers extends Component{
           <h3></h3>
           <p className='pointsBalance' >My Points: {this.props.points[item.id]}</p>
           <Link to={`${this.props.match.url}/${item.id}`}>
-            <button className="btn btn-primary" style={{display: 'block', position: 'static', width: '50%', margin: '20px auto 30px auto;'}} >Edit</button>
+            <button className="btn btn-primary" 
+            style={{display: 'block', position: 'static', width: '50%', 
+            margin: '20px auto 30px auto;' }} >Edit</button>
           </Link>
         </div>
       </div>

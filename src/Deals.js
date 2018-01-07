@@ -88,7 +88,7 @@ class Deals extends Component{
           </form>
         </header>
 
-        <div className="deals-container">
+        <div className="deals-container" style={{marginBottom: '600px'}} >
 
           {this.state.items.map(item => {
             if (this.shouldDisplay(item)){
