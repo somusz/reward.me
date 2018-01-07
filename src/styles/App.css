@@ -2,6 +2,7 @@ html, body {
   width: 100%;
   position: relative;
   min-height: 100%;
+  padding-top: 22vh;
 }
 .App {
   text-align: center;
@@ -30,4 +31,10 @@ html, body {
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+@media (min-width: 995px) {
+  body {
+    padding-top: 0vh
+  }
 }

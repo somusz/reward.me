@@ -1,9 +1,9 @@
 body {
   font-family: 'Lato' !important;
-  padding-top: 4.1rem;
   width: 100%;
   position: relative;
   min-height: 100%;
+  padding-top: 22vh;
 }
 
 .deals-container{
@@ -126,9 +126,9 @@ body {
   width: initial;
 }
 
-@media (max-width: 979px) {
+@media (min-width: 995px) {
   body {
-    padding-top: 0px;
+    padding-top: 0vh
   }
 }
 

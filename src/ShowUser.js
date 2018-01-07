@@ -118,8 +118,8 @@ class ShowUser extends Component{
       <div className='col-md-8' >Hello {this.state.email}</div>,
       <div class="container settings_page">
       <div class="row">
-         <div class="col-md-6 settings_form">
-            <h3 class="text-center">Please enter your details</h3>
+         <div class="col-md-7 settings_form">
+            <h3 class="text-center" style={{margin: '20px'}}>Please enter your details</h3>
 
             <form id='settingsForm' >
               <div className="form-group" id="settingsName">

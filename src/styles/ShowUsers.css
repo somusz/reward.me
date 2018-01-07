@@ -1,7 +1,10 @@
+body {
+  padding-top: 22vh;
+}
 
 .settings_form {
   border: 2px solid #333 !important;
-  margin: 60px auto;
+  margin: 0 auto 60px auto;
   position: relative !important;
 }
 .settings_form h3 {
@@ -81,4 +84,11 @@
   transition: all .3s;
   box-shadow: none;
   color: #333;
+}
+
+
+@media (min-width: 995px) {
+  body {
+    padding-top: 0vh !important;
+  }
 }

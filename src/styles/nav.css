@@ -16,28 +16,30 @@
   font-weight: 700;
 }
 
-.navbar-custom .navbar-nav .nav-item .nav-link {
+
+.navbar-nav .nav-item .nav-link {
   text-transform: uppercase;
   font-size: 0.8rem;
   color: rgba(0, 0, 0, 1);
   font-weight: 700;
   letter-spacing: 0.1rem;
-  margin: 5px; 
+  margin-right: 10px; 
   border-right: 1px solid grey;
 }
 
-.navbar-custom .navbar-nav .nav-item :hover{
+.nav-item :hover{
   background-color: black;
-  color: white;
+  color: rgb(255, 255, 255, 1);
 }
 
 button.navbar-toggler {
   border: 1px solid black !important;
   left: 80% !important;
+  top: 37%;
 }
 
 
-@media (max-width: 900px) {
+@media (max-width: 995px) {
   .navbar-custom .navbar-brand {
     color: rgba(255, 255, 255, 1);
     font-weight: 200;
@@ -45,5 +47,13 @@ button.navbar-toggler {
   button.navbar-toggler {
     border: 1.5px solid white !important;
     left: 80% !important;
+    }
+    .navbar-custom {
+      background-color: rgb(29, 128, 159) !important;
+    }
+    .navbar-nav .nav-item .nav-link {
+      margin: 0;
+      border: none;
+      width: 100px !important;
+    }
   }
-}

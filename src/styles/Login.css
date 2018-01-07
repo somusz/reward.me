@@ -2,6 +2,7 @@ html, body {
   width: 100%;
   position: relative;
   min-height: 100%;
+  padding-top: 22vh;
 }
 .login-form, .register-form{
   margin-left: 10%;
@@ -24,4 +25,10 @@ html, body {
 .login-form input[type='submit']:hover,
 .register-form input[type='submit']:hover{
   background-color: #fde0b4;
+}
+
+@media (min-width: 995px) {
+  body {
+    padding-top: 0vh
+  }
 }
