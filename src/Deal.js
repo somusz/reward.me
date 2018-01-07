@@ -12,7 +12,7 @@ class Deal extends React.Component{
 
   render(){
     return (
-      <article className="deal">
+      <article className="deal" style={{width: '100%'}}>
         <Link to={`/deals/${this.props.item.id}`}>
           <div className="deal-left">
             <div className="deal-image-div" style={{backgroundImage: `url(${this.props.item.image})`}} />

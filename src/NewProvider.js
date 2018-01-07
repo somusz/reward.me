@@ -93,7 +93,7 @@ class NewProvider extends Component{
         </div>
 
         <div id='provider-user-credentials' style={{display: this.props.session ? 'block' : 'none'}} >
-          <h3>Update my credentials at {currentProvider.name}</h3>
+          <h3 >Update my credentials at {currentProvider.name}</h3>
           <form className='provider-user-credentials-update-form' onSubmit={this.handleLinkAccountSubmit}>
 
             <label>Enter your credentials at {currentProvider.name}</label><br/>

@@ -102,77 +102,89 @@ class ShowProvider extends Component{
     const currentProvider = this.props.data.find(item =>
       Number(item.id) === Number(this.props.match.params.id));
 
-    return currentProvider ? (
-      <div>
+    return currentProvider ? ([
+      <div class="container settings_page" style={{ margin: '30px auto'}}>
+        <div class="row">
+           <div class="col-md-5 settings_form" id='provider-user-credentials' style={{display: this.props.session ? 'block' : 'none'}}>
+                <img src={currentProvider.image} alt={currentProvider.name} style={{ width: '70%', height: '15%', margin: '15px auto', display: 'block'}}/>
+              <form className='provider-user-credentials-update-form' onSubmit={this.handleUpdateSubmit}>
+                <p className='text-center' style={{marginTop: '10px'}} > * Fill in the fields that you would like to change * </p>
 
-        <h2>{currentProvider.name}</h2>
-        <div className="provider-image-container">
-          <img src={currentProvider.image} alt={currentProvider.name} />
-        </div>
+                <div className="form-group" id="settingsName">
+                  <label for="username">Username</label>
+                  <input type="text" 
+                      id="provider-user-credentials-update-username" 
+                      className="form-control" 
+                      ref="username" 
+                      name="username" 
+                      placeholder="Your new username" 
+                      onFocus={this.clearMessage} />
+                </div>
+              <div className="form-group" >
+                <label for='membershipID' >Membership ID: </label>
+                <input id="provider-user-credentials-update-membershipid"
+                       type="text"
+                       ref="membershipid"
+                       className="form-control" 
+                       name="membershipid"
+                       placeholder="Your new membership ID"
+                       onFocus={this.clearMessage} />
+            </div>
+            <div className="form-group" >
+              <label for='email' >Email: </label>
+                <input id="provider-user-credentials-update-email"
+                       type="email"
+                       ref="email"
+                       name="email"
+                       className="form-control" 
+                       placeholder="Your new email"
+                       onFocus={this.clearMessage} />
+            </div>
+            <div className="form-group" >
+              <label for='password' >Password: </label>
+                <input id="provider-user-credentials-update-password"
+                       type="password"
+                       ref="password"
+                       className="form-control" 
+                       name="password"
+                       placeholder="Your new password"
+                       onFocus={this.clearMessage} />
+            </div>
+                <button className="btn btn-default submit form" type="submit" style={{cursor: 'pointer', position: 'static', width: '100%', margin: '20px auto 30px auto;'}}>
+                  Submit
+                </button>
+              </form>
+            {this.state.updateMessage && this.evaluateUpdateSubmit(this.state.updateMessage)}
+         </div>
 
-        <div id='provider-user-credentials' style={{display: this.props.session ? 'block' : 'none'}} >
-          <h3>Update my credentials at {currentProvider.name}</h3>
-          <form className='provider-user-credentials-update-form' onSubmit={this.handleUpdateSubmit}>
 
-            <label>Fill in the fields that you would like to change</label><br/>
-            <label>Username: </label>
-              <input id="provider-user-credentials-update-username"
-                     type="text"
-                     ref="username"
-                     name="username"
-                     placeholder="Your new username"
-                     onFocus={this.clearMessage} />
-            <label>Membership ID: </label>
-              <input id="provider-user-credentials-update-membershipid"
-                     type="text"
-                     ref="membershipid"
-                     name="membershipid"
-                     placeholder="Your new membership ID"
-                     onFocus={this.clearMessage} />
-            <label>Email: </label>
-              <input id="provider-user-credentials-update-email"
-                     type="email"
-                     ref="email"
-                     name="email"
-                     placeholder="Your new email"
-                     onFocus={this.clearMessage} />
-            <label>Password: </label>
-              <input id="provider-user-credentials-update-password"
-                     type="password"
-                     ref="password"
-                     name="password"
-                     placeholder="Your new password"
-                     onFocus={this.clearMessage} />
-
-            <input type="submit" value="Update" />
-          </form>
-
-          {this.state.updateMessage &&
-            this.evaluateUpdateSubmit(this.state.updateMessage)
-          }
-
-        </div>
-
-        <div className="deals-container">
-
-          <h3>Check out these deals from {currentProvider.name}!</h3>
-          <br/>
-
+        <div className="deals-container col-md-7 settings_form">
+          <h4 className='text-center' style={{margin: '20px auto'}}>Check out these deals from {currentProvider.name}!</h4>
           {this.state.deals.map(item => {
             return (<Deal key={item.id} item={item} points={this.props.points} />)
           })}
-
-          <br/>
           <div className="deals-container-linkto-deals">
             <Link to={`/deals?provider=${this.props.match.params.id}`}>
-              <button>Click here for more deals from {currentProvider.name}</button>
+              <button className="btn btn-default submit form" style={{cursor: 'pointer', position: 'static', width: '100%', margin: '20px auto 30px auto;'}} >
+                Click here for more deals from {currentProvider.name}
+              </button>
             </Link>
           </div>
         </div>
 
+
       </div>
-    ) : <div />
+    </div>
+    ]) : <div />
   }
 }
 
 export default ShowProvider;
+
+
+ 
+
+
+
+    
+
