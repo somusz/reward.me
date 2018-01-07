@@ -9,6 +9,8 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import { faClock } from '@fortawesome/fontawesome-free-solid'
 import { faMobileAlt } from '@fortawesome/fontawesome-free-solid'
 import { faMoneyBillAlt } from '@fortawesome/fontawesome-free-solid'
+import { faThumbsUp } from '@fortawesome/fontawesome-free-solid'
+
 
 
 class Home extends Component{
@@ -94,13 +96,13 @@ class Home extends Component{
               <FontAwesomeIcon icon={faMoneyBillAlt} />
             </span>
             <h4>
-              <strong>One Place</strong>
+              <strong>Convenience</strong>
             </h4>
             <p className="text-faded mb-0">Manage a variety of rewards points from one incredible site!</p>
           </div>
           <div className="col-lg-3 col-md-6">
             <span className="service-icon rounded-circle mx-auto mb-3">
-              <FontAwesomeIcon icon={faClock} />
+              <FontAwesomeIcon icon={faThumbsUp} />
             </span>
             <h4>
               <strong>Easy Login</strong>

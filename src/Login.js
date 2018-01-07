@@ -14,7 +14,7 @@ class Login extends Component{
   handleLoginSubmit = (event) => {
     event.preventDefault()
 
-    if (event) {
+    if (event) {      
       fetch('/login', {
         method: 'POST',
         credentials: 'include',

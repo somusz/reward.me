@@ -78,6 +78,53 @@ module.exports = (knex) => {
     })
   })
 
+  router.post('/users/settings', (req, res) => {
+    if(req.body.type === 'email') {
+      knex
+      .select('user')
+      .from('users')
+      .where('id', '=', req.session.user_id)
+      .update({
+        email: req.body.email
+      })
+      .returning('*')
+      .then( result => {
+        console.log('this is after the db has been updated', result)
+      // res.send(JSON.stringify(result));
+    })
+      .catch( (err) => {
+        res.status(403)
+        console.log(err)
+      })
+    } else if (req.body.type === 'password') {
+      knex
+      .select('password_digest')
+      .from('users')
+      .where('id', '=', req.session.user_id)
+      .then( result => {
+        if (bcrypt.compareSync(req.body.oldPassword, result[0].password_digest)) {
+          knex
+          .select('user')
+          .from('users')
+          .where('id', '=', req.session.user_id)
+          .update({
+            password_digest: bcrypt.hashSync(req.body.password_digest, 10) 
+          })
+          .returning('*')
+          console.log('Change Successful')
+        }
+        else {
+          console.log('change not successful')
+          res.status(401)
+        }
+      })
+      .catch( (err) => {
+        res.status(403)
+        console.log(err)
+      })
+    }
+  })
+
   router.get('/deals', (req, res) => {
 
     let limit = Number(req.query.limit) || 50

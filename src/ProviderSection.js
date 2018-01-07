@@ -23,7 +23,7 @@ class ProviderSection extends React.Component {
       }
     })
       .then((res) => {
-        res.json()
+        return res.json()
           .then((jsonData) => {
             this.setState({ data: jsonData })
           })

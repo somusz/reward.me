@@ -37,7 +37,7 @@ class Deals extends Component{
 
 
       .then((res) => {
-        res.json()
+        return res.json()
           .then((jsonData) => {
             this.setState({ items: jsonData })
           })
