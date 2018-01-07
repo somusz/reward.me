@@ -28,11 +28,18 @@ class Login extends Component{
           password: event.target.password.value
         })
       })
+      // .then((res) => {
+      //   return res
+      // })
       .then((res) => {
         this.props.setPoints()
         this.props.setSession()
-        // this.props.showErrorPopUp('Incorrect credentials!') 
         this.props.history.goBack()
+        // if(res.successfull[0]) {
+        //   this.props.showErrorPopUp('Password changed successfully!')
+        // } else {
+        //   this.props.showErrorPopUp('Error: Password was not changed!')
+        // }
       })
       .catch((err) => {
         console.log(err)

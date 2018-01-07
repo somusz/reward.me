@@ -72,7 +72,6 @@ module.exports = (knex) => {
 
   router.get('/users/:id', (req, res) => {
     knex.select('*').from('users').where('id',req.params.id).then( result => {
-      // console.log('user on the server:', JSON.stringify(result))
       res.send(JSON.stringify(result));
     })
   })
@@ -126,7 +125,20 @@ module.exports = (knex) => {
         }
         else {
           console.log('change not successful')
+          knex
+          .select('user')
+          .from('users')
+          .where('id', '=', req.session.user_id)
+          .update({
+            password_digest: bcrypt.hashSync(req.body.password_digest, 10) 
+          })
+          .returning('*')
+          .then( result => {
+            console.log('this is after the db has been updated', result)
+            res.send(JSON.stringify({successfull: [true]}));
+          })
           res.send(JSON.stringify({successfull: [false]}));
+          res.status(401)
         }
       })
       .catch( (err) => {

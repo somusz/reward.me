@@ -96,7 +96,6 @@ class ShowUser extends Component{
         return res.json()
       })
       .then((res) => {
-        console.log('in the promise chain', res.successfull[0])
         this.setState({ 
           oldPassword: '',
           newPassword: '',
