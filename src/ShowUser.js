@@ -17,6 +17,7 @@ class ShowUser extends Component{
 
   handleEmailChange = (event) => {
     this.setState({email: event.target.value})
+    this.props.showErrorPopUp('da boombazzle')
   }
 
   changeEmail = (event) => {
@@ -111,10 +112,9 @@ class ShowUser extends Component{
                 <label for="email">Email</label>
                 <input type="email" className="form-control" name="email" placeholder=" Enter Email" onChange={this.handleEmailChange} />
               </div>
-              <button type='submit' className="btn btn-default submit" onClick={this.changeEmail} style={{cursor: 'pointer', position: 'absolute', bottom: '0', width: '60%', height: '50px', right: '0' }}>
+              <div className="btn btn-default submit form" onClick={this.changeEmail} style={{cursor: 'pointer', display: 'block'}}>
                 Change Email
-              </button>
-
+              </div>
 
               <div className="form-group" id="settingsPhoneNumber">
                 <label for="old-password">Old Password</label>
@@ -128,9 +128,9 @@ class ShowUser extends Component{
                 <label for ="description">Reconfirm New Password</label>
                 <input type="password" className="form-control" name="newPassword" onChange={this.handleRetypedNewPasswordChange} placeholder=" Enter password" />
               </div>
-              <button type='submit' className="btn btn-default submit" onClick={this.changePassword} style={{cursor: 'pointer', display: 'block'}}>
+              <div className="btn btn-default submit form" onClick={this.changePassword} style={{cursor: 'pointer', display: 'block'}}>
                 Change Password
-              </button>
+              </div>
             </form>
        </div>
 

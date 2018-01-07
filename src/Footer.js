@@ -18,7 +18,7 @@ class Footer extends Component{
     return (
      <footer className="py-5 bg-black">
      <div className="container">
-     <p className="m-0 text-center text-white small">Copyright &copy; Your Website 2017</p>
+     <p className="m-0 text-center text-white small">Copyright &copy; REWARD.ME 2017</p>
      </div>
      </footer>
      )
