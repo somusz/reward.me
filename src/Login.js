@@ -29,9 +29,9 @@ class Login extends Component{
         })
       })
       .then((res) => {
-        console.log('logged in, about to call setPoints')
         this.props.setPoints()
         this.props.setSession()
+        // this.props.showErrorPopUp('Incorrect credentials!') 
         this.props.history.goBack()
       })
       .catch((err) => {

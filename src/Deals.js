@@ -34,8 +34,6 @@ class Deals extends Component{
     console.log("Component Did Mount fetching deals data", this.props.location.search)
 
     fetch("/deals")
-
-
       .then((res) => {
         return res.json()
           .then((jsonData) => {

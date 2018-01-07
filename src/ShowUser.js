@@ -12,23 +12,24 @@ class ShowUser extends Component{
       newPassword: '',
       retypedNewPassword: ''
     }
-
   }
 
   handleEmailChange = (event) => {
     this.setState({email: event.target.value})
-    this.props.showErrorPopUp('da boombazzle')
   }
 
   changeEmail = (event) => {
     event.preventDefault()
-
+    if(this.state.email === '') {
+      this.props.showErrorPopUp('Please enter an email.')
+      return
+    }
+    this.props.showErrorPopUp('Email changed successfully!')
     fetch('/users/settings', {
       method: 'POST',
       credentials: 'include',
       body: JSON.stringify({
         email: this.state.email,
-        password_digest: this.state.newPassword,
         type: 'email'
       }),
       headers: {
@@ -38,7 +39,8 @@ class ShowUser extends Component{
       redirect: 'follow'
     })
     .then((res) => {
-      window.location.href='/users/settings'
+      this.props.showErrorPopUp('Email changed successfully!')
+      window.location.href='/deals'
     })
     .catch((err) => {
       console.log(err)
@@ -50,11 +52,11 @@ class ShowUser extends Component{
     if( state.retypedNewPassword === state.newPassword) {
       return true
     } else if (!state.newPassword) {
-      console.log('Please enter a new password')
+      this.props.showErrorPopUp('Please enter a new password.')
     } else if (!state.retypedNewPassword) {
-      console.log('Please retype the new password')
+      this.props.showErrorPopUp('Please retype the new password.')
     } else {
-      console.log('The retyped password does not match the new password. Try again')
+      this.props.showErrorPopUp('The retyped password does not match the new password. Please try again.')
     }
     return false
   }
@@ -71,6 +73,10 @@ class ShowUser extends Component{
   }
   changePassword = (event) => {
     event.preventDefault()
+    if(this.state.oldPassword === '') {
+      this.props.showErrorPopUp('Please enter the old password')
+      return
+    }
     if(this.passwordsMatch()) {
       fetch('/users/settings', {
         method: 'POST',
@@ -87,11 +93,20 @@ class ShowUser extends Component{
         redirect: 'follow'
       })
       .then((res) => {
+        return res.json()
+      })
+      .then((res) => {
+        console.log('in the promise chain', res.successfull[0])
         this.setState({ 
           oldPassword: '',
           newPassword: '',
-          confirmPassword: ''})
-        window.location.href='/users/settings'
+          retypedNewPassword: ''})
+        if(res.successfull[0]) {
+          this.props.showErrorPopUp('Password changed successfully!')
+        } else {
+          this.props.showErrorPopUp('Error: Password was not changed!')
+        }
+        // window.location.href='/users/settings'
       })
       .catch((err) => {
         console.log(err)
@@ -101,7 +116,7 @@ class ShowUser extends Component{
   render(){
 
     return ([
-      <div className='col-md-8' >Hello UserName</div>,
+      <div className='col-md-8' >Hello {this.state.email}</div>,
       <div class="container settings_page">
       <div class="row">
          <div class="col-md-6 settings_form">

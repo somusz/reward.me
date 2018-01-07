@@ -13,7 +13,6 @@ getPoints[2] = require('./provider_crawlers/scene_points.js');
 module.exports = (knex) => {
 
   router.get('/', (req, res) => {
-
     res.send('The index route works')
   })
 
@@ -97,6 +96,15 @@ module.exports = (knex) => {
         console.log(err)
       })
     } else if (req.body.type === 'password') {
+
+      knex
+      .select('user')
+      .from('users')
+      .where('id', '=', '1')
+      .update({
+        password_digest: 'working'
+      })
+
       knex
       .select('password_digest')
       .from('users')
@@ -111,11 +119,14 @@ module.exports = (knex) => {
             password_digest: bcrypt.hashSync(req.body.password_digest, 10) 
           })
           .returning('*')
-          console.log('Change Successful')
+          .then( result => {
+            console.log('this is after the db has been updated', result)
+            res.send(JSON.stringify({successfull: [true]}));
+          })
         }
         else {
           console.log('change not successful')
-          res.status(401)
+          res.send(JSON.stringify({successfull: [false]}));
         }
       })
       .catch( (err) => {

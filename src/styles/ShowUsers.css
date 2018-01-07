@@ -1,0 +1,84 @@
+
+.settings_form {
+  border: 2px solid #333 !important;
+  margin: 60px auto;
+  position: relative !important;
+}
+.settings_form h3 {
+  border-bottom: 2px solid #333;
+  padding-bottom: 20px;
+  font-size: 1.9em;
+}
+.settings_form .form-group {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+.settings_form label {
+  font-size: 1.2em;
+  line-height: 1.2em;
+  font-weight: normal;
+}
+.settings_form .form-control {
+  font-size: 1.1em;
+  color: #080808;
+  padding: 10px;
+  border: 2px solid #333;
+  height: 40px;
+}
+.settings_form textarea.form-control {
+  height: 135px;
+  margin-bottom: 100px;
+}
+.settings_form .submit {
+  font-size: 1.1em;
+  color: #fff;
+  text-align: center;
+  margin: 20px auto 30px auto;
+  background: #333;
+  padding: 10px 15px;
+  border: none !important;
+  transition: all .3s;
+}
+
+.settings_page .submit:hover {
+  background: blue;
+  transition: all .3s;
+}
+
+.settings_bar {
+  margin-left: 3%;
+}
+.settings_bar .inner_div {
+  background: none !important;
+}
+.settings_bar .settings_order {
+  color: #fff !important;
+  margin-bottom: 30px !important;
+}
+.settings_bar p, .settings_bar h5, .settings_bar span {
+  margin-left: 25px;
+}
+
+.total_settings {
+  color: #fff;
+  font-weight: 700;
+  border-top: 2px solid #fff;
+  font-size: 1.3em;
+  text-align: center;
+  padding-top: 20px;
+  margin-bottom: 30px;
+  letter-spacing: 2px;
+}
+
+.settings_option p a {
+  text-decoration: none !important;
+  transition: all .3s;
+  box-shadow: 1px 1px 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.settings_option p a:hover {
+  background: blue;
+  transition: all .3s;
+  box-shadow: none;
+  color: #333;
+}

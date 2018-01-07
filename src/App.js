@@ -26,6 +26,7 @@ class App extends React.Component {
       errorMessage: '',
       errorPopUpVisibility: 'hidden',
       errorPopUpOpacity: '0',
+      userEmail: ''
     }
   }
 
@@ -55,6 +56,13 @@ class App extends React.Component {
     })
     .catch((err) => {
       console.log('error:', err)
+    })
+  }
+
+  saveUserEmail = (email) => {
+    console.log('in save user email function')
+    this.setState({
+      userEmail: email
     })
   }
 
@@ -92,7 +100,7 @@ class App extends React.Component {
       <Route path="/deals" render={(props) => <DealsSection {...props} points={this.state.points} showErrorPopUp={this.showErrorPopUp} /> } />
       <Route path="/users/settings" render={(props) => <ShowUser {...props} userID={this.state.points} showErrorPopUp={this.showErrorPopUp} showErrorPopUp={this.showErrorPopUp}/> }/>
       <Route path="/register" render={(props) => <Register {...props} setSession={this.setSession} showErrorPopUp={this.showErrorPopUp}/> }/>
-      <Route path="/login" render={(props) => <Login {...props} setPoints={this.setPoints} setSession={this.setSession} showErrorPopUp={this.showErrorPopUp} /> }/>
+      <Route path="/login" render={(props) => <Login {...props} setPoints={this.setPoints} setSession={this.setSession} showErrorPopUp={this.showErrorPopUp} saveUserEmail={this.saveUserEmail} /> }/>
       </div>
       </Router>,
       <Footer />
