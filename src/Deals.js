@@ -34,6 +34,7 @@ class Deals extends Component{
     console.log("Component Did Mount fetching deals data", this.props.location.search)
 
     fetch("/deals?limit=1000")
+
       .then((res) => {
         return res.json()
           .then((jsonData) => {

@@ -1,0 +1,228 @@
+body {
+  font-family: 'Lato' !important;
+  padding-top: 9.1rem;
+  width: 100%;
+  position: relative;
+  min-height: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Catamaran';
+  font-weight: 800 !important;
+}
+
+header {
+  position: relative !important;
+}
+.carousel-item {
+  height: 82vh;
+  min-height: 300px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+body .main .hero-banner .inner {
+  display: block;
+  color: rgb(255, 255, 255);
+  position: absolute;
+  z-index: 2;
+  top: 20%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  padding-top: 0;
+}
+.banner-cta-con {
+  text-transform: uppercase;
+  font-size: 13px;
+  position: absolute;
+  top: calc(50% - 45px);
+  right: 10%;
+}
+
+.join-link, .signin-link {
+  display: block;
+  padding: 20px 0px;
+  width: 265px;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: MuseoSans,Arial,sans-serif;
+  letter-spacing: 1px;
+  text-decoration: none;
+}
+
+.join-link {
+  background-color: rgb(2, 123, 182);
+  color: rgb(255, 255, 255);
+  margin-bottom: 20px;
+}
+
+.signin-link {
+  background-color: rgb(255, 255, 255);
+  color: rgb(2, 123, 182);
+}
+
+.btn-xl {
+  text-transform: uppercase;
+  padding: 1.5rem 3rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.1rem;
+}
+
+.rounded-pill {
+  border-radius: 5rem;
+}
+
+header.masthead {
+  position: relative;
+  overflow: hidden;
+  padding-top: calc(7rem + 72px);
+  padding-bottom: 7rem;
+  background: linear-gradient(0deg, #ff6a00 0%, #ee0979 100%);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: scroll;
+  background-size: cover;
+}
+
+header.masthead .masthead-content {
+  z-index: 1;
+  position: relative;
+}
+
+header.masthead .masthead-content .masthead-heading {
+  font-size: 4rem;
+}
+
+header.masthead .masthead-content .masthead-subheading {
+  font-size: 2rem;
+}
+
+header.masthead .bg-circle {
+  z-index: 0;
+  position: absolute;
+  border-radius: 100%;
+  background: linear-gradient(0deg, #ee0979 0%, #ff6a00 100%);
+}
+
+header.masthead .bg-circle-1 {
+  height: 90rem;
+  width: 90rem;
+  bottom: -55rem;
+  left: -55rem;
+}
+
+header.masthead .bg-circle-2 {
+  height: 50rem;
+  width: 50rem;
+  top: -25rem;
+  right: -25rem;
+}
+
+header.masthead .bg-circle-3 {
+  height: 20rem;
+  width: 20rem;
+  bottom: -10rem;
+  right: 5%;
+}
+
+header.masthead .bg-circle-4 {
+  height: 30rem;
+  width: 30rem;
+  top: -5rem;
+  right: 35%;
+}
+
+@media (min-width: 992px) {
+  header.masthead {
+    padding-top: calc(10rem + 55px);
+    padding-bottom: 10rem;
+  }
+  header.masthead .masthead-content .masthead-heading {
+    font-size: 6rem;
+  }
+  header.masthead .masthead-content .masthead-subheading {
+    font-size: 4rem;
+  }
+}
+
+.bg-primary {
+  background-color: #1D809F !important; }
+
+  .btn-primary {
+    background-color: #ee0979;
+    border-color: #ee0979;
+  }
+
+  .btn-primary:active, .btn-primary:focus, .btn-primary:hover {
+    background-color: #bd0760 !important;
+    border-color: #bd0760 !important;
+  }
+
+  .btn-primary:focus {
+    box-shadow: 0 0 0 0.2rem rgba(238, 9, 121, 0.5);
+  }
+
+  .btn-secondary {
+    background-color: #ff6a00;
+    border-color: #ff6a00;
+  }
+
+  .btn-secondary:active, .btn-secondary:focus, .btn-secondary:hover {
+    background-color: #cc5500 !important;
+    border-color: #cc5500 !important;
+  }
+
+  .btn-secondary:focus {
+    box-shadow: 0 0 0 0.2rem rgba(255, 106, 0, 0.5);
+  }
+
+  .content-section {
+    padding-top: 7.5rem;
+    padding-bottom: 7.5rem; 
+  }
+
+  .content-section-heading h2 {
+    font-size: 3rem; }
+
+    .content-section-heading h3 {
+      font-size: 1rem;
+      text-transform: uppercase; }
+
+      .service-icon {
+        background-color: #fff;
+        color: #1D809F;
+        height: 7rem;
+        width: 7rem;
+        display: block;
+        line-height: 7.5rem;
+        font-size: 2.25rem;
+        box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.1); 
+      }
+      .text-secondary {
+        color: rgb(236, 184, 7)!important;
+      }
+      .text-faded {
+        color: rgba(255, 255, 255, 0.7); }
+
+
+        @media (max-width: 979px) {
+          body {
+            padding-top: 0px;
+          }
+        }
+
+        .join-link, .signin-link {
+          width: 225px;
+        }
+
+

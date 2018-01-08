@@ -12,6 +12,7 @@ class Deal extends React.Component{
 
   render(){
     return (
+
       <div class="col-lg-3 col-md-4 mb-4">
         <div class="card h-100">
           <Link to={`/deals/${this.props.item.id}`}>
@@ -42,6 +43,7 @@ class Deal extends React.Component{
 
     //old:
     return (
+
       <article className="deal" style={{width: '100%'}}>
         <Link to={`/deals/${this.props.item.id}`}>
           <div className="deal-left">
