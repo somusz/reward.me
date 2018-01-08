@@ -12,7 +12,9 @@ class Deals extends Component{
       providers: {'1': 'More Rewards', '2': 'Scene'}, //temporary, should link to db somewhere?
       formRedeemable: false,
       formProvider: 'all',
-      formQuery: ''
+      formQuery: '',
+      loadingDeals: false,
+      noMoreDeals: false
     };
     let redeemableValue = /redeemable=([^&]+)/.exec(props.location.search)
     if (redeemableValue) this.state.formRedeemable = true;
@@ -31,28 +33,23 @@ class Deals extends Component{
 
   componentDidMount() {
 
-    console.log("Component Did Mount fetching deals data", this.props.location.search)
+    this.loadMoreDeals()
 
-    fetch("/deals?limit=1000")
+    console.log("adding scroll event listener");
+    document.addEventListener('scroll', this.handleScroll);
+  }
 
-      .then((res) => {
-        return res.json()
-          .then((jsonData) => {
-            this.setState({ items: jsonData })
-          })
-      })
-      .catch((err) => {
-        console.log('error:', err)
-      })
+  componentWillUnmount() {
+    document.removeEventListener('scroll', this.handleScroll);
   }
 
   render(){
     return (
-      <div>
+      <div onScroll= {e => console.log('scrolling', e)} >
 
         <div className="deals container">
 
-          <h2 className="text-center"> Deals </h2>
+          <h2 className="text-center"> DEALS </h2>
 
           <div className="row" >
 
@@ -157,9 +154,36 @@ class Deals extends Component{
     let findQueryExec = /q=([^&]+)/.exec(this.props.location.search);
     let searchQueries = findQueryExec ? findQueryExec[1].split('%20') : [];
 
-    return (item.percentage === 1 || !this.state.formRedeemable)
+    return (this.props.points[item.provider_id] >= item.price || !this.state.formRedeemable)
       && (this.state.formProvider === "all" || Number(this.state.formProvider) === item.provider_id)
       && (searchQueries.length === 0 || searchQueries.reduce((acc,q) => acc || item.description.toUpperCase().indexOf(q.toUpperCase()) >= 0, false))
+  }
+
+  handleScroll = e => {
+    if (window.scrollY > document.body.clientHeight - 2.5 * window.innerHeight){
+      this.loadMoreDeals()
+    }
+  }
+
+  loadMoreDeals = () => {
+    // console.log(this.state.loadingDeals, this.state.noMoreDeals);
+    if (!(this.state.loadingDeals) && !(this.state.noMoreDeals)){
+      this.state.loadingDeals = true; //setting state without reloading page
+      // console.log('loading deals...');
+
+      fetch(`/deals?limit=20&offset=${this.state.items.length}`)
+      .then((res) => {
+        return res.json()
+          .then((jsonData) => {
+            // console.log('received next page of deals', jsonData.length);
+            this.state.items.push(...jsonData);
+            this.setState({loadingDeals: false, noMoreDeals: jsonData.length === 0});
+          })
+      })
+      .catch((err) => {
+        console.log('error:', err)
+      })
+    }
   }
 
   handleCheckboxChange = e => {

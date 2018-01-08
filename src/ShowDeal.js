@@ -27,12 +27,14 @@ class ShowDeal extends Component{
 
         {this.state.data.map(item => (
           <article key={item.id} className="deal-show">
-            <aside> {item.price} </aside>
-            <h3> {item.name} </h3>
+            <h3> {item.name} - {item.price} points </h3>
             <img src={item.image} alt={item.name}/>
             <div> {item.description} </div>
-            <a href={item.url}> REDEEM </a>
-            <p>{item.url}</p>
+            <div className="text-center">
+              <a className="redeem-button" href={item.url}> REDEEM </a>
+              <br/><br/>
+              <small> You have {this.props.points[item.provider_id]} points </small>
+            </div>
           </article>
         ))}
 
