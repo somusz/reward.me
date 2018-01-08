@@ -24,6 +24,7 @@ module.exports = (knex) => {
     .where('email', req.body.email)
     .then((result) => {
       if (bcrypt.compareSync(req.body.password, result[0].password_digest)) {
+
           console.log('Login Successful')
           req.session.user_id = result[0].id
           res.status(200).send('ok');

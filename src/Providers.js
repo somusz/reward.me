@@ -2,6 +2,12 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 
 import './styles/Providers.css';
+import './vendor/bootstrap/css/bootstrap.css';
+import './vendor/bootstrap/css/bootstrap.min.css';
+import './vendor/bootstrap/css/bootstrap-grid.css';
+import './vendor/bootstrap/css/bootstrap-grid.min.css';
+import './vendor/bootstrap/css/bootstrap-reboot.css';
+import './vendor/bootstrap/css/bootstrap-reboot.min.css';
 
 class Providers extends Component{
   constructor(props) {
@@ -15,12 +21,13 @@ class Providers extends Component{
   render(){
 
     const Memberships = () => (
+
       <div>
         <h2 className='text-center' >My Memberships</h2>
         {(this.props.data.filter(item => item.user_id).length > 0) &&
                   <div>
                     {this.props.data.filter(item => item.user_id).map(item => (
-                      ProviderRowInTableMember(item)
+                      ProviderMember(item)
                     ))}
                   </div>
         }
@@ -30,7 +37,7 @@ class Providers extends Component{
       </div>
     )
 
-    const ProviderRowInTableMember = (item) => (
+    const ProviderMember = (item) => (
       <div class="row" key={item.id}>
         <div class="col-md-4" style={{margin: '30px auto'}}>
           <Link to={`${this.props.match.url}/${item.id}`}>
@@ -39,7 +46,7 @@ class Providers extends Component{
         </div>
         <div class="col-md-4" style={{margin: '30px auto'}} >
           <h3></h3>
-          <p className='pointsBalance' >My Points: {this.props.points[item.id]}</p>
+          <p className='pointsBalance' >My {item.name} Points: {this.props.points[item.id]}</p>
           <Link to={`${this.props.match.url}/${item.id}`}>
             <button className="btn btn-primary" 
             style={{display: 'block', position: 'static', width: '50%', 
@@ -49,77 +56,68 @@ class Providers extends Component{
       </div>
     )
 
-
-
-
     const NonMemberships = () => (    
       <div>
       { this.props.data.filter(item => !item.user_id).length > 0 &&
         <div>
-          <h2 style={{margin: '40px'}} >Rewards Program</h2>
+          <h2 style={{margin: '40px'}} >Other Reward Programs</h2>
             <div>Edit</div>
               {this.props.data.filter(item => !item.user_id).map(item => (
-                ProviderRowInTableNonMember(item)
+                ProviderNonMember(item)
               ))}
             </div>
           }
       </div>
     )
 
-    const ProviderRowInTableNonMember = (item) => (
-        <div class="row" key={item.id}>
-          <div class="col-md-6 text-center" >
-             <Link to={`${this.props.match.url}/${item.id}`}>
-              <img class="img-fluid rounded mb-3 mb-md-0 provider-image-container" src={item.image} alt= { "" } />
-             </Link>
-          </div>
-          <div class="col-md-6">
-              <Link to={`${this.props.match.url}/${item.id}`}>
-            <h3>{item.name}</h3>
-              </Link>
-            <Link to={{ pathname: `${this.props.match.url}/new`, state: { provider: item.id }}}>
-              <button className="btn btn-primary" >Link To My Account</button>
-            </Link>
-          </div>
+    const ProviderNonMember = (item) => (
+      <div class="row" key={item.id}>
+        <div class="col-md-6 text-center" >
+           <Link to={`${this.props.match.url}/${item.id}`}>
+            <img class="img-fluid rounded mb-3 mb-md-0 provider-image-container" src={item.image} alt= { "" } />
+           </Link>
         </div>
+        <div class="col-md-6">
+            <Link to={`${this.props.match.url}/${item.id}`}>
+          <h3>{item.name}</h3>
+            </Link>
+          <Link to={{ pathname: `${this.props.match.url}/new`, state: { provider: item.id }}}>
+            <button className="btn btn-primary" >Link To My Account</button>
+          </Link>
+        </div>
+      </div>
     )
 
-
-
-
-
     const AllProviders = () => ([
-      <h2 className='text-center' style={{margin: '40px'}} >Rewards Programs</h2>,
+      <h2 className='text-center' style={{margin: '40px'}} >Our Reward Partners</h2>,
       <div>
+
         {this.props.data.map(item => (
-          ProviderRowInTableAll(item)
-          ))}
+          ProviderAll(item)
+        ))}
+
       </div>
-      ])
+    ])
 
-    const ProviderRowInTableAll = (item) => (
-        <div class="row" key={item.id}>
-          <div class="col-md-6 text-center" >
-             <Link to={`${this.props.match.url}/${item.id}`}>
-              <img class="img-fluid rounded mb-3 mb-md-0 provider-image-container" src={item.image} alt= { "" } />
-             </Link>
-          </div>
-          <div class="col-md-6">
-              <Link to={`${this.props.match.url}/${item.id}`}>
-            <h3>{item.name}</h3>
-              </Link>
-            <p className='providerDescription' >More Rewards is one of Western Canada's favourite loyalty programs, and it's easy to see why. 
-            More Rewards lets you earn points at dozens of places you already shop and redeem them for great stuff. What kind of stuff? 
-            Just about anything you could imagine – rewards range from gift cards to kitchen appliances to camping equipment and travel. 
-            Just use your card at retailers you love, and watch the points roll in. To see what you can save up for, view our catalogue.
-            </p>
-          </div>
+    const ProviderAll = (item) => (
+      <div class="row" key={item.id}>
+        <div class="col-md-6 text-center" >
+           <Link to={`${this.props.match.url}/${item.id}`}>
+            <img class="img-fluid rounded mb-3 mb-md-0 provider-image-container" src={item.image} alt= { "" } />
+           </Link>
         </div>
-
+        <div class="col-md-6">
+            <Link to={`${this.props.match.url}/${item.id}`}>
+          <h3>{item.name}</h3>
+            </Link>
+          <p className='providerDescription' >TODO: add provider description to the database or remove this section
+          </p>
+        </div>
+      </div>
     )
 
     return (
-      <div className="providers">
+      <div>
         {(this.props.session) &&
           <div>
             <Memberships />
@@ -137,15 +135,6 @@ class Providers extends Component{
 }
 
 export default Providers;
-
-    // <p>More Rewards is one of Western Canada's favourite loyalty programs, and it's easy to see why. 
-    //         More Rewards lets you earn points at dozens of places you already shop and redeem them for great stuff. What kind of stuff? 
-    //         Just about anything you could imagine – rewards range from gift cards to kitchen appliances to camping equipment and travel. 
-    //         Just use your card at retailers you love, and watch the points roll in. To see what you can save up for, view our catalogue.
-    //   </p>
-
-// <p>SCENE is the first and only entertainment rewards program in Canada. It is a partnership between two of Canada's best known companies, Scotiabank and Cineplex Entertainment.
-// The program lets members turn movie-going and banking transactions into FREE movie tickets and more.
 // Those with a Scotiabank account can link their SCENE membership to their SCENE ScotiaCard and earn reward points faster.
 // The SCENE program is growing - check back often for more fun rewards!
 // </p>

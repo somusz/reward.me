@@ -108,58 +108,74 @@ class ShowProvider extends Component{
            <div class="col-md-5 settings_form" id='provider-user-credentials' style={{display: this.props.session ? 'block' : 'none'}}>
                 <img src={currentProvider.image} alt={currentProvider.name} style={{ width: '70%', height: '15%', margin: '15px auto', display: 'block'}}/>
               <form className='provider-user-credentials-update-form' onSubmit={this.handleUpdateSubmit}>
-                <p className='text-center' style={{marginTop: '10px'}} > * Fill in the fields that you would like to change * </p>
+                <p className='text-center' style={{marginTop: '10px'}} > Provide your {currentProvider.name} credentials to link your {currentProvider.name} Points to your Reward.me account </p>
 
-                <div className="form-group" id="settingsName">
-                  <label for="username">Username</label>
-                  <input type="text" 
-                      id="provider-user-credentials-update-username" 
-                      className="form-control" 
-                      ref="username" 
-                      name="username" 
-                      placeholder="Your new username" 
-                      onFocus={this.clearMessage} />
+                {(currentProvider.membership_username_required) &&
+
+                  <div className="form-group" id="settingsName">
+                    <label for="username">{currentProvider.membership_username_label || "Username"}: </label>
+                    <input type="text" 
+                        id="provider-user-credentials-update-username" 
+                        className="form-control" 
+                        ref="username" 
+                        name="username" 
+                        placeholder="Your new username" 
+                        onFocus={this.clearMessage} />
+                  </div>
+                }
+
+                {(currentProvider.membership_id_required) &&
+
+                  <div className="form-group" >
+                    <label for='membershipid' >{currentProvider.membership_id_label || "Membership ID"}: </label>
+                    <input id="provider-user-credentials-update-membershipid"
+                           type="text"
+                           ref="membershipid"
+                           className="form-control" 
+                           name="membershipid"
+                           placeholder="Your new membership ID"
+                           onFocus={this.clearMessage} />
+                  </div>
+                }
+
+                {(currentProvider.membership_email_required) &&
+
+                  <div className="form-group" >
+                    <label for='email' >{currentProvider.membership_email_label || "Email"}: </label>
+                    <input id="provider-user-credentials-update-email"
+                           type="email"
+                           ref="email"
+                           name="email"
+                           className="form-control" 
+                           placeholder="Your new email"
+                           onFocus={this.clearMessage} />
+                  </div>
+                }
+
+                <div className="form-group" >
+                  <label for='password' >{currentProvider.membership_password_label || "Password"}: </label>
+                    <input id="provider-user-credentials-update-password"
+                           type="password"
+                           ref="password"
+                           className="form-control" 
+                           name="password"
+                           placeholder="Your new password"
+                           onFocus={this.clearMessage} />
                 </div>
-              <div className="form-group" >
-                <label for='membershipID' >Membership ID: </label>
-                <input id="provider-user-credentials-update-membershipid"
-                       type="text"
-                       ref="membershipid"
-                       className="form-control" 
-                       name="membershipid"
-                       placeholder="Your new membership ID"
-                       onFocus={this.clearMessage} />
-            </div>
-            <div className="form-group" >
-              <label for='email' >Email: </label>
-                <input id="provider-user-credentials-update-email"
-                       type="email"
-                       ref="email"
-                       name="email"
-                       className="form-control" 
-                       placeholder="Your new email"
-                       onFocus={this.clearMessage} />
-            </div>
-            <div className="form-group" >
-              <label for='password' >Password: </label>
-                <input id="provider-user-credentials-update-password"
-                       type="password"
-                       ref="password"
-                       className="form-control" 
-                       name="password"
-                       placeholder="Your new password"
-                       onFocus={this.clearMessage} />
-            </div>
+
                 <button className="btn btn-default submit form" type="submit" style={{cursor: 'pointer', position: 'static', width: '100%', margin: '20px auto 30px auto;'}}>
                   Submit
                 </button>
+      
               </form>
+      
             {this.state.updateMessage && this.evaluateUpdateSubmit(this.state.updateMessage)}
          </div>
 
 
         <div className="deals-container col-md-7 settings_form">
-          <h4 className='text-center' style={{margin: '20px auto'}}>START REDEEMING! Check out these available rewards: </h4>
+          <h4 className='text-center' style={{margin: '20px auto'}}>Start redeeming now! Check out these available rewards from {currentProvider.name}: </h4>
+
           {this.state.deals.map(item => {
             return (<Deal key={item.id} item={item} points={this.props.points} />)
           })}

@@ -22,7 +22,6 @@ class Registration extends Component{
           first_name: event.target.first_name.value,
           last_name: event.target.last_name.value,
           email: event.target.email.value,
-          image: event.target.image_url.value,
           password_digest: event.target.password.value
         })
       })

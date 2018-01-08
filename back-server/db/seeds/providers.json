@@ -1,13 +1,14 @@
 [
   {
     "name":"More Rewards",
-    "image": "https://www.morerewards.ca/sites/all/themes/prettymr/images/logo.png",
+    "image": "https://www.morerewards.ca/sites/all/themes/prettymr/images/logo-large.jpg",
     "membership_username_required":false,
     "membership_username_label":"",
     "membership_id_required":true,
     "membership_id_label":"More Rewards Number",
     "membership_email_required":true,
-    "membership_email_label":""
+    "membership_email_label":"",
+    "membership_password_label":""
   },
   {
     "name":"Scene",
@@ -17,6 +18,73 @@
     "membership_id_required":true,
     "membership_id_label":"Scene Card Number",
     "membership_email_required":false,
-    "membership_email_label":""
+    "membership_email_label":"",
+    "membership_password_label":""
+  },
+  {
+    "name":"TD Rewards",
+    "image": "https://www.tdcanadatrust.com/images/tdvisa/tdct-tdvisa-tdrewards-header.jpg",
+    "membership_username_required":true,
+    "membership_username_label":"",
+    "membership_id_required":false,
+    "membership_id_label":"Aeroplan Number",
+    "membership_email_required":false,
+    "membership_email_label":"",
+    "membership_password_label":""
+  },
+  {
+    "name":"Air Miles",
+    "image": "https://www.airmiles.ca/arrow/webresource/framework/img/airmiles-logo.svg",
+    "membership_username_required":false,
+    "membership_username_label":"",
+    "membership_id_required":true,
+    "membership_id_label":"Collector Number",
+    "membership_email_required":false,
+    "membership_email_label":"",
+    "membership_password_label":"PIN"
+  },
+  {
+    "name":"Plum Rewards",
+    "image": "https://static.indigoimages.ca/Loyalty/plum_card_shadow_EN.png",
+    "membership_username_required":false,
+    "membership_username_label":"",
+    "membership_id_required":true,
+    "membership_id_label":"Membership Number",
+    "membership_email_required":true,
+    "membership_email_label":"Email",
+    "membership_password_label":""
+  },
+  {
+    "name":"Shoppers Optimum",
+    "image": "https://www.teresagroup.ca/images/shoppers.jpg",
+    "membership_username_required":false,
+    "membership_username_label":"",
+    "membership_id_required":true,
+    "membership_id_label":"Card Number",
+    "membership_email_required":false,
+    "membership_email_label":"",
+    "membership_password_label":""
+  },
+  {
+    "name":"Canadian Tire Money",
+    "image": "https://www.canadiantire.ca/content/dam/canadian-tire/images/loyalty/loyalty_card.png",
+    "membership_username_required":false,
+    "membership_username_label":"",
+    "membership_id_required":false,
+    "membership_id_label":"",
+    "membership_email_required":true,
+    "membership_email_label":"",
+    "membership_password_label":""
+  },
+  {
+    "name":"PC Plus",
+    "image": "http://www.loblaw.ca/content/dam/lclcorp/Images/Info%20Boxes/Loyalty/LOYALTYpcplus.jpg",
+    "membership_username_required":false,
+    "membership_username_label":"",
+    "membership_id_required":false,
+    "membership_id_label":"",
+    "membership_email_required":true,
+    "membership_email_label":"",
+    "membership_password_label":""
   }
 ]

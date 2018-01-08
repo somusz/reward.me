@@ -8,6 +8,7 @@ exports.up = function(knex, Promise) {
       table.string('membership_id_label');
       table.boolean('membership_email_required');
       table.string('membership_email_label');
+      table.string('membership_password_label');
     })
   ])
 };
@@ -21,6 +22,7 @@ exports.down = function(knex, Promise) {
       table.dropColumn('membership_id_label');
       table.dropColumn('membership_email_required');
       table.dropColumn('membership_email_label');
+      table.dropColumn('membership_password_label');
     })
   ])
 };
