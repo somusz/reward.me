@@ -43,7 +43,7 @@ class Nav extends Component{
 
     <nav className="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
       <div className="container">
-        <a className="navbar-brand" href="/">Reward.Me</a>
+        <a className="navbar-brand" id='navbar-title' href="/">Reward.Me</a>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>

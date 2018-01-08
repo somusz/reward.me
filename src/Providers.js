@@ -25,7 +25,7 @@ class Providers extends Component{
                   </div>
         }
         {(this.props.data.filter(item => item.user_id).length === 0) &&
-          <h4>You have not linked any Reward Programs to your account</h4>
+          <h4>You have not linked any Rewards Programs to your account</h4>
         }
       </div>
     )
@@ -56,7 +56,7 @@ class Providers extends Component{
       <div>
       { this.props.data.filter(item => !item.user_id).length > 0 &&
         <div>
-          <h2 style={{margin: '40px'}} >Reward Program</h2>
+          <h2 style={{margin: '40px'}} >Rewards Program</h2>
             <div>Edit</div>
               {this.props.data.filter(item => !item.user_id).map(item => (
                 ProviderRowInTableNonMember(item)
@@ -89,7 +89,7 @@ class Providers extends Component{
 
 
     const AllProviders = () => ([
-      <h2 className='text-center' style={{margin: '40px'}} >Reward Programs</h2>,
+      <h2 className='text-center' style={{margin: '40px'}} >Rewards Programs</h2>,
       <div>
         {this.props.data.map(item => (
           ProviderRowInTableAll(item)

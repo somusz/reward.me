@@ -44,8 +44,9 @@ body {
 }
 
 .settings_page .submit:hover {
-  background: blue;
+  background: rgb(29, 128, 159) !important;
   transition: all .3s;
+  border-color: rgb(29, 128, 159) !important;
 }
 
 .settings_bar {

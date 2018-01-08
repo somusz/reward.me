@@ -165,8 +165,8 @@ class ShowProvider extends Component{
           })}
           <div className="deals-container-linkto-deals">
             <Link to={`/deals?provider=${this.props.match.params.id}`}>
-              <button className="btn btn-default submit form" style={{cursor: 'pointer', position: 'static', width: '100%', margin: '20px auto 30px auto;'}} >
-                See All Rewards {currentProvider.name}
+              <button className="btn btn-default submit form" style={{cursor: 'pointer', position: 'static', width: '450px', margin: '20px auto 30px auto;'}} >
+                See All Rewards
               </button>
             </Link>
           </div>

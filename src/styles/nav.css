@@ -16,6 +16,11 @@
   font-weight: 700;
 }
 
+.navbar-brand:hover {
+  color: #ffb732 !important;
+  transition: all 0.5s ease !important;
+}
+
 
 .navbar-nav .nav-item .nav-link {
   text-transform: uppercase;
