@@ -4,7 +4,7 @@ class ShowUser extends Component{
   state = { data: [] }
 
   componentDidMount() {
-    let url = `/user/${this.props.match.params.id}`
+    let url = `/users/${this.props.match.params.id}`
     fetch(url)
       .then((res) => {
         res.json()

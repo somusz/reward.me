@@ -21,7 +21,6 @@ class Registration extends Component{
           first_name: event.target.first_name.value,
           last_name: event.target.last_name.value,
           email: event.target.email.value,
-          image: event.target.image_url.value,
           password_digest: event.target.password.value
         })
       })
@@ -42,11 +41,10 @@ class Registration extends Component{
 
         <form className='register-form' onSubmit={this.handleRegisterSubmit}>
 
-          <label>First Name: </label><input id="first_name" type="text" name="first_name" placeholder="Your First Name" />
-          <label>Last Name: </label><input id="last_name" type="text" name="last_name" placeholder="Your Last Name" />
-          <label>Image URL: </label><input id="image_url" type="text" name="image_url" placeholder="Link To Your Avatar Image" />
-          <label>Email: </label><input id="email" type="email" name="email" placeholder="Your Email Address" />
-          <label>Password: </label><input id="password" type="password" name="password" placeholder="Your password" />
+          <label>First Name: </label><input id="first_name" type="text" name="first_name" />
+          <label>Last Name: </label><input id="last_name" type="text" name="last_name" />
+          <label>Email: </label><input id="email" type="email" name="email" />
+          <label>Password: </label><input id="password" type="password" name="password"  />
 
           <input type="submit" value="Register" />
         </form>

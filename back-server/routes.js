@@ -19,8 +19,8 @@ module.exports = (knex) => {
       .from('users')
       .where('email', req.body.email)
       .then( (result) => {
-        if (bcrypt.compareSync(req.body.password, result[0].password_digest)) {
-        // if (req.body.password === result[0].password_digest) {
+        // if (bcrypt.compareSync(req.body.password, result[0].password_digest)) {
+        if (req.body.password === result[0].password_digest) {
 
           console.log('Login Successful')
 

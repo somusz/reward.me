@@ -114,35 +114,48 @@ class ShowProvider extends Component{
           <h3>Update my credentials at {currentProvider.name}</h3>
           <form className='provider-user-credentials-update-form' onSubmit={this.handleUpdateSubmit}>
 
-            <label>Fill in the fields that you would like to change</label><br/>
-            <label>Username: </label>
-              <input id="provider-user-credentials-update-username"
-                     type="text"
-                     ref="username"
-                     name="username"
-                     placeholder="Your new username"
-                     onFocus={this.clearMessage} />
-            <label>Membership ID: </label>
-              <input id="provider-user-credentials-update-membershipid"
-                     type="text"
-                     ref="membershipid"
-                     name="membershipid"
-                     placeholder="Your new membership ID"
-                     onFocus={this.clearMessage} />
-            <label>Email: </label>
-              <input id="provider-user-credentials-update-email"
-                     type="email"
-                     ref="email"
-                     name="email"
-                     placeholder="Your new email"
-                     onFocus={this.clearMessage} />
-            <label>Password: </label>
-              <input id="provider-user-credentials-update-password"
-                     type="password"
-                     ref="password"
-                     name="password"
-                     placeholder="Your new password"
-                     onFocus={this.clearMessage} />
+            <label>Provide your {currentProvider.name} credentials to link your {currentProvider.name} Points to your Reward.me account</label><br/>
+
+            {(currentProvider.membership_username_required) &&
+
+              <label>{currentProvider.membership_username_label || "Username"}:
+                <input id="provider-user-credentials-update-username"
+                       type="text"
+                       ref="username"
+                       name="username"
+                       onFocus={this.clearMessage} />
+              </label>
+            }
+
+            {(currentProvider.membership_id_required) &&
+
+              <label>{currentProvider.membership_id_label || "Membership ID"}:
+                <input id="provider-user-credentials-update-membershipid"
+                       type="text"
+                       ref="membershipid"
+                       name="membershipid"
+                       onFocus={this.clearMessage} />
+              </label>
+            }
+
+            {(currentProvider.membership_email_required) &&
+
+              <label>{currentProvider.membership_email_label || "Email"}:
+                <input id="provider-user-credentials-update-email"
+                       type="email"
+                       ref="email"
+                       name="email"
+                       onFocus={this.clearMessage} />
+              </label>
+            }
+
+              <label>{currentProvider.membership_password_label || "Password"}:
+                <input id="provider-user-credentials-update-password"
+                       type="password"
+                       ref="password"
+                       name="password"
+                       onFocus={this.clearMessage} />
+              </label>
 
             <input type="submit" value="Update" />
           </form>

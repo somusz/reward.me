@@ -2,6 +2,12 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 
 import './styles/Providers.css';
+import './vendor/bootstrap/css/bootstrap.css';
+import './vendor/bootstrap/css/bootstrap.min.css';
+import './vendor/bootstrap/css/bootstrap-grid.css';
+import './vendor/bootstrap/css/bootstrap-grid.min.css';
+import './vendor/bootstrap/css/bootstrap-reboot.css';
+import './vendor/bootstrap/css/bootstrap-reboot.min.css';
 
 class Providers extends Component{
   constructor(props) {
@@ -15,30 +21,17 @@ class Providers extends Component{
   render(){
 
     const Memberships = () => (
-      <div>
+      <div className="container">
 
         {(this.props.data.filter(item => item.user_id).length > 0) &&
-          <div className='reward-container'>
-            <h2>My Reward Memberships</h2>
-            <div className='provider-table'>
-              <table className="table table-bordered">
-                <thead>
-                  <div className='table-head'>
-                    <tr>
-                      <th>Reward Program</th>
-                      <th>Balance</th>
-                      <th>Edit</th>
-                    </tr>
-                  </div>
-                </thead>
-                <tbody>
-                  <div className='table-body'>
-                    {this.props.data.filter(item => item.user_id).map(item => (
-                      ProviderRowInTableMember(item)
-                    ))}
-                  </div>
-                </tbody>
-              </table>
+          <div>
+            <h1 className="my-4">My Reward Memberships</h1>
+            <div>
+              <ul>
+                {this.props.data.filter(item => item.user_id).map(item => (
+                  ProviderMember(item)
+                ))}
+              </ul>
             </div>
           </div>
         }
@@ -50,27 +43,26 @@ class Providers extends Component{
       </div>
     )
 
-    const ProviderRowInTableMember = (item) => (
-      <tr key={item.id}>
-        <td>
+    const ProviderMember = (item) => (
+      <li className="row" key={item.id}>
+        <div className="col-md-5">
           <Link to={`${this.props.match.url}/${item.id}`}>
-            <div className="provider-image-container">
-              <img src={item.image} alt="N/A" />
+            <div>
+              <img className="img-fluid rounded mb-3 mb-md-0" src={item.image} alt="N/A" />
             </div>
           </Link>
-        </td>
-        <td>
-          <div className='provider-table-text'>
-            <span >My {item.name} Points: </span> <br/>
-            <span className='provider-table-points'>{this.props.points[item.id]}</span>
+        </div>
+        <div className="col-md-7">
+            <span className="points points-text">My {item.name} Points:
+              <span className="points-point">{this.props.points[item.id]}</span>
+            </span>
+          <div>
+            <Link to={`${this.props.match.url}/${item.id}`}>
+              <button className="btn btn-primary">Edit</button>
+            </Link>
           </div>
-        </td>
-        <td>
-          <Link to={`${this.props.match.url}/${item.id}`}>
-            <button>Edit</button>
-          </Link>
-        </td>
-      </tr>
+        </div>
+      </li>
     )
 
 
@@ -78,88 +70,75 @@ class Providers extends Component{
       <div>
         {this.props.data.filter(item => !item.user_id).length > 0 &&
           <div>
-            <h2>Other Reward Programs</h2>
-            <div className='provider-table'>
-              <table className="table table-bordered">
-                <thead>
-                  <tr>
-                    <th colSpan="2">Reward Program</th>
-                    <th>Edit</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {this.props.data.filter(item => !item.user_id).map(item => (
-                    ProviderRowInTableNonMember(item)
-                  ))}
-                </tbody>
-              </table>
+            <h1 className="my-4">Other Reward Programs</h1>
+            <div>
+              <ul>
+                {this.props.data.filter(item => !item.user_id).map(item => (
+                  ProviderNonMember(item)
+                ))}
+              </ul>
             </div>
           </div>
         }
       </div>
     )
 
-    const ProviderRowInTableNonMember = (item) => (
-      <tr key={item.id}>
-        <td>
+    const ProviderNonMember = (item) => (
+      <li className="row" key={item.id}>
+        <div className="col-md-5">
           <Link to={`${this.props.match.url}/${item.id}`}>
-            <div className="provider-image-container">
-              <img src={item.image} alt="N/A" />
+            <div>
+              <img className="img-fluid rounded mb-3 mb-md-0" src={item.image} alt="N/A" />
             </div>
           </Link>
-        </td>
-        <td>
-          <Link to={`${this.props.match.url}/${item.id}`}>
-            <div className='provider-table-text'>{item.name}</div>
-          </Link>
-        </td>
-        <td>
-          <Link to={{ pathname: `${this.props.match.url}/new`, state: { provider: item.id }}}>
-            <button>Link To My Account</button>
-          </Link>
-        </td>
-      </tr>
+        </div>
+        <div className="col-md-7">
+          <div>
+            <Link to={`${this.props.match.url}/${item.id}`}>
+              <div>{item.name}</div>
+            </Link>
+          </div>
+          <div>
+            <Link to={{ pathname: `${this.props.match.url}/new`, state: { provider: item.id }}}>
+              <button className="btn btn-primary">Link To My Account</button>
+            </Link>
+          </div>
+        </div>
+      </li>
     )
 
     const AllProviders = () => (
       <div>
-        <h2>Reward Programs</h2>
-        <div className='provider-table'>
-          <table className="table table-bordered">
-            <thead>
-              <tr>
-                <th colSpan="2">Reward.me Partners</th>
-              </tr>
-            </thead>
-            <tbody>
-              {this.props.data.map(item => (
-                ProviderRowInTableAll(item)
-              ))}
-            </tbody>
-          </table>
+        <h1>Our Reward Partners</h1>
+        <div>
+          <ul>
+            {this.props.data.map(item => (
+              ProviderAll(item)
+            ))}
+          </ul>
         </div>
       </div>
     )
 
-    const ProviderRowInTableAll = (item) => (
-      <tr key={item.id}>
-        <td>
+    const ProviderAll = (item) => (
+      <li className="row" key={item.id}>
+        <div className="col-md-5">
           <Link to={`${this.props.match.url}/${item.id}`}>
-            <div className="provider-image-container">
-              <img src={item.image} alt="N/A" />
+            <div>
+              <img className="img-fluid rounded mb-3 mb-md-0" src={item.image} alt="N/A" />
             </div>
           </Link>
-        </td>
-        <td>
+        </div>
+        <div className="col-md-7">
           <Link to={`${this.props.match.url}/${item.id}`}>
-            <div className='provider-table-text'>{item.name}</div>
+            <div>{item.name}</div>
           </Link>
-        </td>
-      </tr>
+        </div>
+      </li>
     )
 
     return (
-      <div className="providers">
+      <div>
         {(this.props.session) &&
           <div>
             <Memberships />
