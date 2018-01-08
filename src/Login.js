@@ -41,7 +41,7 @@ class Login extends Component{
 
   render(){
     return (
-    <div class="container settings_page">
+    <div class="container settings_page" id='loginContainer'  style={{height: '100%', paddingBottom: '400px'}}>
       <div class="row">
          <div class="col-md-7 settings_form">
             <h3 class="text-center" style={{margin: '20px'}}>Please enter your details</h3>

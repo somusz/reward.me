@@ -103,7 +103,7 @@ class ShowProvider extends Component{
       Number(item.id) === Number(this.props.match.params.id));
 
     return currentProvider ? ([
-      <div class="container settings_page" style={{ margin: '30px auto'}}>
+      <div class="container settings_page" style={{ margin: '30px auto', height: '100%', paddingBottom: '300px'}}>
         <div class="row">
            <div class="col-md-5 settings_form" id='provider-user-credentials' style={{display: this.props.session ? 'block' : 'none'}}>
                 <img src={currentProvider.image} alt={currentProvider.name} style={{ width: '70%', height: '15%', margin: '15px auto', display: 'block'}}/>

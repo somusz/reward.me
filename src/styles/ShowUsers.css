@@ -92,4 +92,13 @@ body {
   body {
     padding-top: 0vh !important;
   }
+  #container {
+    padding-bottom: 600px;
+  }
+}
+
+@media (max-width: 890px) {
+  #settings-container {
+    padding-bottom: 600px !important;
+  }
 }
