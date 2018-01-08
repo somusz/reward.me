@@ -8,7 +8,8 @@
     "membership_id_label":"More Rewards Number",
     "membership_email_required":true,
     "membership_email_label":"",
-    "membership_password_label":""
+    "membership_password_label":"",
+    "description":"More Rewards is one of Western Canada's favourite loyalty programs, and it's easy to see why. Our program lets you earn points at dozens of places you already shop and redeem them for great stuff. What kind of stuff? Just about anything you could imagine – rewards range from gift cards to kitchen appliances to camping equipment and travel. Just use your card at retailers you love, and watch the points roll in. To see what you can save up for, view our catalogue."
   },
   {
     "name":"Scene",
@@ -19,7 +20,8 @@
     "membership_id_label":"Scene Card Number",
     "membership_email_required":false,
     "membership_email_label":"",
-    "membership_password_label":""
+    "membership_password_label":"",
+    "description":"Earn points while having fun – like seeing a movie or sharing a meal with friends and family. All you have to do is show your SCENE card or app."
   },
   {
     "name":"TD Rewards",
@@ -30,7 +32,8 @@
     "membership_id_label":"Aeroplan Number",
     "membership_email_required":false,
     "membership_email_label":"",
-    "membership_password_label":""
+    "membership_password_label":"",
+    "description":"Every purchase you make with your travel or rewards TD Credit Card – from your afternoon coffee to that flight to Paris – earns you points. Redeem the points you’ve earned towards travel, merchandise, or gifts cards through TDRewards.com, as well as for education credits that you can use towards tuition or student loans, or for a cash credit to your Account. With the Goal Tracker feature, you can set reward goals and see how close you are to being able to redeem your points for amazing rewards!"
   },
   {
     "name":"Air Miles",
@@ -41,7 +44,8 @@
     "membership_id_label":"Collector Number",
     "membership_email_required":false,
     "membership_email_label":"",
-    "membership_password_label":"PIN"
+    "membership_password_label":"PIN",
+    "description":"AIR MILES Cash lets you instantly use the Miles from your Cash Account in-store on everyday purchases when you shop at participating Partners. 95 Cash Miles gets you $10 that can be used at checkout, in $10 increments up to $100/per Collector Cash Account, per day. AIR MILES Cash transactions must exclude gift cards and near-cash products (i.e. pre-paid credit cards)."
   },
   {
     "name":"Plum Rewards",
@@ -52,7 +56,8 @@
     "membership_id_label":"Membership Number",
     "membership_email_required":true,
     "membership_email_label":"Email",
-    "membership_password_label":""
+    "membership_password_label":"",
+    "description":"You can use your plum rewards membership at any Indigo, Chapters, Coles, Indigospirit, SmithBooks and The Book Company locations, and online at chapters.indigo.ca. Earn 5 points for every dollar spentand redeem them in-store, online and on our mobile app. Enjoy personalised recommendations, bonus points offers and invitations to quarterly bonus events."
   },
   {
     "name":"Shoppers Optimum",
@@ -63,7 +68,8 @@
     "membership_id_label":"Card Number",
     "membership_email_required":false,
     "membership_email_label":"",
-    "membership_password_label":""
+    "membership_password_label":"",
+    "description":"Shoppers Optimum is a loyalty program used by the Shoppers Drug Mart chain. Members collect Shoppers Optimum points that may be redeemed on purchases within the store. Shoppers Optimum members receive 10 points for every dollar spent at the store. This excludes the purchase of lottery, tobacco products, transit tickets and passes, prescription items, any products containing codeine, Canada Post products, and gift cards (except Shoppers gift cards). Events for bonus point collecting and/or redemption (e.g. 20x the points, bonus redemption) are regularly held."
   },
   {
     "name":"Canadian Tire Money",
@@ -74,7 +80,8 @@
     "membership_id_label":"",
     "membership_email_required":true,
     "membership_email_label":"",
-    "membership_password_label":""
+    "membership_password_label":"",
+    "description":"Members collect e-Canadian Tire 'Money' in their My Canadian Tire 'Money' Account by providing their Canadian Tire Mobile App or their My Canadian Tire 'Money' card/key fob with their method of payment, or by simply paying with an Options® MasterCard® (or other eligible Canadian Tire credit cards) at Canadian Tire stores and participating gas bars across Canada and online at canadiantire.ca. It's an easier way to collect your Canadian Tire 'Money'. Members can also make a donation to Jumpstart at canadiantire.ca."
   },
   {
     "name":"PC Plus",
@@ -85,6 +92,7 @@
     "membership_id_label":"",
     "membership_email_required":true,
     "membership_email_label":"",
-    "membership_password_label":""
+    "membership_password_label":"",
+    "description":"The PC Plus program gives you offers on the items you buy most. Load and view your offers each week and shop in our stores. The points you earn can be used for FREE groceries."
   }
 ]

@@ -11,6 +11,12 @@ class Login extends Component{
     }
   }
 
+  componentWillUpdate(nextProps, nextState) {
+    if (this.props.session) {
+      this.props.history.go(-2)
+    }
+  }
+
   handleLoginSubmit = (event) => {
     event.preventDefault()
 
@@ -31,7 +37,7 @@ class Login extends Component{
         console.log('logged in, about to call setPoints')
         this.props.setPoints()
         this.props.setSession()
-        this.props.history.goBack()
+        this.props.history.push('/deals')
       })
       .catch((err) => {
         console.log(err)
