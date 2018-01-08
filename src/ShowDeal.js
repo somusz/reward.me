@@ -31,6 +31,8 @@ class ShowDeal extends Component{
             <h3> {item.name} </h3>
             <img src={item.image} alt={item.name}/>
             <div> {item.description} </div>
+            <a href={item.url}> REDEEM </a>
+            <p>{item.url}</p>
           </article>
         ))}
 
