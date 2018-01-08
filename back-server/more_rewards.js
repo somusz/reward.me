@@ -9,7 +9,10 @@ const knexLogger     = require('knex-logger');
 const https = require('https')
 const cheerio = require('cheerio')
 
+console.log('deleting previous deals from morerewards')
 knex('deals').where('provider_id', 1).del()
+.then( (res) => {console.log(res)} )
+.error( (err) => {console.log(err)} )
 
 const getMoreRewardDeals = () => {
   https.get("https://www.morerewards.ca/catalogue/all?items_per_page=All", (resp_all) => {
@@ -39,7 +42,7 @@ const loopingThroughDeals = (arrayOfDeals, dataFromPage) => {
     setTimeout( () => {
       console.log('processing item ', i, '/', arrayOfDeals.length)
       getIndividualDealItems(pathToDeal)
-    }, 1000 * (1 + i + Math.random()))
+    }, 600 * (1 + i + Math.random()))
   }//)
 }
 
@@ -48,7 +51,8 @@ const validation = (deal) => {
 }
 
 const getIndividualDealItems = (path) => {
-  https.get(`https://www.morerewards.ca/catalogue/${path}`, (resp_deal) => {
+  let dealURL = `https://www.morerewards.ca/catalogue/${path}`
+  https.get(dealURL, (resp_deal) => {
     let data_deal = ''
 
     resp_deal.on('data', (chunk) => {
@@ -73,7 +77,8 @@ const getIndividualDealItems = (path) => {
         description: dealDescription,
         image: dealImageUrl,
         price: dealPrice,
-        provider_id: 1
+        provider_id: 1,
+        url: dealURL
       }
 
       if (validation(newDeal)){
@@ -82,8 +87,9 @@ const getIndividualDealItems = (path) => {
           .insert(newDeal)
           .into('deals')
           .then( (res) => {
-            console.log('adding one item')
+            console.log('added item')
           })
+          .error( (err) => {console.log('error adding item', err)})
       }
 
     })

@@ -23,7 +23,7 @@ class ProviderSection extends React.Component {
       }
     })
       .then((res) => {
-        res.json()
+        return res.json()
           .then((jsonData) => {
             this.setState({ data: jsonData })
           })
@@ -35,7 +35,7 @@ class ProviderSection extends React.Component {
 
   render() {
     return (
-      <div>
+    <div className='container' style={{height: '100%', paddingBottom: '300px'}}>
         <Route exact path={`${this.props.match.url}`} render={(props) =>
           <Providers {...props} data={this.state.data} session={this.props.session} points={this.props.points} /> } />
         <Route path={`${this.props.match.url}/:id`} render={(props) =>
