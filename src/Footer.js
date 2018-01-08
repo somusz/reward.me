@@ -24,13 +24,6 @@ class Footer extends Component{
   render(){
 
     return (
-    //  <footer className="py-5 bg-black">
-    //  <div className="container">
-    //  <p className="m-0 text-center text-white small">Copyright &copy; REWARD.ME 2017</p>
-    //  </div>
-    //  </footer>
-    // //  <footer class="footer-bs">
-
     <footer className="footer-distributed">
 
       <div className="footer-left">
@@ -51,24 +44,25 @@ class Footer extends Component{
           <a href="#">Contact</a>
         </p>
 
-        <p className="footer-company-name">REWARD.ME &copy; 2015</p>
+        <p className="footer-company-name">REWARD.ME &copy; 2017</p>
       </div>
 
       <div className="footer-center">
 
         <div>
           <a href="#" ><img src={locationPoint} alt={'Facebook'} className='footerOtherLogos' /></a>
-          <p><span>21 Revolution Street</span> Paris, France</p>
+          <p><span>46 Spadina Ave - 4th Floor
+      </span>Toronto, ON, Canada M5V 2H8</p>
         </div>
 
         <div>
           <a href="#" ><img src={phoneSymbolInsideCircle} alt={'Facebook'} className='footerOtherLogos' /></a>
-          <p>+1 555 123456</p>
+          <p>+1-888-818-8890</p>
         </div>
 
         <div>
           <a href="#" ><img src={closedEnvelopeCircle} alt={'Facebook'} className='footerOtherLogos' /></a>
-          <p><a href="mailto:support@company.com">rewardme@company.com</a></p>
+          <p><a href="mailto:support@company.com" style={{color: 'rgb(29, 128, 159)'}}>rewardme@company.com</a></p>
         </div>
 
       </div>
@@ -76,8 +70,8 @@ class Footer extends Component{
       <div className="footer-right">
 
         <p className="footer-company-about">
-          <span>About the company</span>
-          Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
+          <span>About Us</span>
+          REWARD.ME is a user friendly one stop shop that allows you to manage all your rewards points from one dashboard, comfortably. Forget the days that you had to use 6 different websites to manage your rewards points. REWARD.ME. 
         </p>
 
         <div className="footer-icons">

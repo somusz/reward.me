@@ -125,7 +125,7 @@ class Home extends Component{
           <div className="col-lg-6 order-lg-1">
             <div className="p-5">
               <h2 className="display-4">Join !</h2>
-              <p>Start earning FREE movies, meals, and more with SCENE. It’s FREE to join – just fill out the form below and start earning points today!</p>
+              <p> Start earning FREE movies, meals, and more with SCENE. It’s FREE to join – Earn points while having fun – like seeing a movie or sharing a meal with friends and family.!</p>
             </div>
           </div>
         </div>
@@ -142,8 +142,8 @@ class Home extends Component{
           </div>
           <div className="col-lg-6">
             <div className="p-5">
-              <h2 className="display-4">We salute you!</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>
+              <h2 className="display-4"> Amazing!</h2>
+              <p>More Rewards is one of Western Canada's favourite loyalty programs, and it's easy to see why. Their program lets you earn points at dozens of places you already shop and redeem them for great stuff. </p>
             </div>
           </div>
         </div>
@@ -160,8 +160,8 @@ class Home extends Component{
           </div>
           <div className="col-lg-6 order-lg-1">
             <div className="p-5">
-              <h2 className="display-4">Let there be rock!</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>
+              <h2 className="display-4">Limitless!</h2>
+              <p>AIR MILES® is one of the best ways to get rewards in Canada. With an AIR MILES® Collector Card, you can turn everyday purchases like gas and groceries into movie tickets, kitchen gadgets, electronics, dream vacations and so much more.</p>
             </div>
           </div>
         </div>
