@@ -149,6 +149,7 @@ class Home extends Component{
         </div>
       </div>
     </section>,
+    <div style={{height: '100%', paddingBottom: '400px'}}>
         <section>
       <div className="container">
         <div className="row align-items-center">
@@ -166,6 +167,7 @@ class Home extends Component{
         </div>
       </div>
     </section>
+    </div>
     ])
   }
 }
