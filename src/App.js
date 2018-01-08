@@ -88,7 +88,7 @@ class App extends React.Component {
       this.setState({session: false})
     }
   }
-  
+
   render() {
     return ([
       <Nav points={this.state.points} setSession={this.setSession} session={this.state.session} />,

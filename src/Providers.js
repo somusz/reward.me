@@ -2,12 +2,6 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 
 import './styles/Providers.css';
-import './vendor/bootstrap/css/bootstrap.css';
-import './vendor/bootstrap/css/bootstrap.min.css';
-import './vendor/bootstrap/css/bootstrap-grid.css';
-import './vendor/bootstrap/css/bootstrap-grid.min.css';
-import './vendor/bootstrap/css/bootstrap-reboot.css';
-import './vendor/bootstrap/css/bootstrap-reboot.min.css';
 
 class Providers extends Component{
   constructor(props) {
@@ -48,15 +42,15 @@ class Providers extends Component{
           <h3></h3>
           <p className='pointsBalance' >My {item.name} Points: {this.props.points[item.id]}</p>
           <Link to={`${this.props.match.url}/${item.id}`}>
-            <button className="btn btn-primary" 
-            style={{display: 'block', position: 'static', width: '50%', 
+            <button className="btn btn-primary"
+            style={{display: 'block', position: 'static', width: '50%',
             margin: '20px auto 30px auto;' }} >Edit</button>
           </Link>
         </div>
       </div>
     )
 
-    const NonMemberships = () => (    
+    const NonMemberships = () => (
       <div>
       { this.props.data.filter(item => !item.user_id).length > 0 &&
         <div>
