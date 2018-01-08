@@ -26,6 +26,7 @@ app.use(cookieSession( {
   keys: [process.env.SESSION_KEY],
   httpOnly: false
   }));
+
 app.use('/', routes(knex));
 
 // app.use(getMoreRewardDeals(knex))

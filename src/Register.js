@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import $ from 'jquery';
 
-import './styles/Login.css';
+import './styles/ShowUsers.css'
+
 
 class Registration extends Component{
 
@@ -37,21 +38,46 @@ class Registration extends Component{
 
   render(){
     return (
-      <div className='register'>
-        <h2>Registration Page</h2>
+      <div class="container settings_page" style={{height: '100%', paddingBottom: '550px', paddingTop: '100px'}} >
+      <div class="row">
+         <div class="col-md-7 settings_form">
+            <h3 class="text-center" style={{margin: '20px'}}>Please enter your details</h3>
 
-        <form className='register-form' onSubmit={this.handleRegisterSubmit}>
+            <form id='settingsForm' onSubmit={this.handleRegisterSubmit}>
 
-          <label>First Name: </label><input id="first_name" type="text" name="first_name" placeholder="Your First Name" />
-          <label>Last Name: </label><input id="last_name" type="text" name="last_name" placeholder="Your Last Name" />
-          <label>Image URL: </label><input id="image_url" type="text" name="image_url" placeholder="Link To Your Avatar Image" />
-          <label>Email: </label><input id="email" type="email" name="email" placeholder="Your Email Address" />
-          <label>Password: </label><input id="password" type="password" name="password" placeholder="Your password" />
+              <div className="form-group" id="settingsPhoneNumber">
+              <label for="firstName" >First Name: </label>
+                <input type="text" id="first_name" className="form-control" name="firstName" placeholder=" Your First Name..." />
+              </div>
 
-          <input type="submit" value="Register" />
-        </form>
+              <div className="form-group" id="settingsPhoneNumber">
+              <label for="lastName" >Last Name: </label>
+                <input type="text" id="last_name" className="form-control" name="lastName" placeholder=" Your Last Name..." />
+              </div>
 
-      </div>
+              <div className="form-group" id="settingsPhoneNumber">
+              <label for="imageURL" >Image Url: </label>
+                <input type="text" id="image_url" className="form-control" name="image_url" placeholder="Link To Your Avatar Image" />
+              </div>
+
+              <div className="form-group" id="settingsPhoneNumber">
+              <label for="email" >Email: </label>
+                <input className="form-control" id="email" type="email" name="email" placeholder="Your Email Address"/>
+              </div>
+
+              <div className="form-group" id="settingsInstructions" style={{position: 'relative'}} >
+                <label for ="description">Password: </label>
+                <input className="form-control" id="password" type="password" name="password" placeholder="Your password" />
+              </div>
+              <div clasName='submit form'>
+                <button className="btn btn-default submit form" type="submit" style={{cursor: 'pointer', position: 'static', width: '100%', margin: '20px auto 30px auto;'}}>
+                  Register
+                </button>
+              </div>
+            </form>
+       </div>
+    </div>
+  </div>
 
     )
   }

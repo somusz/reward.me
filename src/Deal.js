@@ -12,7 +12,39 @@ class Deal extends React.Component{
 
   render(){
     return (
-      <article className="deal">
+
+      <div class="col-lg-3 col-md-4 mb-4">
+        <div class="card h-100">
+          <Link to={`/deals/${this.props.item.id}`}>
+            <div className="deal-image-div" style={{backgroundImage: `url(${this.props.item.image})`}} />
+          </Link>
+          <div class="card-body">
+            <h4 class="card-title">
+              <Link to={`/deals/${this.props.item.id}`}>
+                {this.cleanName(this.props.item.name)}
+              </Link>
+            </h4>
+
+          </div>
+          <div class="card-footer">
+            <small class ="text-muted">
+              {this.props.points[this.props.item.provider_id]} / {this.props.item.price} points
+            </small>
+          </div>
+        </div>
+      </div>
+    )
+
+    // <p class="card-text"> {this.cleanDescription(this.props.item.description)} </p>
+
+ // <img class="card-img-top" src={this.props.item.image}  alt=""/>
+            // <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+
+
+    //old:
+    return (
+
+      <article className="deal" style={{width: '100%'}}>
         <Link to={`/deals/${this.props.item.id}`}>
           <div className="deal-left">
             <div className="deal-image-div" style={{backgroundImage: `url(${this.props.item.image})`}} />
@@ -44,6 +76,9 @@ class Deal extends React.Component{
 
   cleanName(name){
     return (name.length < 60) ? name : name.substr(0,50) + '...';
+  }
+  cleanDescription(description){
+    return (description.length < 200) ? description : description.substr(0,150) + '...';
   }
 }
 

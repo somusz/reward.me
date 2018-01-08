@@ -22,7 +22,6 @@ class Login extends Component{
           Accept: 'application/json',
           'Content-Type': 'application/json'
         },
-        redirect: 'follow',
         body: JSON.stringify({
           email: event.target.email.value,
           password: event.target.password.value
@@ -42,19 +41,31 @@ class Login extends Component{
 
   render(){
     return (
-      <div className='login'>
-        <h2>Login Page</h2>
-        <h3>{this.props.points}</h3>
+    <div class="container settings_page" id='loginContainer'  style={{height: '100%', paddingBottom: '400px'}}>
+      <div class="row">
+         <div class="col-md-7 settings_form">
+            <h3 class="text-center" style={{margin: '20px'}}>Please enter your details</h3>
 
-        <form className='login-form' onSubmit={this.handleLoginSubmit}>
+            <form id='settingsForm' onSubmit={this.handleLoginSubmit} >
 
-          <span>Email: </span><input id="email" type="email" name="email" placeholder="Your email address" />
-          <span>Password: </span><input id="password" type="password" name="password" placeholder="Your password" />
+              <div className="form-group" id="settingsPhoneNumber">
+              <label for="email" >Email: </label>
+                <input className="form-control" id="email" type="email" name="email" placeholder="Your Email Address"/>
+              </div>
 
-          <input type="submit" value="Login" />
-        </form>
-
+              <div className="form-group" id="settingsInstructions" style={{position: 'relative'}} >
+                <label for ="description">Password: </label>
+                <input className="form-control" id="password" type="password" name="password" placeholder="Your password" />
+              </div>
+              <div clasName='submit form'>
+                <button className="btn btn-default submit form" type="submit" style={{cursor: 'pointer', position: 'static', width: '100%', margin: '20px auto 30px auto;'}}>
+                  Login
+                </button>
+              </div>
+            </form>
+         </div>
       </div>
+    </div>
     );
   }
 }

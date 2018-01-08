@@ -1,10 +1,15 @@
-import React from 'react'
-import DealsSection from './DealsSection.js'
-import Login from './Login.js'
-import Nav from './Nav.js'
-import ProviderSection from './ProviderSection.js'
-import Register from './Register.js'
-import ShowUser from './ShowUser.js'
+import React from 'react';
+import DealsSection from './DealsSection.js';
+import Login from './Login.js';
+import Nav from './Nav.js';
+import ProviderSection from './ProviderSection.js';
+import Register from './Register.js';
+import ShowUser from './ShowUser.js';
+import Home from './Home.js';
+import Footer from './Footer.js'
+import PopUp from './PopUp.js'
+
+
 import {
   BrowserRouter as Router,
   Route
@@ -12,17 +17,16 @@ import {
 
 import './styles/border-box.css'
 
-const Home = () => (
-  <div>
-    <h2>Home</h2>
-  </div>
-)
-
 class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      points: {}
+      points: {},
+      cookie: '',
+      message: '',
+      popUpVisibility: 'hidden',
+      popUpOpacity: '0',
+      userEmail: ''
     }
   }
 
@@ -42,44 +46,66 @@ class App extends React.Component {
         'Content-Type': 'application/json'
       }
     })
-      .then((res) => {
-        console.log('got points: res', res)
-        res.json()
-          .then((jsonData) => {
-            console.log("GOT POINTS FROM SERVER", jsonData)
-            this.setState({ points: jsonData })
-          })
+    .then((res) => {
+      console.log('got points: res', res)
+      return res.json()
+      .then((jsonData) => {
+        console.log("GOT POINTS FROM SERVER", jsonData)
+        this.setState({ points: jsonData })
       })
-      .catch((err) => {
-        console.log('error:', err)
-      })
+    })
+    .catch((err) => {
+      console.log('error:', err)
+    })
+  }
+
+  saveUserEmail = (email) => {
+    console.log('in save user email function')
+    this.setState({
+      userEmail: email
+    })
+  }
+
+  showPopUp = (message) => {
+    this.setState({
+      message: message,
+      popUpVisibility: 'visible',
+      popUpOpacity: '1',
+    })
+
+    setTimeout(() => {
+      this.setState({
+      message: message,
+      popUpVisibility: 'hidden',
+      popUpOpacity: '0',
+      })}, 1500)
   }
 
   setSession = () => {
     if ((document.cookie).match(/session=/)) {
-      this.setState({session: true})
+      this.setState({session: true, cookie: document.cookie})
     } else {
       this.setState({session: false})
     }
   }
-
+  
   render() {
-    console.log("App Render", this.state)
-    return (
+    return ([
+      <Nav points={this.state.points} setSession={this.setSession} session={this.state.session} />,
+      <PopUp message={this.state.message} visibility={this.state.popUpVisibility} opacity={this.state.popUpOpacity} />,
       <Router>
-        <div>
-          <Nav points={this.state.points} setSession={this.setSession} session={this.state.session} />
+      <div>
+      <Route exact path="/" component={ Home } />
+      <Route path="/providers" render={(props) => <ProviderSection {...props} points={this.state.points} session={this.state.session} showPopUp={this.showPopUp} /> } />
+      <Route path="/deals" render={(props) => <DealsSection {...props} points={this.state.points} showPopUp={this.showPopUp} /> } />
+      <Route path="/users/settings" render={(props) => <ShowUser {...props} userID={this.state.points} showPopUp={this.showPopUp}/> }/>
+      <Route path="/register" render={(props) => <Register {...props} setSession={this.setSession} showPopUp={this.showPopUp}/> }/>
+      <Route path="/login" render={(props) => <Login {...props} setPoints={this.setPoints} setSession={this.setSession} showPopUp={this.showPopUp} saveUserEmail={this.saveUserEmail} /> }/>
+      </div>
+      </Router>,
+      <Footer />
 
-          <Route exact path="/" component={Home}/>
-          <Route path="/providers" render={(props) => <ProviderSection {...props} points={this.state.points} session={this.state.session}/> } />
-          <Route path="/deals" render={(props) => <DealsSection {...props} points={this.state.points} /> } />
-          <Route path="/register" render={(props) => <Register {...props} setSession={this.setSession} /> }/>
-          <Route path="/users/:id" component={ShowUser}/>
-          <Route path="/login" render={(props) => <Login {...props} setPoints={this.setPoints} setSession={this.setSession} /> }/>
-        </div>
-      </Router>
-
-    )
+      ])
   }
 }
 
