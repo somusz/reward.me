@@ -2,9 +2,6 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import './styles/Home.css';
 
-import homeImg1 from './img/01.jpg';
-import homeImg2 from './img/02.jpg';
-import homeImg3 from './img/03.jpg';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import { faClock } from '@fortawesome/fontawesome-free-solid'
 import { faMobileAlt } from '@fortawesome/fontawesome-free-solid'
@@ -37,11 +34,11 @@ class Home extends Component{
           <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
         </ol>
         <div className="carousel-inner" role="listbox">
-          <div className="carousel-item active" style={ {backgroundImage: "url('http://lorempixel.com/1900/1080/food/9')" } } >
+          <div className="carousel-item active" style={ {backgroundImage: "url('http://www.thepeak.fm/uploads/contest/27896/PK_MoreRewards2_HD_1200_400_width.jpg')" } } >
           </div>
-          <div className="carousel-item" style={ { backgroundImage : "url('http://lorempixel.com/1900/1080/nightlife/9')" } } >
+          <div className="carousel-item" style={ { backgroundImage : "url('https://i.ytimg.com/vi/uxuw6LpkAdM/maxresdefault.jpg')" } } >
           </div>
-          <div className="carousel-item" style={ {backgroundImage: "url('http://lorempixel.com/1900/1080/technics/1')" } } >
+          <div className="carousel-item" style={ {backgroundImage: "url('http://www.pointswithacrew.com/wp-content/uploads/2017/11/boxed-5x-membership-rewards-1024x878.jpg')" } } >
           </div>
         </div>
         <div className="hero-banner homepage-bg">

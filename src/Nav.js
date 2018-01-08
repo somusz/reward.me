@@ -58,6 +58,9 @@ class Nav extends Component{
           <li className="nav-item">
             <a href="users/settings" className="nav-link">Settings</a>
           </li>
+          <li className="nav-item">
+            <a href="users/settings" className="nav-link">Watchlist</a>
+          </li>
 
           {(this.props.session) && <li className="nav-item"><a href="/" className="nav-link" onClick={this._logoutProcess}>Logout</a></li>
           }
