@@ -13,24 +13,29 @@ class Deal extends React.Component{
   render(){
     return (
 
-      <div class="col-lg-3 col-md-4 mb-4">
-        <div class="card h-100">
+      <div className="col-lg-3 col-md-4 mb-4">
+        <div className="card h-100">
           <Link to={`/deals/${this.props.item.id}`}>
             <div className="deal-image-div" style={{backgroundImage: `url(${this.props.item.image})`}} />
           </Link>
-          <div class="card-body">
-            <h4 class="card-title">
+          <div className="card-body">
+            <h4 className="card-title">
               <Link to={`/deals/${this.props.item.id}`}>
                 {this.cleanName(this.props.item.name)}
               </Link>
             </h4>
 
           </div>
-          <div class="card-footer">
-            <small class ="text-muted">
-              {this.props.points[this.props.item.provider_id]} / {this.props.item.price} points
-            </small>
-          </div>
+          {this.getPercentage() === 1 ?
+            <div className="card-footer">
+              <a href={this.props.item.url}> REDEEM - {this.props.item.price} points </a>
+            </div> :
+            <div className="card-footer">
+              <small className ="text-muted">
+                {this.props.points[this.props.item.provider_id]} / {this.props.item.price} points
+              </small>
+            </div>
+          }
         </div>
       </div>
     )

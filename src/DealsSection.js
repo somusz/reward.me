@@ -13,10 +13,13 @@ class DealsSection extends React.Component {
     return (
       <div>
         <Route exact path={`${this.props.match.url}`} render={(props) => <Deals {...props} points={this.props.points} /> } />
-        <Route path={`${this.props.match.url}/:id`} component={ShowDeal} />
+        <Route path={`${this.props.match.url}/:id`} render={(props) => <ShowDeal {...props} points={this.props.points} /> } />
       </div>
     )
   }
 }
+
+        // <Route path={`${this.props.match.url}/:id`} component={ShowDeal} />
+
 
 export default DealsSection
