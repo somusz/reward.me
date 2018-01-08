@@ -1,3 +1,54 @@
+
+
+.deals .carousel{
+  margin: auto;
+}
+.deals .carousel-item{
+  height: auto;
+}
+
+.carousel-content {
+  position: absolute;
+  bottom: 10%;
+  left: 5%;
+  z-index: 20;
+  color: white;
+  text-shadow: 0 1px 2px rgba(0,0,0,.6);
+  font-size: 2.2rem;
+}
+
+hr {
+  margin: 4rem;
+}
+
+.list-group-horizontal .list-group-item {
+    display: inline-block;
+}
+.list-group-horizontal .list-group-item {
+  margin-bottom: 0;
+  margin-left:-4px;
+  margin-right: 0;
+}
+.list-group-horizontal .list-group-item:first-child {
+  border-top-right-radius:0;
+  border-bottom-left-radius:4px;
+}
+.list-group-horizontal .list-group-item:last-child {
+  border-top-right-radius:4px;
+  border-bottom-left-radius:0;
+}
+
+/*old*/
+
+
+body {
+  font-family: 'Lato' !important;
+  width: 100%;
+  position: relative;
+  min-height: 100%;
+  padding-top: 22vh;
+}
+
 .deals-container{
   display: flex;
   flex-direction: row;
@@ -13,6 +64,7 @@
 
   border: 1px solid grey;
   border-radius: 5px;
+  padding: 15px;
   margin: 10px;
   margin-top: 20px;
 }
@@ -20,7 +72,12 @@
 .deal {
   max-width: 450px;
   opacity: 0.8;
+  body {
+    font-family: 'Lato' !important;
+    padding-top: 4.1rem;
+  }
 }
+
 @media only screen and (max-width: 800px) { .deal{ width: 95%; } }
 @media only screen and (max-width: 1200px) and (min-width: 801px) {.deal{width: 45%; } }
 @media only screen and (min-width: 1201px) {.deal{width: 30%; } }
@@ -48,18 +105,18 @@
   text-align: right;
 }
 
-.deal .provider-image{
+.deal img{
+  max-height: 200px;
+  max-width: 100%;
   display: block;
-  float: left;
-  max-width: 25%;
-
+  margin: auto;
 }
 .deal-image-div{
-  height: 200px;
+  height: 250px;
   background-position-x: center;
   background-position-y: center;
   background-size: cover;
-  }
+}
 
 .deal-show img{
   display: block;
@@ -67,14 +124,9 @@
   max-width: 100%;
 }
 
-.deal .points{
-  font-size: 3em;
-}
-
 .deal .progressbar-container{
   display: flex;
   position: absolute;
-  background-color: #d3d3d3;
   border: 1px solid grey;
   bottom: 0;
   left: 0;
@@ -87,11 +139,17 @@
 
   text-align: right;
   font-size: xx-small;
-  height: 15px;
+  height: 10px;
 
-  background: rgb(0,200,0);
+  background: rgba(0,200,0,0.5);
   border: none;
   border-radius: 5px;
+}
+
+.deal .progressbar-hidden{
+  flex: 1;
+  height: 10;
+  position: absolute;
 }
 
 .deal .progress-percent{
@@ -99,16 +157,26 @@
   top: 0;
   right: 0;
   font-size: small;
-  line-height: 15px;
+  line-height: 10px;
 }
 
 .deal h3, .deal-show h3{
   margin:  0;
 }
 
-.deals-filter{
+/*.deals-filter{
   display: block;
   width: initial;
+  text-align: center;
 }
+.deals-filter   button {
+  font-size: 1em;
+  position: inherit;
+}*/
 
+@media (min-width: 995px) {
+  body {
+    padding-top: 0vh
+  }
+}
 
