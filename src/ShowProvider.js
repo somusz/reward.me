@@ -106,7 +106,7 @@ class ShowProvider extends Component{
       <div class="container settings_page" style={{ margin: '30px auto', height: '100%', paddingBottom: '300px'}}>
         <div class="row">
            <div class="col-md-5 settings_form" id='provider-user-credentials' style={{display: this.props.session ? 'block' : 'none'}}>
-                <img src={currentProvider.image} alt={currentProvider.name} style={{ width: '70%', height: '15%', margin: '15px auto', display: 'block'}}/>
+                <img src={currentProvider.image} alt={currentProvider.name} style={{ height: '10%', margin: '15px auto', display: 'block'}}/>
               <form className='provider-user-credentials-update-form' onSubmit={this.handleUpdateSubmit}>
                 <p className='text-center' style={{marginTop: '10px'}} > Provide your {currentProvider.name} credentials to link your {currentProvider.name} Points to your Reward.me account </p>
 
