@@ -36,10 +36,6 @@ li.row {
   padding: 20px 10px 20px 10px;
 }
 
-img.img-fluid {
-  margin: 10px !important;
-}
-
 .pagination {
   margin-bottom: 15px;
 }
@@ -63,7 +59,7 @@ button.btn {
 }
 
 .provider-image-container{
-  height: 100px;
+  height: 100px ;
   margin: 0 auto;
   display: block;
 }
@@ -77,7 +73,7 @@ button.btn {
 
 @media (max-width: 1100px) {
   .provider-image-container{
-    margin: 0 auto;
+    margin: 20px auto !important;
     display: block;
   }
 }
