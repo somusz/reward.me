@@ -60,7 +60,7 @@ button.btn {
 
 .provider-image-container{
   height: 100px ;
-  margin: 0 auto;
+  margin: 20px auto !important;
   display: block;
 }
 
@@ -71,12 +71,6 @@ button.btn {
   margin-right: 10px;
 }
 
-@media (max-width: 1100px) {
-  .provider-image-container{
-    margin: 20px auto !important;
-    display: block;
-  }
-}
 
 @media (min-width: 995px) {
   body {

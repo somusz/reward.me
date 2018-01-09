@@ -98,7 +98,7 @@ class NewProvider extends Component{
          <div class="col-md-7 settings_form">
             <h3 style={{margin: '20px auto'}} className='text-center' >Update my credentials at {currentProvider.name}</h3>
             <form id='settingsForm' onSubmit={this.handleLinkAccountSubmit} >
-              <label>Enter your credentials at {currentProvider.name}</label>
+              <label className='text-center' >Enter your credentials at {currentProvider.name}</label>
 
             <div id="provider-user-credentials-link-username" style={{display: currentProvider.membership_username_required ? 'block' : 'none'}} className="form-group" >
               <label>Your Username at {currentProvider.name}: </label>
