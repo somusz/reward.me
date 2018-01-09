@@ -8,8 +8,6 @@ import { faMobileAlt } from '@fortawesome/fontawesome-free-solid'
 import { faMoneyBillAlt } from '@fortawesome/fontawesome-free-solid'
 import { faThumbsUp } from '@fortawesome/fontawesome-free-solid'
 
-
-
 class Home extends Component{
   constructor(props) {
     super(props);
