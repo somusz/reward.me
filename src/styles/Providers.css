@@ -11,7 +11,7 @@ body {
   max-width: 80%;
 }
 
-.pointsBalance {
+.pointsBalance, .providerName {
   font-size: 25px;
 }
 
@@ -36,11 +36,6 @@ li.row {
   padding: 20px 10px 20px 10px;
 }
 
-img.img-fluid {
-  height: 100px;
-  margin: 10px !important;
-}
-
 .pagination {
   margin-bottom: 15px;
 }
@@ -59,10 +54,13 @@ button.btn {
   left: 100px;
 }
 
+.provider-bootstrap-container {
+  margin: auto !important;
+}
+
 .provider-image-container{
-  width: 60%;
-  height: 85%;
-  margin: 0 auto;
+  height: 100px ;
+  margin: 20px auto !important;
   display: block;
 }
 
@@ -73,14 +71,6 @@ button.btn {
   margin-right: 10px;
 }
 
-@media (max-width: 1100px) {
-  .provider-image-container{
-    width: 70%;
-    height: 80%;
-    margin: 0 auto;
-    display: block;
-  }
-}
 
 @media (min-width: 995px) {
   body {
