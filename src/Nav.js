@@ -102,8 +102,10 @@ class Nav extends Component{
       </ul>
       </div>
       </div>
+        {(this.props.session) &&
+          <div style={{display: 'block'}}>Welcome Yekkii</div>
+        }
       </nav>
-
 
       )
   }

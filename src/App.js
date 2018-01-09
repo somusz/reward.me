@@ -22,7 +22,6 @@ class App extends React.Component {
     super(props)
     this.state = {
       points: {},
-      cookie: '',
       message: '',
       popUpVisibility: 'hidden',
       popUpOpacity: '0',
@@ -60,7 +59,7 @@ class App extends React.Component {
   }
 
   saveUserEmail = (email) => {
-    console.log('in save user email function')
+    console.log('in save user email function', email)
     this.setState({
       userEmail: email
     })
