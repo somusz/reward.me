@@ -11,29 +11,33 @@ class Deal extends React.Component{
 // <img src={this.props.item.image} alt={this.props.item.name}/>
 
   render(){
+    console.log('Deal.js props history --> ', this.props.history.location.pathname, this.props.history.location.pathname.search('/providers') === -1)
     return (
 
-      <div className="col-lg-3 col-md-4 mb-4">
-        <div className="card h-100">
-          <Link to={`/deals/${this.props.item.id}`}>
+    
+        <div className= {(this.props.history.location.pathname.search('/providers') === -1) ? "col-lg-3 col-md-4 mb-4" : "col-lg-8 col-md-12 mb-4"} >
+
+          <div className="card h-100" style={{position: 'relative'}}>
+          <Link to={`/deals/${this.props.item.id}`} >
             <div className="deal-image-div" style={{backgroundImage: `url(${this.props.item.image})`}} />
           </Link>
           <div className="card-body">
+          <div className='card-provider-name' >{this.props.item.provider_name}</div>
             <h4 className="card-title">
               <Link to={`/deals/${this.props.item.id}`}>
                 {this.cleanName(this.props.item.name)}
               </Link>
             </h4>
-
           </div>
           {this.getPercentage() === 1 ?
+            <a href={this.props.item.url} target='_blank' >
+            <button className="card-footer">
+               REDEEM NOW - {this.props.item.price} points                
+            </button> </a> :
             <div className="card-footer">
-              <a href={this.props.item.url}> REDEEM - {this.props.item.price} points </a>
-            </div> :
-            <div className="card-footer">
-              <small className ="text-muted">
-                {this.props.points[this.props.item.provider_id]} / {this.props.item.price} points
-              </small>
+              <span className ="text-muted">
+                {this.props.points[this.props.item.provider_id] ? this.props.points[this.props.item.provider_id] + ' / ' + this.props.item.price + ' points' : this.props.item.price + ' points'}
+              </span>
             </div>
           }
         </div>

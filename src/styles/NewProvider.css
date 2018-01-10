@@ -1,0 +1,13 @@
+html, body {
+  width: 100%;
+  position: relative;
+  min-height: 100%;
+  padding-top: 18vh;
+}
+
+
+@media (max-width: 890px) {
+  #link-provider-container {
+    padding-bottom: 350px !important;
+  }
+}

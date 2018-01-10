@@ -64,6 +64,7 @@ class Registration extends Component{
               </div>
 
               <div className="form-group">
+
               <label for="email" >Email: </label>
                 <input className="form-control" id="email" type="email" name="email" placeholder="Your Email Address"/>
               </div>

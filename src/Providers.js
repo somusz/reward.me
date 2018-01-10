@@ -35,15 +35,15 @@ class Providers extends Component{
       <div class="row" key={item.id}>
         <div class="col-md-4" style={{margin: '30px auto'}}>
           <Link to={`${this.props.match.url}/${item.id}`}>
-            <img class="img-fluid rounded mb-3 mb-md-0 provider-image-container" src={item.image} alt={item.name} />
+            <img className="img-fluid rounded mb-3 mb-md-0 provider-image-container" src={item.image} alt={item.name} />
           </Link>
         </div>
-        <div class="col-md-4" style={{margin: '30px auto'}} >
+        <div className="col-md-4" style={{margin: '30px auto'}} >
           <h3></h3>
           <p className='pointsBalance' >My {item.name} Points: {this.props.points[item.id]}</p>
           <Link to={`${this.props.match.url}/${item.id}`}>
             <button className="btn btn-primary"
-            style={{display: 'block', position: 'static', width: '50%',
+            style={{display: 'block', position: 'static', width: '100%',
             margin: '20px auto 30px auto;' }} >Edit</button>
           </Link>
         </div>
@@ -54,8 +54,7 @@ class Providers extends Component{
       <div>
       { this.props.data.filter(item => !item.user_id).length > 0 &&
         <div>
-          <h2 style={{margin: '40px'}} >Other Reward Programs</h2>
-            <div>Edit</div>
+          <h2 style={{margin: '40px'}} className='text-center' >Other Reward Programs</h2>
               {this.props.data.filter(item => !item.user_id).map(item => (
                 ProviderNonMember(item)
               ))}
@@ -66,17 +65,18 @@ class Providers extends Component{
 
     const ProviderNonMember = (item) => (
       <div class="row" key={item.id}>
-        <div class="col-md-6 text-center" >
+        <div class="col-md-4" style={{margin: '30px auto'}}>
            <Link to={`${this.props.match.url}/${item.id}`}>
-            <img class="img-fluid rounded mb-3 mb-md-0 provider-image-container" src={item.image} alt= { "" } />
+            <img className="img-fluid rounded mb-3 mb-md-0 provider-image-container" src={item.image} alt= { "" } />
            </Link>
         </div>
-        <div class="col-md-6">
+        <div className="col-md-4" style={{margin: '30px auto'}}>
             <Link to={`${this.props.match.url}/${item.id}`}>
-          <h3>{item.name}</h3>
+          <h3 className='providerName text-center' style={{margin: '30px auto', fontSize: '30px'}}>{item.name}</h3>
             </Link>
           <Link to={{ pathname: `${this.props.match.url}/new`, state: { provider: item.id }}}>
-            <button className="btn btn-primary" >Link To My Account</button>
+            <button className="btn btn-primary" style={{display: 'block', position: 'static', width: '100%',
+            margin: '20px auto 30px auto;' }} >Link To My Account</button>
           </Link>
         </div>
       </div>
@@ -94,17 +94,17 @@ class Providers extends Component{
     ])
 
     const ProviderAll = (item) => (
-      <div class="row" key={item.id}>
-        <div class="col-md-6 text-center" >
+      <div className="row" key={item.id}>
+        <div className="col-md-4 text-center" >
            <Link to={`${this.props.match.url}/${item.id}`}>
-            <img class="img-fluid rounded mb-3 mb-md-0 provider-image-container" src={item.image} alt= { "" } />
+            <img className="img-fluid rounded mb-3 mb-md-0 provider-image-container" src={item.image} alt= { "" } />
            </Link>
         </div>
-        <div class="col-md-6">
+        <div className="col-md-8 col-lg-8 col-sm-4 ">
             <Link to={`${this.props.match.url}/${item.id}`}>
           <h3>{item.name}</h3>
             </Link>
-          <p className='providerDescription' >TODO: add provider description to the database or remove this section
+          <p classNameName='providerDescription' > { item.description }
           </p>
         </div>
       </div>

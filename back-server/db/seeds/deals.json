@@ -131,7 +131,7 @@
     "name": "PC Plus",
     "description": "You can redeem your points for just about everything available at participating stores, excluding tobacco, alcohol, lottery tickets, or any products or services prohibited by law or as we determine from time to time. Currently, PC Plus™ members are unable to redeem their points for President’s Choice® gift cards, Joe Fresh® gift cards and government taxes. In certain provinces, you will also be prohibited from redeeming your points on prescription medication, over-the-counter medication and milk. Third party retailers, including The Mobile Shop, the cleaners and Wine Shop, are also excluded from the program. Please see our Terms of Use for more details.",
     "image": "http://www.loblaw.ca/content/dam/lclcorp/Images/Info%20Boxes/Loyalty/LOYALTYpcplus.jpg",
-    "price": 1,
+    "price": 20000,
     "provider_id": 8,
     "url": "https://www.pcplus.ca/loyaltyHome.jsp"
   },
@@ -248,11 +248,107 @@
     "url": "https://www.tdrewards.com/shop/product/558"
   },
   {
-    "name": "Bowsers Luxury Back Seat Cover - Herringbone",
-    "description": "Bowsers Luxury Back Seat Cover - Protect your car seats from spills and pet hair! Proudly made in Canada, Tufted bottom cushion and contrast binding add a touch of class to any vehicle, Plush Microvelvet fabrics repel pet hair and moisture, Bottom cushion filled with High Density fiber, Elastic strap ensures secure fit, Measures 57 inch l x 19 inch w x 2 inch h",
-    "image": "https://assets.tdrewards.com/img/product/orig.11364.jpg",
-    "price": 54361,
-    "provider_id": 3,
-    "url": "https://www.tdrewards.com/shop/product/593"
+    "name": "Free Premium Night Out Package",
+    "description": "Enjoy a FREE night out at the movies! Redeem 3,500 points and you will receive: 2 Premium movie tickets (i.e. 3D, UltraAVX, IMAX and D-Box) and 2 regular drinks and 1 regular popcorn!",
+    "image": "https://az184419.vo.msecnd.net/scene/brands/cineplex/banners/premium-night-out.jpg?w=400&h=175",
+    "price": 3500,
+    "provider_id": 2,
+    "url": "https://www.scene.ca/en-ca/rewards#/m/rewardsv2/premium-night-out-package"
+  },
+  {
+    "name": "FREE VIP Cinemas Movie Ticket",
+    "description": "Redeem 2,000 SCENE points for a FREE VIP Cinemas movie ticket*. Watch the hottest movies in surround sound and stunning picture as you enjoy exceptional in-seat dining in comfy reserved leather chairs. Come early to mingle in the licensed lounge or stay after the movie to satisfy all those late night cravings. Here’s how: Show your SCENE card at the box office in-theatre. Get your ticket online at Cineplex.com. There’s no age requirement to enjoy movies, but in order to experience Cineplex VIP Cinemas guests must be 19+ in all provinces (18+ in Alberta, Manitoba and Quebec) with photo ID required for entry. ",
+    "image": "https://az184419.vo.msecnd.net/scene/brands/cineplex/banners/vip-ticket.jpg",
+    "price": 2000,
+    "provider_id": 2,
+    "url": "https://www.scene.ca/en-ca/rewards#/m/rewardsv2/vip-movie-ticket"
+  },
+  {
+    "name": "FREE Premium Movie Ticket",
+    "description": "Redeem 1,500 SCENE points for a FREE Premium movie ticket (where available: 3D, UltraAVX, IMAX, Prime Seats, D-Box)*. Experience the next generation of movies with premium experiences that feature crisp, bright, ultra-realistic images so lifelike you’ll feel like you've stepped inside the movie. Here’s how: Show your SCENE card at the box office in-theatre. Get your ticket online at Cineplex.com",
+    "image": "https://az184419.vo.msecnd.net/scene/brands/cineplex/banners/premium-ticket.jpg",
+    "price": 1500,
+    "provider_id": 2,
+    "url": "https://www.scene.ca/en-ca/rewards#/m/rewardsv2/premium-movie-ticket"
+  },
+  {
+    "name": "Redeem SCENE Points at Harvey's!",
+    "description": "Save $10 at Harvey's every time you redeem 1,000 points.",
+    "image": "https://az184419.vo.msecnd.net/scene/brands/harveys/banners/harveys.jpg",
+    "price": 1000,
+    "provider_id": 2,
+    "url": "https://www.scene.ca/en-ca/rewards#/m/rewardsv2/harveys"
+  },
+  {
+    "name": "Free General Night Out Package",
+    "description": "Enjoy a FREE night out at the movies*! Redeem 2,500 points and you will receive: 2 General Admission movie tickets and 2 regular drinks and 1 regular popcorn!",
+    "image": "https://az184419.vo.msecnd.net/scene/brands/cineplex/banners/general-night-out.jpg",
+    "price": 2500,
+    "provider_id": 2,
+    "url": "https://www.scene.ca/en-ca/rewards#/m/rewardsv2/free-general-night-out"
+  },
+  {
+    "name": "Free Concession Combo",
+    "description": "Enjoy a FREE snack with your movie! Redeem 1,000 points to get a FREE concession combo consisting of a Large Popcorn and Large Fountain Drink! ",
+    "image": "https://az184419.vo.msecnd.net/scene/brands/cineplex/banners/movie-snacks.jpg",
+    "price": 1000,
+    "provider_id": 2,
+    "url": "https://www.scene.ca/en-ca/rewards#/m/rewardsv2/concession-combo"
+  },
+  {
+    "name": "Redeem SCENE Points at Swiss Chalet!",
+    "description": "Save $10 at Swiss Chalet every time you redeem 1,000 points.",
+    "image": "https://az184419.vo.msecnd.net/scene/brands/swiss-chalet/banners/swiss-chalet.jpg",
+    "price": 1000,
+    "provider_id": 2,
+    "url": "https://www.scene.ca/en-ca/rewards#/m/rewardsv2/swiss-chalet"
+  },
+  {
+    "name": "$5 Off Your Food & Drink at the Movies",
+    "description": "SCENE members, now you can get $5 off your food and drink at the movies with every 500 SCENE points you redeem! ",
+    "image": "https://az184419.vo.msecnd.net/scene/brands/cineplex/banners/concessions.jpg",
+    "price": 500,
+    "provider_id": 2,
+    "url": "https://www.scene.ca/en-ca/rewards#/m/rewardsv2/concessions"
+  },
+  {
+    "name": "FREE General Admission Movie Ticket",
+    "description": "The only thing better than seeing a movie on the big screen – is seeing one for FREE! Redeem 1,000 SCENE points for a FREE General Admission movie ticket*! Here’s how: Show your SCENE card at the box office office in-theatre. Get your ticket online at Cineplex.com",
+    "image": "https://az184419.vo.msecnd.net/scene/brands/cineplex/banners/general-admission-ticket.jpg",
+    "price": 1000,
+    "provider_id": 2,
+    "url": "https://www.scene.ca/en-ca/rewards#/m/rewardsv2/general-admission-movie-ticket"
+  },
+  {
+    "name": "Redeem SCENE Points at Montana’s!",
+    "description": "Save $10 at Montana's every time you redeem 1,000 points.",
+    "image": "https://az184419.vo.msecnd.net/scene/brands/montanas/banners/montanas.jpg",
+    "price": 1000,
+    "provider_id": 2,
+    "url": "https://www.scene.ca/rewards#/m/rewardsv2/montanas"
+  },
+  {
+    "name": "Redeem SCENE Points at East Side Mario’s!",
+    "description": "Save $10 at East Side Mario's every time you redeem 1,000 points.",
+    "image": "https://az184419.vo.msecnd.net/scene/brands/east-side-marios/banners/east-side-marios.jpg",
+    "price": 1000,
+    "provider_id": 2,
+    "url": "https://www.scene.ca/en-ca/rewards#/m/rewardsv2/east-side-marios"
+  },
+  {
+    "name": "Free General Night Out Package (Child)",
+    "description": "Treat the Kids - Enjoy a FREE night out at the movies*! Redeem 1,500 points and you will receive: 1 Child General Admission movie ticket and 1 Kids Concession Combo",
+    "image": "https://az184419.vo.msecnd.net/scene/brands/cineplex/banners/general-night-out-kids.jpg",
+    "price": 1500,
+    "provider_id": 2,
+    "url": "https://www.scene.ca/en-ca/rewards#/m/rewardsv2/general-night-out-package-child"
+  },
+  {
+    "name": "Redeem SCENE Points at Milestones!",
+    "description": "Save $10 at Milestones every time you redeem 1,000 points.",
+    "image": "https://az184419.vo.msecnd.net/scene/brands/milestones/banners/milestones.jpg",
+    "price": 1000,
+    "provider_id": 2,
+    "url": "https://www.scene.ca/rewards#/m/rewardsv2/milestones"
   }
 ]

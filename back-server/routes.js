@@ -19,18 +19,18 @@ module.exports = (knex) => {
   router.post('/login', (req, res) => {
     console.log('attempting to log in', req.body)
     knex
-    .select('password_digest', 'id')
+    .select('*')
     .from('users')
     .where('email', req.body.email)
     .then((result) => {
       if (bcrypt.compareSync(req.body.password, result[0].password_digest)) {
-
-          console.log('Login Successful')
+          console.log('Login Successful', result[0].first_name)
           req.session.user_id = result[0].id
-          res.status(200).send('ok');
+          res.status(200).send(JSON.stringify({name: result[0].first_name + '' + result[0].last_name, email: result[0].email}))
+            
         }
         else {
-          console.log('Login Failed')
+          catchonsole.log('Login Failed')
           res.status(400).send('not ok');
         }
       })
@@ -151,7 +151,7 @@ module.exports = (knex) => {
     let offset = Number(req.query.offset) || 0
     let searchArray = req.query.q ? req.query.q.split(' ') : []
     // let redeemable = Boolean(req.query.redeemable)
-    let provider = Number(req.query.provider) ? [Number(req.query.provider)] : [1,2]
+    let provider = Number(req.query.provider) ? [Number(req.query.provider)] : [1,2, 3, 4, 5, 6, 7, 8]
 
     let searchCriteriaCompiler = function () {
       if (searchArray.length > 0) {
