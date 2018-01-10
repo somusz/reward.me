@@ -25,7 +25,7 @@ class ShowProvider extends Component{
         },
         redirect: 'follow',
         body: JSON.stringify({
-          username: event.target.username ? event.target.username.value : undefined,
+          username: event.target.username.value ? event.target.username.value : undefined,
           membership_id: event.target.membershipid.value ? event.target.membershipid.value : undefined,
           membership_email: event.target.email.value ? event.target.email.value : undefined,
           password_digest: event.target.password.value ? event.target.password.value : undefined
@@ -39,9 +39,9 @@ class ShowProvider extends Component{
         }
       })
       .catch((err) => {
-        this.setState({
-          updateMessage: 'error'
-        })
+        // this.setState({
+        //   updateMessage: 'error'
+        // })
         console.log(err)
       })
     }
@@ -50,7 +50,7 @@ class ShowProvider extends Component{
   evaluateUpdateSubmit = (result) => {
     if (result === 'success') {
       return (
-        <div className='alert alert-success'>
+        <div className='provider-user-credentials-update-success'>
           You have successfully updated your credentials
         </div>
       )
@@ -58,7 +58,7 @@ class ShowProvider extends Component{
 
     else {
       return (
-        <div className='alert alert-danger'>
+        <div className='provider-user-credentials-update-error'>
           Something went wrong
         </div>
       )
@@ -66,10 +66,10 @@ class ShowProvider extends Component{
   }
 
   clearFields() {
-    this.refs = null
-    //this.refs.membershipid.value = ''
-    //this.refs.email.value = ''
-    //this.refs.password.value = ''
+    this.refs.username.value = ''
+    this.refs.membershipid.value = ''
+    this.refs.email.value = ''
+    this.refs.password.value = ''
   }
 
   clearMessage() {

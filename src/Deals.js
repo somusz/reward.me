@@ -1,7 +1,11 @@
 import Deal from './Deal.js'
 import React, {Component} from 'react';
 import {Redirect} from 'react-router-dom';
+import photo1 from './img/photo1.jpg';
+import photo2 from './img/photo2.jpg';
+import photo3 from './img/photo3.jpg';
 import './styles/Deals.css';
+
 
 class Deals extends Component{
   constructor(props){
@@ -61,15 +65,15 @@ class Deals extends Component{
                 </ol>
                 <div className="carousel-inner" role="listbox">
                   <div className="carousel-item active">
-                    <img className="d-block img-fluid" src="./StockPhoto1_900x350.jpeg" alt="First slide"/>
+                    <img className="d-block img-fluid" src={ photo1 } alt={"First slide"} />
                     <h2 className="carousel-content"> Trip of Your Life </h2>
                   </div>
                   <div className="carousel-item">
-                    <img className="d-block img-fluid" src="./StockPhoto2_900x350.jpeg" alt="Second slide"/>
+                    <img className="d-block img-fluid" src={ photo2 } alt={"Second slide"} />
                     <h2 className="carousel-content"> Tropical Vacation </h2>
                   </div>
                   <div className="carousel-item">
-                    <img className="d-block img-fluid" src="./StockPhoto3_900x350.jpg" alt="Third slide"/>
+                    <img className="d-block img-fluid" src={ photo3 } alt={"Third slide"} />
                     <h2 className="carousel-content"> Visit Disney Land </h2>
                   </div>
                 </div>
@@ -95,6 +99,7 @@ class Deals extends Component{
             onSubmit={this.handleSubmit}
             className="form-group row "
           >
+        { this.props.session &&
             <div className="col">
               <div className="form-control">
                 <input
@@ -108,7 +113,7 @@ class Deals extends Component{
                 <label className="form-check-label" htmlFor="redeemableCheck"> Redeemable </label>
               </div>
             </div>
-
+        }
             <div className="col">
               <select
                 name="providers"

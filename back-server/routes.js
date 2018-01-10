@@ -151,7 +151,7 @@ module.exports = (knex) => {
     let offset = Number(req.query.offset) || 0
     let searchArray = req.query.q ? req.query.q.split(' ') : []
     // let redeemable = Boolean(req.query.redeemable)
-    let provider = Number(req.query.provider) ? [Number(req.query.provider)] : [1,2,3,4,5,6,7,8]
+    let provider = Number(req.query.provider) ? [Number(req.query.provider)] : [1,2]
 
     let searchCriteriaCompiler = function () {
       if (searchArray.length > 0) {

@@ -1,10 +1,17 @@
+*{
+  padding:0px;
+  margin:0px;
+}
+
+ul{
+  margin-bottom:0;
+}
+
 .navbar {
   height: 22vh;
 }
 
 .navbar-custom {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
   background-color: rgba(255, 255, 255, 0);
 }
 
@@ -14,6 +21,15 @@
   color: rgba(0, 0, 0, 1);
   letter-spacing: 0.1rem;
   font-weight: 700;
+}
+
+.scroll-nav-background {
+  background-color: rgb(29, 128, 159);
+  transition: 1.2s ease;
+}
+
+#alt-nav-bar {
+  display: none;
 }
 
 .navbar-brand:hover {
@@ -26,15 +42,28 @@
   text-transform: uppercase;
   font-size: 0.8rem;
   color: rgba(0, 0, 0, 1);
-  font-weight: 700;
+  font-weight: 0;
   letter-spacing: 0.1rem;
   margin-right: 10px; 
   border-right: 1px solid grey;
 }
 
-.nav-item :hover{
+li#navbar-user-details {
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  color: rgba(0, 0, 0, 1);
+  letter-spacing: 0.1rem;
+  margin-right: 10px; 
+  margin-top: 8px !important;
+  font-weight: 1000 !important;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+  color: rgba(255,255,255,1) !important;
+  list-style: none;
+  text-decoration: none;
   background-color: black;
-  color: rgb(255, 255, 255, 1);
+  color: rgb(0, 0, 0, 1) !important;
 }
 
 button.navbar-toggler {
@@ -43,22 +72,70 @@ button.navbar-toggler {
   top: 37%;
 }
 
+@media (min-width: 995px) {
+  .alt-nav-bar {
+    display: none !important;
+  }
+}
 
 @media (max-width: 995px) {
   .navbar-custom .navbar-brand {
     color: rgba(255, 255, 255, 1);
     font-weight: 200;
+    margin: 0 auto !important;
   }
+
+  .navbar-brand:hover {
+    color: rgb(0, 0, 0) !important;
+    transition: all 0.5s ease !important;
+  }
+
+
   button.navbar-toggler {
     border: 1.5px solid white !important;
     left: 80% !important;
-    }
-    .navbar-custom {
-      background-color: rgb(29, 128, 159) !important;
-    }
-    .navbar-nav .nav-item .nav-link {
-      margin: 0;
-      border: none;
-      width: 100px !important;
-    }
   }
+  .navbar-custom {
+    background-color: rgb(29, 128, 159) !important;
+  }
+
+  .navbar-nav .nav-item .nav-link {
+    margin: 0;
+    border: none;
+    width: 100px !important;
+  }
+  #navbarResponsive {
+    display: none;
+  }
+
+  .alt-nav-bar {
+    display: block !important;
+    transition: 1s ease;
+    /*height: 100% !important;*/
+  }
+
+  .alt-nav-item {
+    display: inline-block;
+    margin: 10px 10px 10px 0;
+    font-size: 18px;
+    list-style: none;
+    text-decoration: none;
+  }
+
+  .alt-nav-item :hover {
+    border-left: 5px solid #fff;
+  }
+
+  
+  .alt-nav-item a {
+    color: #fff !important;
+    font-family: 'Catamaran' !important;
+    font-size: 1em; 
+    margin: 20px 20px 20px 0;
+    padding-left: 10px;
+    width: 20%;
+    list-style: none;
+    text-decoration: none;
+
+  }
+}
