@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom'
+import $ from "jquery";
 import Deal from './Deal.js'
 
 class ShowProvider extends Component{
@@ -16,6 +17,7 @@ class ShowProvider extends Component{
     event.preventDefault()
 
     if (event) {
+      console.log('debugging --> ', event.target)
       fetch(this.props.match.url, {
         method: 'PUT',
         credentials: 'include',
@@ -107,12 +109,12 @@ class ShowProvider extends Component{
         <div class="row">
            <div class="col-md-5 settings_form" id='provider-user-credentials' style={{display: this.props.session ? 'block' : 'none'}}>
                 <img src={currentProvider.image} alt={currentProvider.name} style={{ height: '10%', margin: '15px auto', display: 'block'}}/>
-              <form className='provider-user-credentials-update-form' onSubmit={this.handleUpdateSubmit}>
+              <form className='provider-user-credentials-update-form' onSubmit={this.handleUpdateSubmit} id='showProvider'>
                 <p className='text-center' style={{marginTop: '10px'}} > Provide your {currentProvider.name} credentials to link your {currentProvider.name} Points to your Reward.me account </p>
 
                 {(currentProvider.membership_username_required) &&
 
-                  <div className="form-group" id="settingsName">
+                  <div className="form-group" >
                     <label for="username">{currentProvider.membership_username_label || "Username"}: </label>
                     <input type="text" 
                         id="provider-user-credentials-update-username" 
@@ -181,9 +183,9 @@ class ShowProvider extends Component{
           })}
           <div className="deals-container-linkto-deals">
             <Link to={`/deals?provider=${this.props.match.params.id}`}>
-              <button className="btn btn-default submit form" style={{cursor: 'pointer', position: 'static', width: '450px', margin: '20px auto 30px auto;'}} >
+              <div className="btn btn-default submit form" style={{cursor: 'pointer', position: 'static', width: '450px', margin: '20px auto 30px auto;'}} >
                 See All Rewards
-              </button>
+              </div>
             </Link>
           </div>
         </div>

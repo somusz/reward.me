@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom'
 import Deal from './Deal.js'
+import $ from "jquery";
 import './styles/NewProvider.css'
 
 
@@ -97,7 +98,7 @@ class NewProvider extends Component{
       <div class="row">
          <div class="col-md-7 settings_form">
             <h3 style={{margin: '20px auto'}} className='text-center' >Update my credentials at {currentProvider.name}</h3>
-            <form id='settingsForm' onSubmit={this.handleLinkAccountSubmit} >
+            <form id='newProviderForm' onSubmit={this.handleLinkAccountSubmit} >
               <label className='text-center' >Enter your credentials at {currentProvider.name}</label>
 
             <div id="provider-user-credentials-link-username" style={{display: currentProvider.membership_username_required ? 'block' : 'none'}} className="form-group" >
@@ -143,9 +144,9 @@ class NewProvider extends Component{
                  placeholder="Your password"
                  onFocus={this.clearMessage} />
             </div>
-              <div className="btn btn-default submit form" onClick={this.changePassword} value={submitButtonValue} style={{cursor: 'pointer', display: 'block'}}>
+              <button className="btn btn-default submit form" type='submit' value={submitButtonValue} style={{cursor: 'pointer', position: 'static', width: '100%', margin: '20px auto 30px auto;'}}>
                 Submit
-              </div>
+              </button>
         </form>
           {this.state.updateMessage &&
             this.evaluateLinkAccountSubmit(this.state.updateMessage, currentProvider.name)
