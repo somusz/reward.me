@@ -34,10 +34,14 @@ class Login extends Component{
         })
       })
       .then((res) => {
-        console.log('logged in, about to call setPoints')
-        this.props.setPoints()
-        this.props.setSession()
-        this.props.history.push('/deals')
+        return res.json()
+      })
+      .then((res) => {
+          console.log('logged in about to call setPoints')
+          this.props.setPoints()
+          this.props.setSession()
+          this.props.history.push('/deals')
+          this.props.saveUserEmailAndName(res)
       })
       .catch((err) => {
         console.log(err)
@@ -63,7 +67,7 @@ class Login extends Component{
                 <label for ="description">Password: </label>
                 <input className="form-control" id="password" type="password" name="password" placeholder="Your password" />
               </div>
-              <div clasName='submit form'>
+              <div className='submit form'>
                 <button className="btn btn-default submit form" type="submit" style={{cursor: 'pointer', position: 'static', width: '100%', margin: '20px auto 30px auto;'}}>
                   Login
                 </button>

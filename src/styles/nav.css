@@ -23,6 +23,11 @@ ul{
   font-weight: 700;
 }
 
+.scroll-nav-background {
+  background-color: rgb(29, 128, 159);
+  transition: 1.2s ease;
+}
+
 #alt-nav-bar {
   display: none;
 }
@@ -37,17 +42,27 @@ ul{
   text-transform: uppercase;
   font-size: 0.8rem;
   color: rgba(0, 0, 0, 1);
-  font-weight: 700;
+  font-weight: 0;
   letter-spacing: 0.1rem;
   margin-right: 10px; 
   border-right: 1px solid grey;
 }
 
+li#navbar-user-details {
+  font-size: 0.9rem;
+  color: rgba(0, 0, 0, 1);
+  letter-spacing: 0.1rem;
+  margin-right: 10px; 
+  margin-top: 8px !important;
+  font-weight: 1000 !important;
+}
 
-.nav-item :hover{
+.navbar-dark .navbar-nav .nav-link:hover {
+  color: rgba(255,255,255,1) !important;
   list-style: none;
   text-decoration: none;
-  color: rgb(0,0,0, 1) !important;
+  background-color: black;
+  color: rgb(0, 0, 0, 1) !important;
 }
 
 button.navbar-toggler {
@@ -111,7 +126,7 @@ button.navbar-toggler {
   }
 
   
-  .alt-nav-item a {
+  .alt-nav-item a, li#navbar-user-details {
     color: #fff !important;
     font-family: 'Catamaran' !important;
     font-size: 1em; 

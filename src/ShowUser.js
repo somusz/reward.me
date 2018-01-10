@@ -116,7 +116,6 @@ class ShowUser extends Component{
 
     return ([
     <div className='container' id='settings-container' style={{height: '100%', paddingBottom: '400px', marginTop: '50px'}}>
-    <div className='col-md-8' >Hello {this.state.email}</div>,
       <div class="container settings_page">
       <div class="row">
          <div class="col-md-7 settings_form">

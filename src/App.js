@@ -8,7 +8,7 @@ import ShowUser from './ShowUser.js';
 import Home from './Home.js';
 import Footer from './Footer.js'
 import PopUp from './PopUp.js'
-
+import Watchlist from './Watchlist.js';
 
 import {
   BrowserRouter as Router,
@@ -22,11 +22,9 @@ class App extends React.Component {
     super(props)
     this.state = {
       points: {},
-      cookie: '',
       message: '',
       popUpVisibility: 'hidden',
       popUpOpacity: '0',
-      userEmail: ''
     }
   }
 
@@ -59,10 +57,10 @@ class App extends React.Component {
     })
   }
 
-  saveUserEmail = (email) => {
-    console.log('in save user email function')
+  saveUserEmailAndName = (userDetails) => {
     this.setState({
-      userEmail: email
+      userEmail: userDetails.email, 
+      userName: userDetails.name
     })
   }
 
@@ -90,8 +88,9 @@ class App extends React.Component {
   }
 
   render() {
+
     return ([
-      <Nav points={this.state.points} setSession={this.setSession} session={this.state.session} />,
+      <Nav points={this.state.points} setSession={this.setSession} session={this.state.session} userName={this.state.userName} userEmail={this.state.userEmail}/>,
       <PopUp message={this.state.message} visibility={this.state.popUpVisibility} opacity={this.state.popUpOpacity} />,
       <Router>
       <div>
@@ -99,8 +98,9 @@ class App extends React.Component {
       <Route path="/providers" render={(props) => <ProviderSection {...props} points={this.state.points} session={this.state.session} showPopUp={this.showPopUp} /> } />
       <Route path="/deals" render={(props) => <DealsSection {...props} points={this.state.points} showPopUp={this.showPopUp} /> } />
       <Route path="/users/settings" render={(props) => <ShowUser {...props} userID={this.state.points} showPopUp={this.showPopUp}/> }/>
-      <Route path="/register" render={(props) => <Register {...props} session={this.state.session} setSession={this.setSession} showPopUp={this.showPopUp}/> }/>
-      <Route path="/login" render={(props) => <Login {...props} session={this.state.session} setPoints={this.setPoints} setSession={this.setSession} showPopUp={this.showPopUp} saveUserEmail={this.saveUserEmail} /> }/>
+      <Route path="/watchlist" render={(props) => <Watchlist {...props} showPopUp={this.showPopUp}/> }/>
+      <Route path="/register" render={(props) => <Register {...props} setSession={this.setSession} showPopUp={this.showPopUp}/> }/>
+      <Route path="/login" render={(props) => <Login {...props} setPoints={this.setPoints} setSession={this.setSession} showPopUp={this.showPopUp} saveUserEmailAndName={this.saveUserEmailAndName} /> }/>
       </div>
       </Router>,
       <Footer />
