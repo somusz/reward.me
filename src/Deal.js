@@ -21,7 +21,15 @@ class Deal extends React.Component{
           <Link to={`/deals/${this.props.item.id}`} >
             <div className="deal-image-div" style={{backgroundImage: `url(${this.props.item.image})`}} />
           </Link>
-          <div className='card-provider-name' >{this.props.item.provider_name}</div>
+          <div
+            className='card-provider-name'
+            style={{
+              background: this.providerBackgroundColor(this.props.item.provider_id),
+              color: this.providerColor(this.props.item.provider_id)
+            }}
+          >
+              {this.props.item.provider_name}
+            </div>
           <div className="card-body">
             <h4 className="card-title">
               <Link to={`/deals/${this.props.item.id}`}>
@@ -73,6 +81,47 @@ class Deal extends React.Component{
         </div>
       </article>
     )
+  }
+
+  providerBackgroundColor(id){
+    switch(id) {
+      case 1:
+        return '#01599a'
+      case 2:
+        return '#ed1b2e'
+      case 3:
+        return '#94d833'
+      case 4:
+        return '#6cd0ef'
+      case 5:
+        return '#27082f'
+      case 6:
+        return '#f5efc5'
+      case 7:
+        return '#f39495'
+      case 8:
+        return '#690201'
+    }
+  }
+  providerColor(id){
+    switch(id) {
+      case 1:
+        return '#fed200'
+      case 2:
+        return 'white'
+      case 3:
+        return '#154530'
+      case 4:
+        return 'white'
+      case 5:
+        return 'white'
+      case 6:
+        return '#9a2226'
+      case 7:
+        return 'black'
+      case 8:
+        return 'white'
+    }
   }
 
   getPercentage(){

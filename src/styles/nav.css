@@ -22,6 +22,9 @@ ul{
   letter-spacing: 0.1rem;
   font-weight: 700;
 }
+.scroll-nav-background .navbar-brand {
+  color: white;
+}
 
 .scroll-nav-background {
   background-color: rgb(29, 128, 159);
@@ -32,33 +35,35 @@ ul{
   display: none;
 }
 
-.navbar-brand:hover {
-  color: rgb(29, 128, 159) !important;
-  transition: all 0.5s ease !important;
-}
-
 
 .navbar-nav .nav-item .nav-link {
   text-transform: uppercase;
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: rgba(0, 0, 0, 1);
   font-weight: 0;
   letter-spacing: 0.1rem;
-  margin-right: 10px; 
+  margin-right: 10px;
   border-right: 1px solid grey;
+}
+.scroll-nav-background .nav-item .nav-link {
+  color: white;
 }
 
 li#navbar-user-details {
   text-transform: uppercase;
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: rgba(0, 0, 0, 1);
   letter-spacing: 0.1rem;
-  margin-right: 10px; 
+  margin-right: 10px;
   margin-top: 8px !important;
   font-weight: 1000 !important;
 }
+.scroll-nav-background li#navbar-user-details {
+  color: white;
+}
 
-.navbar-dark .navbar-nav .nav-link:hover {
+
+.navbar-nav .nav-link:hover {
   color: rgba(255,255,255,1) !important;
   list-style: none;
   text-decoration: none;
@@ -85,10 +90,6 @@ button.navbar-toggler {
     margin: 0 auto !important;
   }
 
-  .navbar-brand:hover {
-    color: rgb(0, 0, 0) !important;
-    transition: all 0.5s ease !important;
-  }
 
 
   button.navbar-toggler {
@@ -99,7 +100,7 @@ button.navbar-toggler {
     background-color: rgb(29, 128, 159) !important;
   }
 
-  .navbar-nav .nav-item .nav-link {
+  .nav-item .nav-link {
     margin: 0;
     border: none;
     width: 100px !important;
@@ -122,15 +123,15 @@ button.navbar-toggler {
     text-decoration: none;
   }
 
-  .alt-nav-item :hover {
+  .alt-nav-item:hover {
     border-left: 5px solid #fff;
   }
 
-  
+
   .alt-nav-item a {
     color: #fff !important;
     font-family: 'Catamaran' !important;
-    font-size: 1em; 
+    font-size: 1em;
     margin: 20px 20px 20px 0;
     padding-left: 10px;
     width: 20%;

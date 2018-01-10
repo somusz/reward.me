@@ -39,7 +39,7 @@ class Nav extends Component{
   }
 
 
-  render(){ 
+  render(){
     $(window).scroll (function () {
       let sT = $(this).scrollTop();
       if (sT >= 70) {
@@ -50,7 +50,7 @@ class Nav extends Component{
     })
     return (
 
-      <nav className="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+      <nav className="navbar navbar-expand-lg navbar-custom fixed-top">
       <div className="container" style={{height: '100%'}}>
       <a className="navbar-brand" id='navbar-title' href="/">Reward.Me</a>
       <div className="collapse navbar-collapse" id="navbarResponsive">
