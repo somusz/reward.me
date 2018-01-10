@@ -22,18 +22,18 @@ class ShowDeal extends Component{
   }
   render(){
     return (
-      <div>
-        <Link to="/deals">All Deals</Link>
+      <div className='show-deal-container' >
 
         {this.state.data.map(item => (
           <article key={item.id} className="deal-show">
-            <h3> {item.name} - {item.price} points </h3>
+        <Link to="/deals" style={{display: 'block', textAlign: 'right', marginTop: '10px', marginRight: '10px'}}> Go Back to All Deals</Link>
+            <h3 className='text-center' > {item.name} - {item.price} points </h3>
             <img src={item.image} alt={item.name}/>
             <div> {item.description} </div>
             <div className="text-center">
-              <a className="redeem-button" href={item.url}> REDEEM </a>
+              <a className="redeem-button" href={item.url} target='_blank' > REDEEM </a>
               <br/><br/>
-              <small> You have {this.props.points[item.provider_id]} points </small>
+              {this.props.points[item.provider_id] ? <small> You have {this.props.points[item.provider_id]} points </small> : ''}
             </div>
           </article>
         ))}

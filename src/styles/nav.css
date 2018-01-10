@@ -8,7 +8,7 @@ ul{
 }
 
 .navbar {
-  height: 22vh;
+  height: 14vh;
 }
 
 .navbar-custom {
@@ -40,7 +40,7 @@ ul{
 
 .navbar-nav .nav-item .nav-link {
   text-transform: uppercase;
-  font-size: 0.8rem;
+  font-size: 1.2rem;
   color: rgba(0, 0, 0, 1);
   font-weight: 0;
   letter-spacing: 0.1rem;
@@ -50,7 +50,7 @@ ul{
 
 li#navbar-user-details {
   text-transform: uppercase;
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   color: rgba(0, 0, 0, 1);
   letter-spacing: 0.1rem;
   margin-right: 10px; 
