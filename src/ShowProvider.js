@@ -25,7 +25,7 @@ class ShowProvider extends Component{
         },
         redirect: 'follow',
         body: JSON.stringify({
-          username: event.target.username.value ? event.target.username.value : undefined,
+          username: event.target.username ? event.target.username.value : undefined,
           membership_id: event.target.membershipid.value ? event.target.membershipid.value : undefined,
           membership_email: event.target.email.value ? event.target.email.value : undefined,
           password_digest: event.target.password.value ? event.target.password.value : undefined
@@ -39,9 +39,9 @@ class ShowProvider extends Component{
         }
       })
       .catch((err) => {
-        // this.setState({
-        //   updateMessage: 'error'
-        // })
+        this.setState({
+          updateMessage: 'error'
+        })
         console.log(err)
       })
     }
@@ -50,7 +50,7 @@ class ShowProvider extends Component{
   evaluateUpdateSubmit = (result) => {
     if (result === 'success') {
       return (
-        <div className='provider-user-credentials-update-success'>
+        <div className='alert alert-success'>
           You have successfully updated your credentials
         </div>
       )
@@ -58,7 +58,7 @@ class ShowProvider extends Component{
 
     else {
       return (
-        <div className='provider-user-credentials-update-error'>
+        <div className='alert alert-danger'>
           Something went wrong
         </div>
       )
@@ -66,10 +66,10 @@ class ShowProvider extends Component{
   }
 
   clearFields() {
-    this.refs.username.value = ''
-    this.refs.membershipid.value = ''
-    this.refs.email.value = ''
-    this.refs.password.value = ''
+    this.refs = null
+    //this.refs.membershipid.value = ''
+    //this.refs.email.value = ''
+    //this.refs.password.value = ''
   }
 
   clearMessage() {
@@ -114,12 +114,12 @@ class ShowProvider extends Component{
 
                   <div className="form-group" id="settingsName">
                     <label for="username">{currentProvider.membership_username_label || "Username"}: </label>
-                    <input type="text" 
-                        id="provider-user-credentials-update-username" 
-                        className="form-control" 
-                        ref="username" 
-                        name="username" 
-                        placeholder="Your new username" 
+                    <input type="text"
+                        id="provider-user-credentials-update-username"
+                        className="form-control"
+                        ref="username"
+                        name="username"
+                        placeholder="Your new username"
                         onFocus={this.clearMessage} />
                   </div>
                 }
@@ -131,7 +131,7 @@ class ShowProvider extends Component{
                     <input id="provider-user-credentials-update-membershipid"
                            type="text"
                            ref="membershipid"
-                           className="form-control" 
+                           className="form-control"
                            name="membershipid"
                            placeholder="Your new membership ID"
                            onFocus={this.clearMessage} />
@@ -146,7 +146,7 @@ class ShowProvider extends Component{
                            type="email"
                            ref="email"
                            name="email"
-                           className="form-control" 
+                           className="form-control"
                            placeholder="Your new email"
                            onFocus={this.clearMessage} />
                   </div>
@@ -157,7 +157,7 @@ class ShowProvider extends Component{
                     <input id="provider-user-credentials-update-password"
                            type="password"
                            ref="password"
-                           className="form-control" 
+                           className="form-control"
                            name="password"
                            placeholder="Your new password"
                            onFocus={this.clearMessage} />
@@ -166,9 +166,9 @@ class ShowProvider extends Component{
                 <button className="btn btn-default submit form" type="submit" style={{cursor: 'pointer', position: 'static', width: '100%', margin: '20px auto 30px auto;'}}>
                   Submit
                 </button>
-      
+
               </form>
-      
+
             {this.state.updateMessage && this.evaluateUpdateSubmit(this.state.updateMessage)}
          </div>
 
@@ -198,9 +198,9 @@ class ShowProvider extends Component{
 export default ShowProvider;
 
 
- 
 
 
 
-    
+
+
 

@@ -112,7 +112,7 @@ module.exports = (knex) => {
           .from('users')
           .where('id', '=', req.session.user_id)
           .update({
-            password_digest: bcrypt.hashSync(req.body.password_digest, 10) 
+            password_digest: bcrypt.hashSync(req.body.password_digest, 10)
           })
           .returning('*')
           .then( result => {
@@ -127,7 +127,7 @@ module.exports = (knex) => {
           .from('users')
           .where('id', '=', req.session.user_id)
           .update({
-            password_digest: bcrypt.hashSync(req.body.password_digest, 10) 
+            password_digest: bcrypt.hashSync(req.body.password_digest, 10)
           })
           .returning('*')
           .then( result => {
@@ -151,7 +151,7 @@ module.exports = (knex) => {
     let offset = Number(req.query.offset) || 0
     let searchArray = req.query.q ? req.query.q.split(' ') : []
     // let redeemable = Boolean(req.query.redeemable)
-    let provider = Number(req.query.provider) ? [Number(req.query.provider)] : [1,2]
+    let provider = Number(req.query.provider) ? [Number(req.query.provider)] : [1,2,3,4,5,6,7,8]
 
     let searchCriteriaCompiler = function () {
       if (searchArray.length > 0) {
