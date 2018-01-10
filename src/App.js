@@ -100,8 +100,9 @@ class App extends React.Component {
       <Route path="/providers" render={(props) => <ProviderSection {...props} points={this.state.points} session={this.state.session} showPopUp={this.showPopUp} /> } />
       <Route path="/deals" render={(props) => <DealsSection {...props} points={this.state.points} showPopUp={this.showPopUp} session={this.state.session} /> } />
       <Route path="/users/settings" render={(props) => <ShowUser {...props} userID={this.state.points} showPopUp={this.showPopUp}/> }/>
-      <Route path="/register" render={(props) => <Register {...props} setSession={this.setSession} showPopUp={this.showPopUp}/> }/>
-      <Route path="/login" render={(props) => <Login {...props} setPoints={this.setPoints} setSession={this.setSession} showPopUp={this.showPopUp} saveUserEmailAndName={this.saveUserEmailAndName} /> }/>
+      <Route path="/register" render={(props) => <Register {...props} session={this.state.session} setSession={this.setSession} showPopUp={this.showPopUp}/> }/>
+      <Route path="/login" render={(props) => <Login {...props} session={this.state.session} setPoints={this.setPoints} setSession={this.setSession} showPopUp={this.showPopUp} saveUserEmail={this.saveUserEmail} /> }/>
+
       </div>
       </Router>,
       <Footer />

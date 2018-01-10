@@ -5,6 +5,15 @@ import './styles/ShowUsers.css'
 
 
 class Registration extends Component{
+  constructor(props) {
+    super(props)
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+    if (this.props.session) {
+      this.props.history.go(-2)
+    }
+  }
 
   handleRegisterSubmit = (event) => {
     event.preventDefault()
@@ -27,7 +36,7 @@ class Registration extends Component{
       })
       .then((res) => {
         this.props.setSession()
-        this.props.history.goBack()
+        this.props.history.push('/deals')
       })
       .catch((err) => {
         console.log(err)
@@ -44,16 +53,18 @@ class Registration extends Component{
 
             <form id='settingsForm' onSubmit={this.handleRegisterSubmit}>
 
-              <div className="form-group" id="settingsPhoneNumber">
+              <div className="form-group">
               <label for="firstName" >First Name: </label>
                 <input type="text" id="first_name" className="form-control" name="firstName" placeholder=" Your First Name..." />
               </div>
 
-              <div className="form-group" id="settingsPhoneNumber">
+              <div className="form-group">
               <label for="lastName" >Last Name: </label>
                 <input type="text" id="last_name" className="form-control" name="lastName" placeholder=" Your Last Name..." />
               </div>
-              <div className="form-group" id="settingsPhoneNumber">
+
+              <div className="form-group">
+
               <label for="email" >Email: </label>
                 <input className="form-control" id="email" type="email" name="email" placeholder="Your Email Address"/>
               </div>

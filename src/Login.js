@@ -11,6 +11,12 @@ class Login extends Component{
     }
   }
 
+  componentWillUpdate(nextProps, nextState) {
+    if (this.props.session) {
+      this.props.history.go(-2)
+    }
+  }
+
   handleLoginSubmit = (event) => {
     event.preventDefault()
 
@@ -28,6 +34,7 @@ class Login extends Component{
         })
       })
       .then((res) => {
+
         return res.json()
       })
       .then((res) => {
@@ -36,6 +43,7 @@ class Login extends Component{
           this.props.setSession()
           this.props.history.push('/deals')
           this.props.saveUserEmailAndName(res)
+
       })
       .catch((err) => {
         console.log(err)
