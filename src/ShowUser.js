@@ -116,7 +116,6 @@ class ShowUser extends Component{
 
     return ([
     <div className='container' id='settings-container' style={{height: '100%', paddingBottom: '400px', marginTop: '50px'}}>
-    <div className='col-md-8' >Hello {this.state.email}</div>,
       <div class="container settings_page">
       <div class="row">
          <div class="col-md-7 settings_form">
@@ -143,9 +142,9 @@ class ShowUser extends Component{
                 <label for ="description">Reconfirm New Password</label>
                 <input type="password" className="form-control" name="newPassword" onChange={this.handleRetypedNewPasswordChange} placeholder=" Enter password" />
               </div>
-              <div className="btn btn-default submit form" onClick={this.changePassword} style={{cursor: 'pointer', display: 'block'}}>
+              <button className="btn btn-default submit form" onClick={this.changePassword} style={{cursor: 'pointer', position: 'static', width: '100%', margin: '20px auto 30px auto;'}}>
                 Change Password
-              </div>
+              </button>
             </form>
        </div>
 

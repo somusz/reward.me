@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import {Redirect} from 'react-router-dom';
 import './styles/Deals.css';
 
+
 class Deals extends Component{
   constructor(props){
     console.log("constructing deals.js with props", props)
@@ -61,15 +62,15 @@ class Deals extends Component{
                 </ol>
                 <div className="carousel-inner" role="listbox">
                   <div className="carousel-item active">
-                    <img className="d-block img-fluid" src="./StockPhoto1_900x350.jpeg" alt="First slide"/>
+                    <img className="d-block img-fluid" src={ 'https://raw.githubusercontent.com/somusz/reward.me/master/public/StockPhoto3_900x350.jpg' } alt={"First slide"} />
                     <h2 className="carousel-content"> Trip of Your Life </h2>
                   </div>
                   <div className="carousel-item">
-                    <img className="d-block img-fluid" src="./StockPhoto2_900x350.jpeg" alt="Second slide"/>
+                    <img className="d-block img-fluid" src={ 'https://raw.githubusercontent.com/somusz/reward.me/master/public/StockPhoto3_900x350.jpg' } alt={"Second slide"} />
                     <h2 className="carousel-content"> Tropical Vacation </h2>
                   </div>
                   <div className="carousel-item">
-                    <img className="d-block img-fluid" src="./StockPhoto3_900x350.jpg" alt="Third slide"/>
+                    <img className="d-block img-fluid" src={ 'https://raw.githubusercontent.com/somusz/reward.me/master/public/StockPhoto3_900x350.jpg' } alt={"Third slide"} />
                     <h2 className="carousel-content"> Visit Disney Land </h2>
                   </div>
                 </div>
