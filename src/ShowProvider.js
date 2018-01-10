@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom'
+import $ from "jquery";
 import Deal from './Deal.js'
 
 class ShowProvider extends Component{
@@ -16,6 +17,7 @@ class ShowProvider extends Component{
     event.preventDefault()
 
     if (event) {
+      console.log('debugging --> ', event.target)
       fetch(this.props.match.url, {
         method: 'PUT',
         credentials: 'include',
@@ -25,10 +27,10 @@ class ShowProvider extends Component{
         },
         redirect: 'follow',
         body: JSON.stringify({
-          username: event.target.username.value ? event.target.username.value : undefined,
-          membership_id: event.target.membershipid.value ? event.target.membershipid.value : undefined,
-          membership_email: event.target.email.value ? event.target.email.value : undefined,
-          password_digest: event.target.password.value ? event.target.password.value : undefined
+          username: event.target.username ? event.target.username.value : undefined,
+          membership_id: event.target.membershipid ? event.target.membershipid.value : undefined,
+          membership_email: event.target.email ? event.target.email.value : undefined,
+          password_digest: event.target.password ? event.target.password.value : undefined
         })
       })
       .then((res) => {
@@ -49,27 +51,15 @@ class ShowProvider extends Component{
 
   evaluateUpdateSubmit = (result) => {
     if (result === 'success') {
-      return (
-        <div className='provider-user-credentials-update-success'>
-          You have successfully updated your credentials
-        </div>
-      )
+          this.props.showPopUp('You have successfully updated your credentials')
     }
-
     else {
-      return (
-        <div className='provider-user-credentials-update-error'>
-          Something went wrong
-        </div>
-      )
+        this.props.showPopUp('Something went wrong')
     }
   }
 
   clearFields() {
-    this.refs.username.value = ''
-    this.refs.membershipid.value = ''
-    this.refs.email.value = ''
-    this.refs.password.value = ''
+    this.refs = null
   }
 
   clearMessage() {
@@ -112,9 +102,8 @@ class ShowProvider extends Component{
 
                 {(currentProvider.membership_username_required) &&
 
-                  <div className="form-group" id="settingsName">
+                  <div className="form-group" >
                     <label for="username">{currentProvider.membership_username_label || "Username"}: </label>
-
                     <input type="text"
                         id="provider-user-credentials-update-username"
                         className="form-control"
@@ -178,9 +167,9 @@ class ShowProvider extends Component{
           })}
           <div className="deals-container-linkto-deals">
             <Link to={`/deals?provider=${this.props.match.params.id}`}>
-              <button className="btn btn-default submit form" style={{cursor: 'pointer', position: 'static', width: '450px', margin: '20px auto 30px auto;'}} >
+              <div className="btn btn-default submit form" style={{cursor: 'pointer', position: 'static', width: '450px', margin: '20px auto 30px auto;'}} >
                 See All Rewards
-              </button>
+              </div>
             </Link>
           </div>
         </div>
