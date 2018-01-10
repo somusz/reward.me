@@ -51,27 +51,15 @@ class ShowProvider extends Component{
 
   evaluateUpdateSubmit = (result) => {
     if (result === 'success') {
-      return (
-        <div className='provider-user-credentials-update-success'>
-          You have successfully updated your credentials
-        </div>
-      )
+          this.props.showPopUp('You have successfully updated your credentials')
     }
-
     else {
-      return (
-        <div className='provider-user-credentials-update-error'>
-          Something went wrong
-        </div>
-      )
+        this.props.showPopUp('Something went wrong')
     }
   }
 
   clearFields() {
-    this.refs.username.value = ''
-    this.refs.membershipid.value = ''
-    this.refs.email.value = ''
-    this.refs.password.value = ''
+    this.refs = null
   }
 
   clearMessage() {

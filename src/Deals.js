@@ -99,6 +99,7 @@ class Deals extends Component{
             onSubmit={this.handleSubmit}
             className="form-group row "
           >
+        { this.props.session &&
             <div className="col">
               <div className="form-control">
                 <input
@@ -112,7 +113,7 @@ class Deals extends Component{
                 <label className="form-check-label" htmlFor="redeemableCheck"> Redeemable </label>
               </div>
             </div>
-
+        }
             <div className="col">
               <select
                 name="providers"
