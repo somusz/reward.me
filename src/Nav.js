@@ -48,6 +48,7 @@ class Nav extends Component{
         $('.navbar').removeClass('scroll-nav-background')
       }
     })
+    {this.props.saveUserEmailAndName}
     return (
 
       <nav className="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
@@ -74,6 +75,9 @@ class Nav extends Component{
       {(!this.props.session) &&
         <li className="nav-item"><a href="/register" className="nav-link" >Register</a></li>
       }
+      {(this.props.session) &&
+        <li id='navbar-user-details'>Welcome {this.props.userName}</li>
+      }
       </ul>
       </div>
 
@@ -98,13 +102,9 @@ class Nav extends Component{
       {(!this.props.session) &&
         <li className='alt-nav-item' ><a href="/register" style={{paddingLeft: '20px !important' }}  >Register</a></li>
       }
-
       </ul>
       </div>
       </div>
-        {(this.props.session) &&
-          <div style={{display: 'block'}}>Welcome Yekkii</div>
-        }
       </nav>
 
       )

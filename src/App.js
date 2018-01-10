@@ -25,7 +25,8 @@ class App extends React.Component {
       message: '',
       popUpVisibility: 'hidden',
       popUpOpacity: '0',
-      userEmail: ''
+      userEmail: '',
+      userName: ''
     }
   }
 
@@ -58,10 +59,11 @@ class App extends React.Component {
     })
   }
 
-  saveUserEmail = (email) => {
-    console.log('in save user email function', email)
+  saveUserEmailAndName = (userDetails) => {
+    console.log('in save user email function', userDetails.email)
     this.setState({
-      userEmail: email
+      userEmail: userDetails.email, 
+      userName: userDetails.name
     })
   }
 
@@ -90,7 +92,7 @@ class App extends React.Component {
 
   render() {
     return ([
-      <Nav points={this.state.points} setSession={this.setSession} session={this.state.session} />,
+      <Nav points={this.state.points} setSession={this.setSession} session={this.state.session} userName={this.state.userName} userEmail={this.state.userEmail}/>,
       <PopUp message={this.state.message} visibility={this.state.popUpVisibility} opacity={this.state.popUpOpacity} />,
       <Router>
       <div>
@@ -99,7 +101,7 @@ class App extends React.Component {
       <Route path="/deals" render={(props) => <DealsSection {...props} points={this.state.points} showPopUp={this.showPopUp} /> } />
       <Route path="/users/settings" render={(props) => <ShowUser {...props} userID={this.state.points} showPopUp={this.showPopUp}/> }/>
       <Route path="/register" render={(props) => <Register {...props} setSession={this.setSession} showPopUp={this.showPopUp}/> }/>
-      <Route path="/login" render={(props) => <Login {...props} setPoints={this.setPoints} setSession={this.setSession} showPopUp={this.showPopUp} saveUserEmail={this.saveUserEmail} /> }/>
+      <Route path="/login" render={(props) => <Login {...props} setPoints={this.setPoints} setSession={this.setSession} showPopUp={this.showPopUp} saveUserEmailAndName={this.saveUserEmailAndName} /> }/>
       </div>
       </Router>,
       <Footer />

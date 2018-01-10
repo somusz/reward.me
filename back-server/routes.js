@@ -19,15 +19,15 @@ module.exports = (knex) => {
   router.post('/login', (req, res) => {
     console.log('attempting to log in', req.body)
     knex
-    .select('password_digest', 'id', 'email')
+    .select('*')
     .from('users')
     .where('email', req.body.email)
     .then((result) => {
       if (bcrypt.compareSync(req.body.password, result[0].password_digest)) {
-          console.log('Login Successful', result)
+          console.log('Login Successful', result[0].first_name)
           req.session.user_id = result[0].id
-          // res.status(200).send('ok');        
-            res.send(JSON.stringify(result))
+          res.status(200).send(JSON.stringify({name: result[0].first_name + '' + result[0].first_name, email: result[0].email}))
+            
         }
         else {
           catchonsole.log('Login Failed')

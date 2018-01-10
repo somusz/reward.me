@@ -28,15 +28,14 @@ class Login extends Component{
         })
       })
       .then((res) => {
-        console.log('still in the login promise chain', res)
         return res.json()
       })
       .then((res) => {
-        console.log('logged in, about to call setPoints', res)
-        this.props.setPoints()
-        this.props.setSession()
-        this.props.history.goBack()
-        this.props.saveUserEmail(res[0].email)
+          console.log('logged in about to call setPoints')
+          this.props.setPoints()
+          this.props.setSession()
+          this.props.history.push('/deals')
+          this.props.saveUserEmailAndName(res)
       })
       .catch((err) => {
         console.log(err)
