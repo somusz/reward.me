@@ -53,12 +53,6 @@ class Registration extends Component{
               <label for="lastName" >Last Name: </label>
                 <input type="text" id="last_name" className="form-control" name="lastName" placeholder=" Your Last Name..." />
               </div>
-
-              <div className="form-group" id="settingsPhoneNumber">
-              <label for="imageURL" >Image Url: </label>
-                <input type="text" id="image_url" className="form-control" name="image_url" placeholder="Link To Your Avatar Image" />
-              </div>
-
               <div className="form-group" id="settingsPhoneNumber">
               <label for="email" >Email: </label>
                 <input className="form-control" id="email" type="email" name="email" placeholder="Your Email Address"/>

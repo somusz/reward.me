@@ -48,7 +48,6 @@ class Nav extends Component{
         $('.navbar').removeClass('scroll-nav-background')
       }
     })
-    {this.props.saveUserEmailAndName}
     return (
 
       <nav className="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
@@ -76,7 +75,8 @@ class Nav extends Component{
         <li className="nav-item"><a href="/register" className="nav-link" >Register</a></li>
       }
       {(this.props.session) &&
-        <li id='navbar-user-details'>Welcome {this.props.userName}</li>
+        <li id='navbar-user-details'>Welcome Vivek</li>
+        // {this.props.userName}
       }
       </ul>
       </div>

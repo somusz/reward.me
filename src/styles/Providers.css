@@ -4,7 +4,7 @@ body {
   width: 100%;
   position: relative;
   min-height: 100%;
-  padding-top: 22vh
+  padding-top: 18vh
 }
 
 .providerDescription {
@@ -59,7 +59,7 @@ button.btn {
 }
 
 .provider-image-container{
-  height: 100px ;
+  max-height: 150px ;
   margin: 20px auto !important;
   display: block;
 }

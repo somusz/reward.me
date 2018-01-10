@@ -30,10 +30,10 @@ class NewProvider extends Component{
         redirect: 'follow',
         body: JSON.stringify({
           provider_id: this.props.location.state.provider,
-          username: event.target.username.value ? event.target.username.value : undefined,
-          membership_id: event.target.membershipid.value ? event.target.membershipid.value : undefined,
-          membership_email: event.target.email.value ? event.target.email.value : undefined,
-          password_digest: event.target.password.value ? event.target.password.value : undefined
+          username: event.target.username ? event.target.username.value : undefined,
+          membership_id: event.target.membershipid ? event.target.membershipid.value : undefined,
+          membership_email: event.target.email ? event.target.email.value : undefined,
+          password_digest: event.target.password ? event.target.password.value : undefined
         })
       })
       .then((res) => {
@@ -54,27 +54,16 @@ class NewProvider extends Component{
 
   evaluateLinkAccountSubmit = (result, name) => {
     if (result === 'success') {
-      return (
-        <div className='provider-user-credentials-link-success'>
-          You have successfully linked {name} to your account
-        </div>
-      )
+          this.props.showPopUp('You have successfully linked {name} to your account')
     }
 
     else {
-      return (
-        <div className='provider-user-credentials-link-error'>
-          Something went wrong
-        </div>
-      )
+          this.props.showPopUp('Something went wrong')
     }
   }
 
   clearFields() {
-    this.refs.username.value = ''
-    this.refs.membershipid.value = ''
-    this.refs.email.value = ''
-    this.refs.password.value = ''
+    this.refs = null; 
   }
 
   clearMessage() {
@@ -109,7 +98,6 @@ class NewProvider extends Component{
                  ref="username"
                  name="username"
                  className="form-control"
-                 placeholder={currentProvider.membership_username_label}
                  onFocus={this.clearMessage} />
             </div>
 
@@ -120,7 +108,6 @@ class NewProvider extends Component{
                  ref="membershipid"
                  name="membershipid"
                  className="form-control"
-                 placeholder={currentProvider.membership_id_label}
                  onFocus={this.clearMessage} />
             </div>
 
@@ -130,7 +117,6 @@ class NewProvider extends Component{
                  type="email"
                  ref="email"
                  name="email"
-                 placeholder="Email"
                  className="form-control"
                  onFocus={this.clearMessage} />
             </div>
@@ -142,7 +128,6 @@ class NewProvider extends Component{
                  ref="password"
                  name="password"
                  className="form-control"
-                 placeholder="Your password"
                  onFocus={this.clearMessage} />
             </div>
               <button className="btn btn-default submit form" type='submit' value={submitButtonValue} style={{cursor: 'pointer', position: 'static', width: '100%', margin: '20px auto 30px auto;'}}>

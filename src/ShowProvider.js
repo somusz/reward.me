@@ -98,7 +98,7 @@ class ShowProvider extends Component{
            <div class="col-md-5 settings_form" id='provider-user-credentials' style={{display: this.props.session ? 'block' : 'none'}}>
                 <img src={currentProvider.image} alt={currentProvider.name} style={{ height: '10%', margin: '15px auto', display: 'block'}}/>
               <form className='provider-user-credentials-update-form' onSubmit={this.handleUpdateSubmit} id='showProvider'>
-                <p className='text-center' style={{marginTop: '10px'}} > Provide your {currentProvider.name} credentials to link your {currentProvider.name} Points to your Reward.me account </p>
+                <p className='text-center' style={{marginTop: '10px'}} > Please enter the {currentProvider.name} credentials that you would like to update. </p>
 
                 {(currentProvider.membership_username_required) &&
 
@@ -109,7 +109,6 @@ class ShowProvider extends Component{
                         className="form-control" 
                         ref="username" 
                         name="username" 
-                        placeholder="Your new username" 
                         onFocus={this.clearMessage} />
                   </div>
                 }
@@ -123,7 +122,6 @@ class ShowProvider extends Component{
                            ref="membershipid"
                            className="form-control" 
                            name="membershipid"
-                           placeholder="Your new membership ID"
                            onFocus={this.clearMessage} />
                   </div>
                 }
@@ -137,7 +135,6 @@ class ShowProvider extends Component{
                            ref="email"
                            name="email"
                            className="form-control" 
-                           placeholder="Your new email"
                            onFocus={this.clearMessage} />
                   </div>
                 }
@@ -149,7 +146,6 @@ class ShowProvider extends Component{
                            ref="password"
                            className="form-control" 
                            name="password"
-                           placeholder="Your new password"
                            onFocus={this.clearMessage} />
                 </div>
 
@@ -167,7 +163,7 @@ class ShowProvider extends Component{
           <h4 className='text-center' style={{margin: '20px auto'}}>Start redeeming now! Check out these available rewards from {currentProvider.name}: </h4>
 
           {this.state.deals.map(item => {
-            return (<Deal key={item.id} item={item} points={this.props.points} />)
+            return (<Deal key={item.id} item={item} points={this.props.points} history={this.props.history} />)
           })}
           <div className="deals-container-linkto-deals">
             <Link to={`/deals?provider=${this.props.match.params.id}`}>
