@@ -37,16 +37,19 @@ class NewProvider extends Component{
         })
       })
       .then((res) => {
+
         if (res.status === 200) {
-          this.setState({
-            updateMessage: 'success'
-          }, this.clearFields)
+          const currentProvider = this.props.data.find(item =>
+            Number(item.id) === Number(this.props.location.state.provider))
+
+          this.evaluateLinkAccountSubmit('success', currentProvider.name)
+
+          this.props.history.push('/providers')
+
         }
       })
       .catch((err) => {
-        // this.setState({
-        //   updateMessage: 'error'
-        // })
+        this.evaluateLinkAccountSubmit('failed')
         console.log(err)
       })
     }
@@ -54,6 +57,7 @@ class NewProvider extends Component{
 
   evaluateLinkAccountSubmit = (result, name) => {
     if (result === 'success') {
+
       this.props.showPopUp(`You have successfully linked ${name} to your account`)
     }
 

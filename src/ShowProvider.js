@@ -35,15 +35,13 @@ class ShowProvider extends Component{
       })
       .then((res) => {
         if (res.status === 200) {
-          this.setState({
-            updateMessage: 'success'
-          }, this.clearFields)
+          this.evaluateUpdateSubmit('success')
+
+          this.props.history.push('/providers')
         }
       })
       .catch((err) => {
-        // this.setState({
-        //   updateMessage: 'error'
-        // })
+        this.evaluateUpdateSubmit('failed')
         console.log(err)
       })
     }
@@ -104,11 +102,11 @@ class ShowProvider extends Component{
 
                   <div className="form-group" >
                     <label for="username">{currentProvider.membership_username_label || "Username"}: </label>
-                    <input type="text" 
-                        id="provider-user-credentials-update-username" 
-                        className="form-control" 
-                        ref="username" 
-                        name="username" 
+                    <input type="text"
+                        id="provider-user-credentials-update-username"
+                        className="form-control"
+                        ref="username"
+                        name="username"
                         onFocus={this.clearMessage} />
                   </div>
                 }
@@ -120,7 +118,7 @@ class ShowProvider extends Component{
                     <input id="provider-user-credentials-update-membershipid"
                            type="text"
                            ref="membershipid"
-                           className="form-control" 
+                           className="form-control"
                            name="membershipid"
                            onFocus={this.clearMessage} />
                   </div>
@@ -134,7 +132,7 @@ class ShowProvider extends Component{
                            type="email"
                            ref="email"
                            name="email"
-                           className="form-control" 
+                           className="form-control"
                            onFocus={this.clearMessage} />
                   </div>
                 }
@@ -144,7 +142,7 @@ class ShowProvider extends Component{
                     <input id="provider-user-credentials-update-password"
                            type="password"
                            ref="password"
-                           className="form-control" 
+                           className="form-control"
                            name="password"
                            onFocus={this.clearMessage} />
                 </div>
@@ -152,9 +150,9 @@ class ShowProvider extends Component{
                 <button className="btn btn-default submit form" type="submit" style={{cursor: 'pointer', position: 'static', width: '100%', margin: '20px auto 30px auto;'}}>
                   Submit
                 </button>
-      
+
               </form>
-      
+
             {this.state.updateMessage && this.evaluateUpdateSubmit(this.state.updateMessage)}
          </div>
 
@@ -184,9 +182,9 @@ class ShowProvider extends Component{
 export default ShowProvider;
 
 
- 
 
 
 
-    
+
+
 

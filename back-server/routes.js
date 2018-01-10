@@ -19,18 +19,18 @@ module.exports = (knex) => {
   router.post('/login', (req, res) => {
     console.log('attempting to log in', req.body)
     knex
-    .select('*')
+    .select('password_digest', 'id')
     .from('users')
     .where('email', req.body.email)
     .then((result) => {
       if (bcrypt.compareSync(req.body.password, result[0].password_digest)) {
-          console.log('Login Successful', result[0].first_name)
+
+          console.log('Login Successful')
           req.session.user_id = result[0].id
-          res.status(200).send(JSON.stringify({name: result[0].first_name + '' + result[0].last_name, email: result[0].email}))
-            
+          res.status(200).send('ok');
         }
         else {
-          catchonsole.log('Login Failed')
+          console.log('Login Failed')
           res.status(400).send('not ok');
         }
       })
@@ -112,7 +112,7 @@ module.exports = (knex) => {
           .from('users')
           .where('id', '=', req.session.user_id)
           .update({
-            password_digest: bcrypt.hashSync(req.body.password_digest, 10) 
+            password_digest: bcrypt.hashSync(req.body.password_digest, 10)
           })
           .returning('*')
           .then( result => {
@@ -127,7 +127,7 @@ module.exports = (knex) => {
           .from('users')
           .where('id', '=', req.session.user_id)
           .update({
-            password_digest: bcrypt.hashSync(req.body.password_digest, 10) 
+            password_digest: bcrypt.hashSync(req.body.password_digest, 10)
           })
           .returning('*')
           .then( result => {
@@ -151,7 +151,7 @@ module.exports = (knex) => {
     let offset = Number(req.query.offset) || 0
     let searchArray = req.query.q ? req.query.q.split(' ') : []
     // let redeemable = Boolean(req.query.redeemable)
-    let provider = Number(req.query.provider) ? [Number(req.query.provider)] : [1,2, 3, 4, 5, 6, 7, 8]
+    let provider = Number(req.query.provider) ? [Number(req.query.provider)] : [1,2,3,4,5,6,7,8]
 
     let searchCriteriaCompiler = function () {
       if (searchArray.length > 0) {
@@ -237,7 +237,16 @@ module.exports = (knex) => {
     if (req.session.user_id) {
 
         //FOR DEBUGGING ONLY:
-        res.send(JSON.stringify({'1': 18000, '2': 42100}))
+        res.send(JSON.stringify({
+          '1': 19948,
+          '2': 1912,
+          '3': 56342,
+          '4': 5411,
+          '5': 3942,
+          '6': 0,
+          '7': 31.14,
+          '8': 21400
+        }))
         return;
 
 
