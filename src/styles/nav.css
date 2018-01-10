@@ -49,7 +49,6 @@ ul{
 }
 
 li#navbar-user-details {
-  text-transform: uppercase;
   font-size: 0.9rem;
   color: rgba(0, 0, 0, 1);
   letter-spacing: 0.1rem;
@@ -127,7 +126,7 @@ button.navbar-toggler {
   }
 
   
-  .alt-nav-item a {
+  .alt-nav-item a, li#navbar-user-details {
     color: #fff !important;
     font-family: 'Catamaran' !important;
     font-size: 1em; 
