@@ -54,16 +54,16 @@ class NewProvider extends Component{
 
   evaluateLinkAccountSubmit = (result, name) => {
     if (result === 'success') {
-          this.props.showPopUp('You have successfully linked {name} to your account')
+      this.props.showPopUp(`You have successfully linked ${name} to your account`)
     }
 
     else {
-          this.props.showPopUp('Something went wrong')
+      this.props.showPopUp('Something went wrong')
     }
   }
 
   clearFields() {
-    this.refs = null; 
+    this.refs = null;
   }
 
   clearMessage() {
@@ -78,7 +78,7 @@ class NewProvider extends Component{
     const submitButtonValue = currentProvider? `Link ${currentProvider.name} to my account` : "Link it to your account"
 
     return currentProvider ? ([
-       
+
 
       <div className='container' id='link-provider-container' style={{height: '100%', paddingBottom: '50px', marginTop: '50px', display: this.props.session ? 'block' : 'none'}}>
         <div>

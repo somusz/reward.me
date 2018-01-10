@@ -14,15 +14,15 @@ class Deal extends React.Component{
     console.log('Deal.js props history --> ', this.props.history.location.pathname, this.props.history.location.pathname.search('/providers') === -1)
     return (
 
-    
+
         <div className= {(this.props.history.location.pathname.search('/providers') === -1) ? "col-lg-3 col-md-4 mb-4" : "col-lg-8 col-md-12 mb-4"} >
 
           <div className="card h-100" style={{position: 'relative'}}>
           <Link to={`/deals/${this.props.item.id}`} >
             <div className="deal-image-div" style={{backgroundImage: `url(${this.props.item.image})`}} />
           </Link>
-          <div className="card-body">
           <div className='card-provider-name' >{this.props.item.provider_name}</div>
+          <div className="card-body">
             <h4 className="card-title">
               <Link to={`/deals/${this.props.item.id}`}>
                 {this.cleanName(this.props.item.name)}
@@ -31,11 +31,14 @@ class Deal extends React.Component{
           </div>
           {this.getPercentage() === 1 ?
             <a href={this.props.item.url} target='_blank' >
-            <button className="card-footer">
-               REDEEM NOW - {this.props.item.price} points                
-            </button> </a> :
+
+                <button className="card-footer btn-primary">
+                   REDEEM NOW <br/> {this.props.item.price} points
+                </button>
+
+            </a> :
             <div className="card-footer">
-              <span className ="text-muted">
+              <span>
                 {this.props.points[this.props.item.provider_id] ? this.props.points[this.props.item.provider_id] + ' / ' + this.props.item.price + ' points' : this.props.item.price + ' points'}
               </span>
             </div>
