@@ -57,11 +57,12 @@ class NewProvider extends Component{
 
   evaluateLinkAccountSubmit = (result, name) => {
     if (result === 'success') {
-          this.props.showPopUp(`You have successfully linked ${name} to your account`)
+
+      this.props.showPopUp(`You have successfully linked ${name} to your account`)
     }
 
     else {
-          this.props.showPopUp('Something went wrong')
+      this.props.showPopUp('Something went wrong')
     }
   }
 

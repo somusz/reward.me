@@ -14,15 +14,23 @@ class Deal extends React.Component{
     console.log('Deal.js props history --> ', this.props.history.location.pathname, this.props.history.location.pathname.search('/providers') === -1)
     return (
 
-    
+
         <div className= {(this.props.history.location.pathname.search('/providers') === -1) ? "col-lg-3 col-md-4 mb-4" : "col-lg-8 col-md-12 mb-4"} >
 
           <div className="card h-100" style={{position: 'relative'}}>
           <Link to={`/deals/${this.props.item.id}`} >
             <div className="deal-image-div" style={{backgroundImage: `url(${this.props.item.image})`}} />
           </Link>
+          <div
+            className='card-provider-name'
+            style={{
+              background: this.providerBackgroundColor(this.props.item.provider_id),
+              color: this.providerColor(this.props.item.provider_id)
+            }}
+          >
+              {this.props.item.provider_name}
+            </div>
           <div className="card-body">
-          <div className='card-provider-name' >{this.props.item.provider_name}</div>
             <h4 className="card-title">
               <Link to={`/deals/${this.props.item.id}`}>
                 {this.cleanName(this.props.item.name)}
@@ -31,11 +39,14 @@ class Deal extends React.Component{
           </div>
           {this.getPercentage() === 1 ?
             <a href={this.props.item.url} target='_blank' >
-            <button className="card-footer">
-               REDEEM NOW - {this.props.item.price} points                
-            </button> </a> :
+
+                <button className="card-footer btn-primary">
+                   REDEEM NOW <br/> {this.props.item.price} points
+                </button>
+
+            </a> :
             <div className="card-footer">
-              <span className ="text-muted">
+              <span>
                 {this.props.points[this.props.item.provider_id] ? this.props.points[this.props.item.provider_id] + ' / ' + this.props.item.price + ' points' : this.props.item.price + ' points'}
               </span>
             </div>
@@ -70,6 +81,47 @@ class Deal extends React.Component{
         </div>
       </article>
     )
+  }
+
+  providerBackgroundColor(id){
+    switch(id) {
+      case 1:
+        return '#01599a'
+      case 2:
+        return '#ed1b2e'
+      case 3:
+        return '#94d833'
+      case 4:
+        return '#6cd0ef'
+      case 5:
+        return '#27082f'
+      case 6:
+        return '#f5efc5'
+      case 7:
+        return '#f39495'
+      case 8:
+        return '#690201'
+    }
+  }
+  providerColor(id){
+    switch(id) {
+      case 1:
+        return '#fed200'
+      case 2:
+        return 'white'
+      case 3:
+        return '#154530'
+      case 4:
+        return 'white'
+      case 5:
+        return 'white'
+      case 6:
+        return '#9a2226'
+      case 7:
+        return 'black'
+      case 8:
+        return 'white'
+    }
   }
 
   getPercentage(){
