@@ -151,7 +151,7 @@ module.exports = (knex) => {
     let offset = Number(req.query.offset) || 0
     let searchArray = req.query.q ? req.query.q.split(' ') : []
     // let redeemable = Boolean(req.query.redeemable)
-    let provider = Number(req.query.provider) ? [Number(req.query.provider)] : [1,2]
+    let provider = Number(req.query.provider) ? [Number(req.query.provider)] : [1,2,3,4,5,6,7,8]
 
     let searchCriteriaCompiler = function () {
       if (searchArray.length > 0) {
@@ -237,7 +237,16 @@ module.exports = (knex) => {
     if (req.session.user_id) {
 
         //FOR DEBUGGING ONLY:
-        res.send(JSON.stringify({'1': 18000, '2': 42100}))
+        res.send(JSON.stringify({
+          '1': 19948,
+          '2': 1912,
+          '3': 56342,
+          '4': 5411,
+          '5': 3942,
+          '6': 0,
+          '7': 31.14,
+          '8': 21400
+        }))
         return;
 
 

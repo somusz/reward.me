@@ -35,15 +35,13 @@ class ShowProvider extends Component{
       })
       .then((res) => {
         if (res.status === 200) {
-          this.setState({
-            updateMessage: 'success'
-          }, this.clearFields)
+          this.evaluateUpdateSubmit('success')
+
+          this.props.history.push('/providers')
         }
       })
       .catch((err) => {
-        // this.setState({
-        //   updateMessage: 'error'
-        // })
+        this.evaluateUpdateSubmit('failed')
         console.log(err)
       })
     }
