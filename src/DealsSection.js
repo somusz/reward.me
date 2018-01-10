@@ -12,7 +12,7 @@ class DealsSection extends React.Component {
   render() {
     return (
       <div>
-        <Route exact path={`${this.props.match.url}`} render={(props) => <Deals {...props} points={this.props.points} /> } />
+        <Route exact path={`${this.props.match.url}`} render={(props) => <Deals {...props} session={this.props.session} points={this.props.points} /> } />
         <Route path={`${this.props.match.url}/:id`} render={(props) => <ShowDeal {...props} points={this.props.points} /> } />
       </div>
     )

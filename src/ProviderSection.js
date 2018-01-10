@@ -39,7 +39,7 @@ class ProviderSection extends React.Component {
         <Route exact path={`${this.props.match.url}`} render={(props) =>
           <Providers {...props} data={this.state.data} session={this.props.session} points={this.props.points} /> } />
         <Route path={`${this.props.match.url}/:id`} render={(props) =>
-          <ShowProvider {...props} data={this.state.data} session={this.props.session} points={this.props.points} /> } />
+          <ShowProvider {...props} data={this.state.data} session={this.props.session} points={this.props.points} showPopUp={this.props.showPopUp} /> } />
         <Route path={`${this.props.match.url}/new`} render={(props) =>
           <NewProvider {...props} data={this.state.data} session={this.props.session} points={this.props.points} /> } />
 

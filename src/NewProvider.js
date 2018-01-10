@@ -19,6 +19,7 @@ class NewProvider extends Component{
     event.preventDefault()
 
     if (event) {
+      console.log(event.target)
       fetch(this.props.match.url, {
         method: 'POST',
         credentials: 'include',

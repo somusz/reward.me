@@ -27,10 +27,10 @@ class ShowProvider extends Component{
         },
         redirect: 'follow',
         body: JSON.stringify({
-          username: event.target.username.value ? event.target.username.value : undefined,
-          membership_id: event.target.membershipid.value ? event.target.membershipid.value : undefined,
-          membership_email: event.target.email.value ? event.target.email.value : undefined,
-          password_digest: event.target.password.value ? event.target.password.value : undefined
+          username: event.target.username ? event.target.username.value : undefined,
+          membership_id: event.target.membershipid ? event.target.membershipid.value : undefined,
+          membership_email: event.target.email ? event.target.email.value : undefined,
+          password_digest: event.target.password ? event.target.password.value : undefined
         })
       })
       .then((res) => {
@@ -51,27 +51,15 @@ class ShowProvider extends Component{
 
   evaluateUpdateSubmit = (result) => {
     if (result === 'success') {
-      return (
-        <div className='provider-user-credentials-update-success'>
-          You have successfully updated your credentials
-        </div>
-      )
+          this.props.showPopUp('You have successfully updated your credentials')
     }
-
     else {
-      return (
-        <div className='provider-user-credentials-update-error'>
-          Something went wrong
-        </div>
-      )
+        this.props.showPopUp('Something went wrong')
     }
   }
 
   clearFields() {
-    this.refs.username.value = ''
-    this.refs.membershipid.value = ''
-    this.refs.email.value = ''
-    this.refs.password.value = ''
+    this.refs = null
   }
 
   clearMessage() {

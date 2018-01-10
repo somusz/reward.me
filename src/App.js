@@ -79,7 +79,7 @@ class App extends React.Component {
       message: message,
       popUpVisibility: 'hidden',
       popUpOpacity: '0',
-      })}, 1500)
+      })}, 1000)
   }
 
   setSession = () => {
@@ -98,7 +98,7 @@ class App extends React.Component {
       <div>
       <Route exact path="/" component={ Home } />
       <Route path="/providers" render={(props) => <ProviderSection {...props} points={this.state.points} session={this.state.session} showPopUp={this.showPopUp} /> } />
-      <Route path="/deals" render={(props) => <DealsSection {...props} points={this.state.points} showPopUp={this.showPopUp} /> } />
+      <Route path="/deals" render={(props) => <DealsSection {...props} points={this.state.points} showPopUp={this.showPopUp} session={this.state.session} /> } />
       <Route path="/users/settings" render={(props) => <ShowUser {...props} userID={this.state.points} showPopUp={this.showPopUp}/> }/>
       <Route path="/register" render={(props) => <Register {...props} setSession={this.setSession} showPopUp={this.showPopUp}/> }/>
       <Route path="/login" render={(props) => <Login {...props} setPoints={this.setPoints} setSession={this.setSession} showPopUp={this.showPopUp} saveUserEmailAndName={this.saveUserEmailAndName} /> }/>
