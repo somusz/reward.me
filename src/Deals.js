@@ -124,6 +124,12 @@ class Deals extends Component{
                 <option value="all"> All Providers </option>
                 <option value="1"> More Rewards </option>
                 <option value="2"> Scene </option>
+                <option value="3"> TD Rewards </option>
+                <option value="4"> Air Miles </option>
+                <option value="5"> Plum Rewards </option>
+                <option value="6"> Shoppers Optimum </option>
+                <option value="7"> Canadian Tire </option>
+                <option value="8"> PC Plus </option>
               </select>
             </div>
 
@@ -145,7 +151,7 @@ class Deals extends Component{
 
             {this.state.items.map(item => {
               if (this.shouldDisplay(item)){
-               return (<Deal key={item.id} item={item} points={this.props.points} />)
+               return (<Deal key={item.id} item={item} points={this.props.points} history={this.props.history} />)
               }
             })}
 

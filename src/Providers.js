@@ -100,7 +100,7 @@ class Providers extends Component{
             <img className="img-fluid rounded mb-3 mb-md-0 provider-image-container" src={item.image} alt= { "" } />
            </Link>
         </div>
-        <div className="col-md-4 ">
+        <div className="col-md-8 col-lg-8 col-sm-4 ">
             <Link to={`${this.props.match.url}/${item.id}`}>
           <h3>{item.name}</h3>
             </Link>
