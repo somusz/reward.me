@@ -27,10 +27,10 @@ class ShowProvider extends Component{
         },
         redirect: 'follow',
         body: JSON.stringify({
-          username: event.target.username.value ? event.target.username.value : undefined,
-          membership_id: event.target.membershipid.value ? event.target.membershipid.value : undefined,
-          membership_email: event.target.email.value ? event.target.email.value : undefined,
-          password_digest: event.target.password.value ? event.target.password.value : undefined
+          username: event.target.username ? event.target.username.value : undefined,
+          membership_id: event.target.membershipid ? event.target.membershipid.value : undefined,
+          membership_email: event.target.email ? event.target.email.value : undefined,
+          password_digest: event.target.password ? event.target.password.value : undefined
         })
       })
       .then((res) => {
