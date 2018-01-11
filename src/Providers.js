@@ -11,6 +11,10 @@ class Providers extends Component{
     }
   }
 
+  shouldComponentUpdate(nextProps, nextState){
+    return nextProps.data.length != this.props.data.length;
+  }
+
 
   render(){
 
@@ -32,7 +36,7 @@ class Providers extends Component{
     )
 
     const ProviderMember = (item) => (
-      <div class="row" key={item.id}>
+      <div class="row memberships" key={item.id}>
         <div class="col-md-4" style={{margin: '30px auto'}}>
           <Link to={`${this.props.match.url}/${item.id}`}>
             <img className="img-fluid rounded mb-3 mb-md-0 provider-image-container" src={item.image} alt={item.name} />
@@ -64,7 +68,7 @@ class Providers extends Component{
     )
 
     const ProviderNonMember = (item) => (
-      <div class="row" key={item.id}>
+      <div class="row memberships" key={item.id}>
         <div class="col-md-4" style={{margin: '30px auto'}}>
            <Link to={`${this.props.match.url}/${item.id}`}>
             <img className="img-fluid rounded mb-3 mb-md-0 provider-image-container" src={item.image} alt= { "" } />
@@ -94,7 +98,7 @@ class Providers extends Component{
     ])
 
     const ProviderAll = (item) => (
-      <div className="row" key={item.id}>
+      <div className="row memberships" key={item.id}>
         <div className="col-md-4 text-center" >
            <Link to={`${this.props.match.url}/${item.id}`}>
             <img className="img-fluid rounded mb-3 mb-md-0 provider-image-container" src={item.image} alt= { "" } />

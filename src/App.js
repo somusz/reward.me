@@ -62,7 +62,7 @@ class App extends React.Component {
   saveUserEmailAndName = (userDetails) => {
     console.log('in save user email function', userDetails.email)
     this.setState({
-      userEmail: userDetails.email, 
+      userEmail: userDetails.email,
       userName: userDetails.name
     })
   }
@@ -79,7 +79,7 @@ class App extends React.Component {
       message: message,
       popUpVisibility: 'hidden',
       popUpOpacity: '0',
-      })}, 1000)
+      })}, 2500)
   }
 
   setSession = () => {

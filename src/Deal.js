@@ -15,7 +15,7 @@ class Deal extends React.Component{
     return (
 
 
-        <div className= {(this.props.history.location.pathname.search('/providers') === -1) ? "col-lg-3 col-md-4 mb-4" : "col-lg-8 col-md-12 mb-4"} >
+        <div className= {(this.props.history.location.pathname.search('/providers') === -1) ? "col-lg-3 col-md-4 mb-4" : "col-lg-6 col-md-12 mb-4"} >
 
           <div className="card h-100" style={{position: 'relative'}}>
           <Link to={`/deals/${this.props.item.id}`} >

@@ -239,7 +239,7 @@ module.exports = (knex) => {
         //FOR DEBUGGING ONLY:
         res.send(JSON.stringify({
           '1': 19948,
-          '2': 1912,
+          '2': 23171,
           '3': 56342,
           '4': 5411,
           '5': 3942,

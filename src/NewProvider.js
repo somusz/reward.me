@@ -40,12 +40,14 @@ class NewProvider extends Component{
 
         if (res.status === 200) {
           const currentProvider = this.props.data.find(item =>
-            Number(item.id) === Number(this.props.location.state.provider))
+            Number(item.id) === Number(this.props.location.state.provider));
 
-          this.evaluateLinkAccountSubmit('success', currentProvider.name)
+          this.evaluateLinkAccountSubmit('success', currentProvider.name);
 
-          this.props.history.push('/providers')
-
+          this.props.history.push('/');
+          this.props.history.goForward();
+          this.props.history.push('/providers');
+          this.props.history.goForward();
         }
       })
       .catch((err) => {

@@ -24,8 +24,9 @@
   color: #000 ;
 }
 
+
 .card-provider-name {
-  font-size: 1em;
+  font-size: 1.5em;
   font-weight: 900;
   color: black;
   border-top: 1px solid rgb(70, 78, 107);
@@ -41,6 +42,7 @@
   border-top: 1px solid rgb(70, 78, 107);
   background-color: white;
   padding: .5rem 1rem;
+  font-size: 1.5em;
 }
 
 
@@ -51,7 +53,7 @@ button.card-footer {
   color: #fff !important;
 }
 button.card-footer:hover{
-  /*background-color: rgb(29, 90, 119);*/
+  background-color: rgb(29, 90, 119);
   cursor: pointer;
   text-decoration: underline;
 }
@@ -69,7 +71,7 @@ h4.card-title{
 }
 
 hr {
-  margin: 4rem;
+  margin: 2rem;
 }
 
 .list-group-horizontal .list-group-item {

@@ -72,7 +72,7 @@ class ShowProvider extends Component{
   }
 
   componentDidMount() {
-    fetch(`/deals?provider=${this.props.match.params.id}&limit=3`)
+    fetch(`/deals?provider=${this.props.match.params.id}&limit=2`)
 
       .then((res) => {
         res.json()
@@ -92,7 +92,7 @@ class ShowProvider extends Component{
 
     return currentProvider ? ([
       <div class="container settings_page" style={{ margin: '30px auto', height: '100%', paddingBottom: '300px'}}>
-        <div class="row">
+        <div class="row" style={{height:'750px'}}>
            <div class="col-md-5 settings_form" id='provider-user-credentials' style={{display: this.props.session ? 'block' : 'none'}}>
                 <img src={currentProvider.image} alt={currentProvider.name} style={{ height: '10%', margin: '15px auto', display: 'block'}}/>
               <form className='provider-user-credentials-update-form' onSubmit={this.handleUpdateSubmit} id='showProvider'>
