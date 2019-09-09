@@ -3,12 +3,7 @@
 
 
 ## Final Product
-!["Screenshot of the "]()
-!["Screenshot of the "]()
-!["Screenshot of the "]()
-!["Screenshot of the "]()
-!["Screenshot of the "]()
-!["Screenshot of the "]()
+--
 
 ## Setup
 
